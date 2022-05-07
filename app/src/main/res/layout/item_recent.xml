@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/recentBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight=".15"
+                android:src="@drawable/ic_cloud" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".82"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/nameOfContact"
+                    style="@style/Heading_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end|center"
+                    android:layout_weight="1"
+                    android:text="Apple"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:id="@+id/NumberOfContact"
+                    style="@style/Heading_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end|center"
+                    android:layout_weight="1"
+                    android:text="+91 123456789"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ExpandNow"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_weight=".03"
+                android:src="@drawable/ic_bottom_arrow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/expandView"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <ImageView
+                android:id="@+id/icAdd"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_add_ico" />
+
+            <ImageView
+                android:id="@+id/icCloud"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_cloud" />
+
+            <ImageView
+                android:id="@+id/icSmile"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_smile" />
+
+            <ImageView
+                android:id="@+id/icVideoCall"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_videocall"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

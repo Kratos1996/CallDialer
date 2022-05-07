@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_16sdp"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="1"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:id="@+id/etDial"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="40dp"
+                android:textAlignment="center"
+                android:textSize="@dimen/_20sdp"
+                android:text=""
+                android:maxLength="12"
+                android:background="@color/white"/>
+            <ImageView
+                android:padding="@dimen/_5sdp"
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_backspace_white_24"
+                app:tint="@color/light_gray" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dialpad_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_alignParentBottom="true"
+            android:focusableInTouchMode="true"
+            android:paddingTop="@dimen/_10sdp"
+            tools:ignore="HardcodedText">
+
+            <RelativeLayout
+                android:id="@+id/dialpad_1_holder"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="@+id/dialpad_2_holder"
+                app:layout_constraintEnd_toStartOf="@+id/dialpad_2_holder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dialpad_2_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_1"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="1" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_2_holder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toTopOf="@+id/dialpad_5_holder"
+                app:layout_constraintEnd_toStartOf="@+id/dialpad_3_holder"
+                app:layout_constraintStart_toEndOf="@+id/dialpad_1_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_2"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="2" />
+
+                <TextView
+                    android:id="@+id/dialpad_2_letters"
+                    style="@style/DialpadLetterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dialpad_2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="center_horizontal"
+                    android:text="ABC" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_3_holder"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="@+id/dialpad_2_holder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dialpad_2_holder"
+                app:layout_constraintTop_toTopOf="@+id/dialpad_2_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_3"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="3" />
+
+                <TextView
+                    android:id="@+id/dialpad_3_letters"
+                    style="@style/DialpadLetterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dialpad_3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="center_horizontal"
+                    android:text="DEF" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_4_holder"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="@+id/dialpad_5_holder"
+                app:layout_constraintEnd_toStartOf="@+id/dialpad_5_holder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dialpad_5_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_4"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="4" />
+
+                <TextView
+                    android:id="@+id/dialpad_4_letters"
+                    style="@style/DialpadLetterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dialpad_4"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:text="GHI" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_5_holder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toTopOf="@+id/dialpad_8_holder"
+                app:layout_constraintEnd_toStartOf="@+id/dialpad_6_holder"
+                app:layout_constraintStart_toEndOf="@+id/dialpad_4_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_5"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="5" />
+
+                <TextView
+                    android:id="@+id/dialpad_5_letters"
+                    style="@style/DialpadLetterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dialpad_5"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:text="JKL" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_6_holder"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="@+id/dialpad_5_holder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dialpad_5_holder"
+                app:layout_constraintTop_toTopOf="@+id/dialpad_5_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_6"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="6" />
+
+                <TextView
+                    android:id="@+id/dialpad_6_letters"
+                    style="@style/DialpadLetterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dialpad_6"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:text="MNO" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_7_holder"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="@+id/dialpad_8_holder"
+                app:layout_constraintEnd_toStartOf="@+id/dialpad_8_holder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dialpad_8_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_7"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="7" />
+
+                <TextView
+                    android:id="@+id/dialpad_7_letters"
+                    style="@style/DialpadLetterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dialpad_7"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="center_horizontal"
+                    android:text="PQRS" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_8_holder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toTopOf="@+id/dialpad_0_holder"
+                app:layout_constraintEnd_toStartOf="@+id/dialpad_9_holder"
+                app:layout_constraintStart_toEndOf="@+id/dialpad_7_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_8"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="8" />
+
+                <TextView
+                    android:id="@+id/dialpad_8_letters"
+                    style="@style/DialpadLetterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dialpad_8"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="center_horizontal"
+                    android:text="TUV" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_9_holder"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="@+id/dialpad_8_holder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dialpad_8_holder"
+                app:layout_constraintTop_toTopOf="@+id/dialpad_8_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_9"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="9" />
+
+                <TextView
+                    android:id="@+id/dialpad_9_letters"
+                    style="@style/DialpadLetterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dialpad_9"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:text="WXYZ" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_asterisk_holder"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="@+id/dialpad_0_holder"
+                app:layout_constraintEnd_toStartOf="@+id/dialpad_0_holder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dialpad_0_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_asterisk"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="*" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_0_holder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/dialpad_hashtag_holder"
+                app:layout_constraintStart_toEndOf="@+id/dialpad_asterisk_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_0"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/dialpad_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/dialpad_0"
+                    android:layout_alignBottom="@+id/dialpad_0"
+                    android:layout_centerHorizontal="true"
+                    android:layout_toEndOf="@+id/dialpad_0"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textSize="@dimen/_10sdp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dialpad_hashtag_holder"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="@+id/dialpad_0_holder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dialpad_0_holder"
+                app:layout_constraintTop_toTopOf="@+id/dialpad_0_holder">
+
+                <TextView
+                    android:id="@+id/dialpad_hashtag"
+                    style="@style/DialpadNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="#" />
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="@dimen/_100sdp">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/callNow"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_audio_call"
+                android:tint="@color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</layout>

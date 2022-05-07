@@ -1,0 +1,211 @@
+<resources>
+    <string name="app_name">RichCallDialer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="default_phone_app_prompt">Please make this app the default Phone app</string>
+
+    <!-- Contacts -->
+    <string name="could_not_access_contacts">Could not access your contacts</string>
+
+    <string name="map_api_key">AIzaSyCYDqA2nq03v_qMgCy_gMRzDMliD3BRnYQ</string>
+
+    <!-- Recents -->
+    <string name="no_previous_calls">No previous calls have been found</string>
+    <string name="could_not_access_the_call_history">Could not access the call history</string>
+    <string name="request_access">Request access</string>
+    <string name="remove_confirmation">Are you sure you want to remove the selected items from the Call History?</string>
+    <string name="clear_history_confirmation">Are you sure you want to remove everything from the Call History?</string>
+    <string name="send_sms">Send SMS</string>
+    <string name="show_grouped_calls">Show grouped calls</string>
+    <string name="clear_call_history">Clear call history</string>
+
+    <!-- Dialpad -->
+    <string name="dialpad">Dialpad</string>
+    <string name="msg_token_fmt">Token</string>
+
+    <!-- Dialer -->
+    <string name="dialer">Dialer</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="phone_1">Phone 1</string>
+    <string name="phone_2">Phone 2</string>
+    <string name="address">Address</string>
+    <string name="edit">Edit</string>
+    <string name="unknown_caller">Unknown Caller</string>
+    <string name="is_calling">Is Calling…</string>
+    <string name="dialing">Dialing…</string>
+    <string name="call_ended">Call Ended</string>
+    <string name="call_ending">Call Ending</string>
+    <string name="ongoing_call">Ongoing Call</string>
+    <string name="select_sim">Select a SIM for this call</string>
+    <string name="always_use_this_sim">Always use this SIM for this number</string>
+    <string name="unset_default_sim">Unset default SIM</string>
+
+    <!-- Speed dial -->
+    <string name="speed_dial">Speed dial</string>
+    <string name="manage_speed_dial">Manage speed dial</string>
+    <string name="speed_dial_label">Click on a number to assign a contact to it. You can then quickly call the given contact by long pressing the given number at the dialer.</string>
+
+    <!-- Settings -->
+    <string name="group_subsequent_calls">Group subsequent calls with the same number at the call log</string>
+
+    <!-- Strings displayed only on Google Playstore. Optional, but good to have -->
+    <!-- App title has to have less than 50 characters. If you cannot squeeze it, just remove a part of it -->
+    <string name="app_title">Simple Dialer - Manage your phone calls easily</string>
+    <!-- Short description has to have less than 80 chars -->
+    <string name="app_short_description">A handy phone call manager with phonebook, number blocking and multi-SIM support</string>
+    <string name="app_long_description">
+        A lightweight app for handling your calls, no matter where are you. Comes with a handy call log for easy call initiation.
+
+        There is a quick dialpad at your service too, with smart contact suggestions. It supports letters too.
+
+        You can easily block phone numbers to avoid unwanted incoming calls.
+
+        Supported Speed dialing makes calling your favorite contacts with this true phone a breeze.
+
+        To help you manage your calls quickly the Phone app also supports favorite contacts and creating shortcuts of any contact on the home screen.
+
+        It comes with material design and dark theme by default, provides great user experience for easy usage. The lack of internet access gives you more privacy, security and stability than other apps.
+
+        Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors.
+
+        <b>Check out the full suite of Simple Tools here:</b>
+        https://www.simplemobiletools.com
+
+        <b>Facebook:</b>
+        https://www.facebook.com/simplemobiletools
+
+        <b>Reddit:</b>
+        https://www.reddit.com/r/SimpleMobileTools
+    </string>
+    <string name="this_will_only_take_a_bit">This will only take a bit</string>
+    <string name="email">Email</string>
+    <string name="search">Search...</string>
+    <string name="first_name">First Name</string>
+    <string name="name">Name</string>
+    <string name="vijay">Vijay</string>
+    <string name="Kishor" />
+    <string name="last_name">Last Name</string>
+    <string name="comment">Comment</string>
+    <string name="example_example_com">example@example.com</string>
+    <string name="mobilenumber">Mobile Number</string>
+    <string name="your_mobile_number">Your Mobile Number</string>
+    <string name="inamdar">Inamdar</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="send">Send</string>
+    <string name="submit">SUBMIT</string>
+    <string name="update">Update</string>
+    <string name="incoming_call">Incoming Call</string>
+    <string name="outgoing_call">Outgoing Call</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chat_with">Chat With...</string>
+    <string name="chats">Chats</string>
+    <string name="type_a_message">Type a message...</string>
+    <string name="im">IM</string>
+    <string name="available">Available</string>
+    <string name="lastseenat">Last Seen:</string>
+    <string name="lastseen">\"Last seen at \"</string>
+    <string name="verify_your_phone_number">Verify your phone number</string>
+    <string name="you_will_receive_an_otp_on_this_phone_number">You will receive an OTP on this phone number</string>
+    <string name="_91">+91</string>
+    <string name="_1234567890">1234567890</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="enter_received_otp">Enter received OTP</string>
+    <string name="didn_t_receive_an_otp">Didn\'t receive an OTP?</string>
+    <string name="resend_otp">RESEND OTP</string>
+    <string name="verify">Verify</string>
+    <string name="didn_t_receive_an_ot">Didn\'t receive an OTP?</string>
+    <string name="tv_logo">LOGO</string>
+    <string name="enter_number">Verify your phone number</string>
+    <string name="otp_text">You will receive an OTP on this phone \nnumber</string>
+    <string name="received_otp">Enter received OTP</string>
+    <string name="enter_number_hint">Enter your phone number</string>
+    <string name="enter_otp">Verify your phone number</string>
+    <string name="take_bit">This will only take a bit</string>
+    <string name="frequently_dialed">Frequently Dialed</string>
+    <string name="save_contact">Save Contact</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="app_setting">App Setting</string>
+    <string name="support">Support</string>
+    <string name="frequently">Frequently</string>
+    <string name="help_us">Help Us</string>
+    <string name="social">Social</string>
+    <string name="other">Other</string>
+    <string name="theme_">Theme</string>
+    <string name="general">General</string>
+    <string name="startup">Startup</string>
+    <string name="calls">Calls</string>
+    <string name="cal_ring">Calling/Ringing</string>
+    <string name="jennifer">Jennifer</string>
+    <string name="number">+91 1234567890</string>
+    <string name="permission_setting">Permission Setting</string>
+
+    <string name="member_selection">Member Selection...</string>
+    <string name="dark_light">Dark/Light</string>
+    <string name="ask_question">Frequently asked questions</string>
+    <string name="small_large">Font Small/Large</string>
+    <string name="call_cinfirm">Call Confirm</string>
+    <string name="call_record">Call Record</string>
+    <string name="theme">Theme</string>
+    <string name="password">Password</string>
+    <string name="sim">SIM</string>
+    <string name="contact">Contact</string>
+    <string name="default_">Default</string>
+    <string name="notification">Notification</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="invite_frnd">Invite Friends</string>
+    <string name="contributors">Contributors</string>
+    <string name="feedback">Feedback</string>
+    <string name="reddit">Reddit</string>
+    <string name="app_from_us">More apps from us</string>
+    <string name="pp">Privacy Policy</string>
+    <string name="licesnse">Third party licenses</string>
+    <string name="version">Version 5.11.5</string>
+    <string name="made_with">Made with in Xxxxxxx</string>
+    <string name="dummy_mail">hello@simplemobiletools.com</string>
+
+    <string name="manage_blocked_numbers">Manage Blocked Numbers</string>
+    <string name="change_date_time">Change Date and Time Format</string>
+    <string name="manage_speed">Manage Speed Dial</string>
+    <string name="font_size">Font Size</string>
+
+    <string name="manage_show_tab">Manage shown tabs</string>
+    <string name="tab_to_open">Tab to open at app start\nLast used one</string>
+    <string name="open_dialpad">Open the dialpad by default when\nthe app opens</string>
+
+    <string name="group_subsequent">Group subsequent calls with the\nsame number at the call log</string>
+    <string name="show_a_call">Show a call confirmation dialog\nbefore initiating a call</string>
+    <string name="disable_proximity">Disable proximity sensor during\ncalls</string>
+    <string name="replace_swiping">Replace swiping at responding to\nincoming calls with clicking</string>
+
+    <string name="app_launcher_name">Dialer</string>
+    <string name="allow_displaying_over_other_apps">Please allow displaying over other apps for reliable behaviour</string>
+
+    <!-- Contacts -->
+
+    <!-- Recents -->
+    <string name="show_call_details">Show call details</string>
+
+    <!-- Dialpad -->
+    <string name="asterisk">Asterisk</string>
+    <string name="hashtag">Hashtag</string>
+    <string name="call_number">Call number</string>
+
+    <!-- Dialer -->
+    <string name="accept_call">Accept call</string>
+    <string name="decline_call">Decline call</string>
+
+    <string name="turn_microphone_on">Turn microphone on</string>
+    <string name="turn_microphone_off">Turn microphone off</string>
+    <string name="turn_speaker_on">Turn speaker on</string>
+    <string name="turn_speaker_off">Turn speaker off</string>
+    <string name="show_dialpad">Show dialpad</string>
+    <string name="hide_dialpad">Hide dialpad</string>
+    <string name="end_call">End call</string>
+
+    <string name="open_dialpad_by_default">Open the dialpad by default when the app opens</string>
+    <string name="disable_proximity_sensor">Disable proximity sensor during calls</string>
+    <string name="disable_swipe_to_answer">Replace swiping at responding to incoming calls with clicking</string>
+
+
+</resources>

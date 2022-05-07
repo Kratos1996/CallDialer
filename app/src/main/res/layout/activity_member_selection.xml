@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/Heading3_semiBold"
+            android:layout_gravity="start|center"
+            android:text="@string/member_selection"
+            android:textSize="28dp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_36sdp"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:background="@drawable/search_bg"
+            android:paddingHorizontal="@dimen/_16sdp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_32sdp"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:hint="@string/search"/>
+            <View
+                android:layout_width="1dp"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@color/grey"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_search_vector"
+                app:tint="@color/grey" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_verify_text"
+            style="@style/Heading3_semiBold"
+            android:text="@string/frequently"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="start"
+            android:textSize="22dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavrouties"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_contacts"
+            tools:itemCount="8"/>
+    </LinearLayout>
+</layout>

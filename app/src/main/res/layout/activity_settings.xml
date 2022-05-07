@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fillViewport="true"
+        tools:context=".ui.launchFlow.login.LoginActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rootContainer"
+            android:orientation="vertical"
+            android:fitsSystemWindows="true">
+
+            <FrameLayout
+                android:id="@+id/fl_headign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingHorizontal="@dimen/_8sdp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_verify_text"
+                    style="@style/Heading3_semiBold"
+                    android:text="@string/theme_"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_gravity="center"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:background="@drawable/curved_border">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/dark_light"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_add"
+                        android:layout_gravity="end|center" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_headign2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingHorizontal="@dimen/_8sdp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    style="@style/Heading3_semiBold"
+                    android:text="@string/general"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_gravity="center"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_form2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:background="@drawable/curved_border">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/manage_blocked_numbers"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/change_date_time"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/manage_speed"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/font_size"
+                        android:layout_gravity="start|center"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="8dp"
+                        android:src="@drawable/ic_bottom_arrow"
+                        android:layout_gravity="end|center" />
+                </FrameLayout>
+                <TextView
+                    style="@style/Heading3_semiBold"
+                    android:text="Large"
+                    android:textColor="#666666"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_gravity="start|center"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_headign3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingHorizontal="@dimen/_8sdp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    style="@style/Heading3_semiBold"
+                    android:text="@string/startup"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_gravity="center"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_form3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:background="@drawable/curved_border">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/manage_show_tab"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/tab_to_open"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/open_dialpad"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                    <CheckBox
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|center"/>
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:id="@+id/fl_headign4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingHorizontal="@dimen/_8sdp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    style="@style/Heading3_semiBold"
+                    android:text="@string/calls"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_gravity="center"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_form4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:background="@drawable/curved_border">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/group_subsequent"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                    <CheckBox
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|center"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/show_a_call"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                    <CheckBox
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|center"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/disable_proximity"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                    <CheckBox
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|center"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:text="@string/replace_swiping"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_gravity="start|center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                    <CheckBox
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|center"/>
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.25" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable-v24/curved_background.xml" value="0.1475" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable-v24/round_ripple.xml" value="0.1475" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/btn_search_outline.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/contacts_fastscroller_drawable.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/curved_background.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/custom_bg_primary.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/fill_main_btn.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/fill_main_btn_2.xml" value="0.2315" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/ic_call_accept.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/ic_call_decline.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/ic_chat.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/ic_person_vector.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/ic_phone_down_red_vector.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/ic_phone_green_vector.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/outline_squre_neural_light.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/selector.xml" value="0.1935" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/activity_call.xml" value="0.3625" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/activity_calling.xml" value="0.18697916666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/activity_dialer.xml" value="0.3625" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/activity_home.xml" value="0.24166666666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/activity_select_screen.xml" value="0.3625" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/activity_splash.xml" value="0.24166666666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/contact_list_layout.xml" value="0.18541666666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/dialog_progress.xml" value="0.18541666666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/dialpad.xml" value="0.33" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/fastscroller_popup.xml" value="0.18541666666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/fastscroller_track_thumb.xml" value="0.18541666666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/fragment_emoji.xml" value="0.3569230769230769" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/fragment_home.xml" value="0.18541666666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/fragment_recent_text.xml" value="0.3569230769230769" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/fragment_registration.xml" value="0.2" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/fragment_splash.xml" value="0.15092592592592594" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.18541666666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/fragment_verify_otp.xml" value="0.33" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/item_emoji.xml" value="0.23703703703703705" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/item_favourite.xml" value="0.3625" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/item_recent_call.xml" value="0.33" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/rich_call_options.xml" value="0.23703703703703705" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/toolbar.xml" value="0.3625" />
+        <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/menu/pop_up.xml" value="0.3569230769230769" />
+        <entry key="app/src/main/res/drawable/ic_user.xml" value="0.133" />
+        <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/activity_app_settings.xml" value="0.19140930175781257" />
+        <entry key="app/src/main/res/layout/activity_call_receiver.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/activity_calling.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/activity_confrence_calling.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_member_selection.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/activity_permission.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.12588602701822915" />
+        <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/dialpad.xml" value="0.23596014492753623" />
+        <entry key="app/src/main/res/layout/fragment_add_on.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/fragment_conference_calling.xml" value="0.22760416666666666" />
+        <entry key="app/src/main/res/layout/fragment_confrence.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/fragment_emoji.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_favourite.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/fragment_gif.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/fragment_location.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/fragment_recent.xml" value="0.2057460611677479" />
+        <entry key="app/src/main/res/layout/fragment_recent_add.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/fragment_recent_text.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/fragment_registration.xml" value="0.23596014492753623" />
+        <entry key="app/src/main/res/layout/fragment_user_profile.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/item_add_on.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/item_community.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/item_contacts.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/item_emoji.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/item_favourite.xml" value="0.21623382568359378" />
+        <entry key="app/src/main/res/layout/item_gallery.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/item_home_tab.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/item_recent.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/item_recent_call.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/item_recent_confrence.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/item_rich_call_tab.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/item_sim.xml" value="0.43987232436481705" />
+        <entry key="app/src/main/res/layout/rich_call_options.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/sim_selection_dialog.xml" value="0.19829059829059828" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="16" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

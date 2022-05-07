@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "634564449141",
+    "project_id": "richcalldialer",
+    "storage_bucket": "richcalldialer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634564449141:android:e6adb1570d603fb291b93c",
+        "android_client_info": {
+          "package_name": "com.artixtise.richdialer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634564449141-h4hbkoi1vtbk8hdndrdu51l84aq3fptk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.artixtise.richdialer",
+            "certificate_hash": "7c23db712c8b3cac844cf00bbf03a6ac1eba9668"
+          }
+        },
+        {
+          "client_id": "634564449141-e2h6mva2ugfaep8tm6g7elhjldpa88tk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXXY1C9sipP4DHlhyvyYkWj7NWINdpDOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634564449141-e2h6mva2ugfaep8tm6g7elhjldpa88tk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="@dimen/_30sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_height="@dimen/_30sdp">
+
+        <TextView
+            android:id="@+id/tvEmoji"
+            android:textSize="@dimen/_18ssp"
+            android:text="0x1F37F"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+           />
+
+    </LinearLayout>
+</layout>

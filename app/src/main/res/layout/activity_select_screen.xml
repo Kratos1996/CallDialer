@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.activity.preview.SelectScreenActivity">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|top"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/backNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight=".03"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".82"
+
+                    android:orientation="vertical"
+                    android:weightSum="2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/Heading_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="end|center"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Contact Details"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:id="@+id/nameOfContact"
+                        style="@style/Heading_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="end|center"
+                        android:layout_weight="1"
+                        android:text="Apple"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="1"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/contactNumber"
+                    style="@style/Heading_regular"
+                    android:layout_gravity="end|center"
+                    android:layout_weight="1"
+                    android:text="91773299378"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_12sdp"
+                    />
+            </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:visibility="visible"
+                android:id="@+id/clPreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivPreview"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/lets_meet"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivClearImage"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:rotation="45"
+                    android:src="@drawable/ic_add"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/black" />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
+                android:id="@+id/expandViewSocial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_24sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_twitter" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swTwitter"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_24sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_fb" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swFacebook"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/linked" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swLinked"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="1"
+                android:gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:visibility="visible"
+                    android:id="@+id/tvPreview"
+                    android:layout_width="0dp"
+                    android:layout_weight=".9"
+                    android:maxLines="3"
+                    android:maxLength="200"
+                    android:layout_height="wrap_content"
+                    android:hint="Write Some Thing Here"
+
+                 />
+                <ImageView
+                    android:id="@+id/ivClearText"
+                    android:layout_width="0dp"
+                    android:layout_weight=".1"
+                    android:layout_height="24dp"
+                    android:rotation="45"
+                    android:src="@drawable/ic_add"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/black" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="1"
+                android:gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:visibility="visible"
+                    android:id="@+id/urlPreview"
+                    android:layout_width="0dp"
+                    android:layout_weight=".9"
+                    android:maxLines="1"
+                    android:maxLength="40"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/skyblue"
+                    android:textStyle="italic"
+                    android:text="www.richCallDialerPreview.com"
+                    />
+                <ImageView
+                    android:id="@+id/ivClearUrl"
+                    android:layout_width="0dp"
+                    android:layout_weight=".1"
+                    android:layout_height="24dp"
+                    android:rotation="45"
+                    android:src="@drawable/ic_add"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/black" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/initiateCal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@drawable/custom_bg_primary"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/rich_call"
+                    app:tint="@color/white" />
+
+                <TextView
+                    style="@style/Heading3_semiBold"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="RichCall Now"
+                    android:textColor="@color/white"
+                    app:chipCornerRadius="@dimen/_12sdp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_options"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expandViewSocial">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="@drawable/round_ripple"
+                    android:clipToPadding="false"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    app:tabIconTint="@null"
+                    app:tabIndicatorColor="@color/colorPrimary"
+                    app:tabTextAppearance="@style/TabsPoppinsRegular" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/fragments_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

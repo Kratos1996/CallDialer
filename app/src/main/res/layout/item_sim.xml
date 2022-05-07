@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/ll_sim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_24sdp"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:background="@drawable/curved_border"
+        android:layout_margin="@dimen/_8sdp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:src="@drawable/sim"/>
+
+        <TextView
+            android:id="@+id/simType"
+            style="@style/Heading3_semiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="8dp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_gravity="center"
+            android:text="Jio"/>
+
+        <TextView
+            android:id="@+id/simNumber"
+            style="@style/Heading3_semiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_gravity="center"
+            android:textSize="8sp"
+            android:text="1234567890"/>
+
+    </LinearLayout>
+</layout>

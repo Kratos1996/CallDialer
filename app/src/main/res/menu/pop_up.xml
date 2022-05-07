@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/account"
+        android:title="Account" />
+
+    <item
+        android:id="@+id/about"
+        android:title="About" />
+
+    <item
+        android:id="@+id/appSetting"
+        android:title="App Setting" />
+
+    <item
+        android:id="@+id/permissionSetting"
+        android:title="Permission Setting" />
+</menu>

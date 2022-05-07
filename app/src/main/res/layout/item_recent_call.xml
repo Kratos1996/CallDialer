@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_recents_frame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/selector">
+
+    <RelativeLayout
+        android:id="@+id/item_recents_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_5sdp">
+
+        <ImageView
+            android:id="@+id/item_recents_image"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_person_vector" />
+
+        <TextView
+            android:id="@+id/item_recents_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_toEndOf="@+id/item_recents_image"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/_15sdp"
+            tools:text="John Doe" />
+
+        <ImageView
+            android:id="@+id/item_recents_sim_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/item_recents_date_time"
+            android:layout_alignBottom="@+id/item_recents_date_time"
+            android:layout_toEndOf="@+id/item_recents_image"
+            android:alpha="0.6"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/item_recents_sim_id"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignStart="@+id/item_recents_sim_image"
+            android:layout_alignTop="@+id/item_recents_sim_image"
+            android:layout_alignEnd="@+id/item_recents_sim_image"
+            android:layout_alignBottom="@+id/item_recents_sim_image"
+            android:gravity="center"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_10sdp"
+            android:visibility="gone"
+            tools:text="1" />
+
+        <ImageView
+            android:id="@+id/item_recents_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/item_recents_date_time"
+            android:layout_alignBottom="@+id/item_recents_date_time"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@+id/item_recents_sim_image"
+            android:alpha="0.6"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:src="@drawable/ic_incoming_call_vector" />
+
+        <TextView
+            android:id="@+id/item_recents_date_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_recents_name"
+            android:layout_toEndOf="@+id/item_recents_type"
+            android:alpha="0.6"
+            android:maxLines="1"
+            android:textSize="@dimen/_12sdp"
+            tools:text="0123 456 789" />
+
+  <!--      <TextView
+            android:id="@+id/item_recents_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_recents_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/item_recents_date_time"
+            android:alpha="0.6"
+            android:gravity="end"
+            android:textSize="@dimen/normal_text_size"
+            tools:text="00:10" />  -->
+
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:id="@+id/imageVideoCall"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/ic_video_call"
+            android:layout_toStartOf="@+id/imageAudioCall"
+            android:layout_below="@+id/item_recents_name"
+            android:alpha="0.6"
+            android:gravity="end"
+            app:tint="@color/colorPrimary" />
+
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:id="@+id/imageAudioCall"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/ic_audio_call"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/item_recents_name"
+            android:alpha="0.6"
+            android:gravity="end"
+            app:tint="@color/colorPrimary" />
+
+
+
+
+
+    </RelativeLayout>
+</FrameLayout>

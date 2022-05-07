@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <com.artixtise.richdialer.custom.RecyclerViewFastScroller
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:handleHeight="32dp"
+        app:handleWidth="@dimen/_20sdp"
+        app:popupDrawable="@drawable/contacts_fastscroller_drawable"
+        android:id="@+id/fastscroll">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ContactListRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:scrollbarFadeDuration="200"
+            android:scrollbarSize="@dimen/_5sdp"
+            android:scrollbarThumbVertical="@color/colorAccent"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_recent_call" />
+    </com.artixtise.richdialer.custom.RecyclerViewFastScroller>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/ll_search"
+            app:layout_constraintTop_toTopOf="@+id/hasNotData">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/hasData"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvFavrouties"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_favourite" />
+
+                <FrameLayout
+                    android:id="@+id/flFreq"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/rvFavrouties">
+
+                    <View
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="start|center"
+                        android:background="@color/colorPrimary" />
+
+                    <TextView
+                        style="@style/Heading3_semiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/frequently_dialed"
+                        android:textColor="@color/colorPrimary" />
+
+                    <View
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="end|center"
+                        android:background="@color/colorPrimary" />
+                </FrameLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvFrequently_dialed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/flFreq"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_favourite" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/hasNotData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="visible"
+            android:orientation="vertical">
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_150sdp"
+                app:lottie_rawRes="@raw/empty_list_json"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_search"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_56sdp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:background="@drawable/circle_bg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_8sdp"
+                    android:src="@drawable/ic_dialer" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:background="@drawable/circle_bg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_8sdp"
+                    android:src="@drawable/ic_phone" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_36sdp"
+                android:background="@drawable/search_bg"
+                android:paddingHorizontal="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:hint="@string/search"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_marginVertical="@dimen/_8sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:background="@color/grey"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_search_vector"
+                    app:tint="@color/grey" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

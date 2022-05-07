@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.artixtise.richdialer.data.profile.model.UserAccessData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/call_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/backNow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:src="@drawable/ic_back" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mainLay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.494"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/caller_avatar"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:contentDescription="@string/accept"
+                        android:src="@drawable/avtar_profile" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/caller_name_label"
+                    style="@style/Heading3_semiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal"
+                    android:text="@{data.name}"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mainLay"
+                    tools:text="Rohit" />
+
+                <TextView
+                    android:id="@+id/caller_phone_label"
+                    style="@style/Heading3_semiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center_horizontal"
+                    android:textSize="14dp"
+                    android:text="@{data.mobile}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/caller_name_label"
+                    tools:text="@string/number" />
+
+                <FrameLayout
+                    android:id="@+id/flOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="#F2F2F2"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/caller_phone_label">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_gravity="start|center"
+                        android:textColor="@color/black"
+                        android:text="@string/name"/>
+
+                    <EditText
+                        android:id="@+id/etName"
+                        style="@style/Heading_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end|center"
+                        android:text="@{data.name}"
+                        android:enabled="false"
+                        android:background="@android:color/transparent"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        tools:text="123456789"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_14sdp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/flTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="#F2F2F2"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/flOne">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="start|center"
+                        android:text="@string/email"/>
+
+                    <EditText
+                        android:id="@+id/etEmail"
+                        style="@style/Heading_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:text="@{data.email}"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:background="@android:color/transparent"
+                        tools:text="123456789"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_14sdp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/flThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="#F2F2F2"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/flTwo">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="start|center"
+                        android:text="@string/phone_1"/>
+
+                    <EditText
+                        android:id="@+id/etPhone1"
+                        style="@style/Heading_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:text="@{data.mobile}"
+                        android:enabled="false"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        tools:text="123456"
+                        android:textSize="@dimen/_14sdp" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/flFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="#F2F2F2"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/flThree">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="start|center"
+                        android:text="@string/phone_2"/>
+
+                    <EditText
+                        android:id="@+id/etPhone2"
+                        style="@style/Heading_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:text="@{data.mobile2}"
+                        tools:text="india@fallow"
+                        android:textSize="@dimen/_14sdp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fl_five"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="#F2F2F2"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/flFour">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="start|center"
+                        android:text="@string/address"/>
+                    <EditText
+                        android:id="@+id/etAddress"
+                        style="@style/Heading_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        android:maxLines="2"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:text="@{data.address}"
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="india@" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fl_six"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="#F2F2F2"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_five">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <CheckBox
+                            android:id="@+id/twitterCheckbox"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:checked="@{data.twitterVisible}"
+                           />
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="@dimen/_24sdp"
+                            android:src="@drawable/ic_twitter"/>
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/twitterId"
+                        style="@style/Heading_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        android:text="@{data.twitterUrl}"
+                        tools:text="india@"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_14sdp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/fl_seven"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="#F2F2F2"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_six">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <CheckBox
+                            android:id="@+id/linkedinCheckbox"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:checked="@{data.linkedInVisible}"
+                         />
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="@dimen/_24sdp"
+                            android:src="@drawable/linked"/>
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/linkedId"
+                        style="@style/Heading_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        android:text="@{data.linkedInUrl}"
+                        tools:text="india@"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_14sdp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/fl_eight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="#F2F2F2"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_seven">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <CheckBox
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:checked="@{data.facebookVisible}"
+                          android:id="@+id/facebookCheckBox"/>
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="@dimen/_24sdp"
+                            android:src="@drawable/ic_fb"/>
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/facebookId"
+                        style="@style/Heading_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        android:text="@{data.facebookUrl}"
+                        tools:text="india@"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_14sdp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/fl_nine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="#F2F2F2"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_eight">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <CheckBox
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:checked="@{data.instagramVisible}"
+                          android:id="@+id/instaCheckbox"/>
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="@dimen/_24sdp"
+                            android:src="@drawable/ic_instagram"/>
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/instagramId"
+                        style="@style/Heading_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        android:text="@{data.instagramUrl}"
+                        tools:text="india@"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_14sdp" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/fl_ten"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="#F2F2F2"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_nine">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <CheckBox
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:checked="@{data.websiteVisible}"
+                           android:id="@+id/webCheckbox0"/>
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="@dimen/_24sdp"
+                            android:src="@drawable/url"/>
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/websiteId"
+                        style="@style/Heading_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        android:text="@{data.facebookUrl}"
+                        tools:text="india@"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_14sdp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/update"
+                    style="@style/btn_main"
+                    android:layout_marginHorizontal="@dimen/_36sdp"
+                    android:layout_marginTop="@dimen/_46sdp"
+                    android:layout_marginBottom="@dimen/_32sdp"
+                    android:text="@string/update"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_ten" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

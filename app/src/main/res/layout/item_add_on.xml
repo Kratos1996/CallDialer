@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:src="@drawable/avtar_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/Heading_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:text="Apple"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/Heading_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:text="+91 123456789 (3)"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView" />
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:src="@drawable/ic_cloud"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageView">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_add_ico" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_cloud" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_smile" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_videocall"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

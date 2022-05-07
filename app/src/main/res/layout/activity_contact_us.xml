@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fillViewport="true"
+        tools:context=".ui.launchFlow.login.LoginActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rootContainer"
+            android:fitsSystemWindows="true">
+
+            <TextView
+                android:id="@+id/tv_verify_text"
+                style="@style/Heading3_semiBold"
+                android:layout_marginTop="82dp"
+                android:text="@string/contact_us"
+                android:textAlignment="center"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp"
+                android:padding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:background="@drawable/curved_border"
+                app:layout_constraintTop_toBottomOf="@+id/tv_verify_text">
+                <TextView
+                    android:id="@+id/tvFirstName"
+                    style="@style/Heading3_semiBold"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/name"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+                <EditText
+                    android:layout_height="46dp"
+                    android:id="@+id/etFirstName"
+                    style="@style/Heading3_semiBold"
+                    android:layout_marginTop="8dp"
+                    android:paddingHorizontal="@dimen/_4sdp"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
+                    android:textColor="#666666"
+                    android:hint="@string/vijay"
+                    android:background="@drawable/edittext_bg"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/tvEmail"
+                    style="@style/Heading3_semiBold"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/email"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+                <EditText
+                    android:layout_height="46dp"
+                    android:id="@+id/etEmail"
+                    style="@style/Heading3_semiBold"
+                    android:layout_marginTop="8dp"
+                    android:paddingHorizontal="@dimen/_4sdp"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
+                    android:textColor="#666666"
+                    android:hint="abc@gmail.com"
+                    android:background="@drawable/edittext_bg"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/tvLastName"
+                    style="@style/Heading3_semiBold"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/comment"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+                <EditText
+                    android:layout_height="46dp"
+                    android:id="@+id/etLastName"
+                    style="@style/Heading3_semiBold"
+                    android:layout_marginTop="8dp"
+                    android:paddingHorizontal="@dimen/_4sdp"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@drawable/curved_border"
+                    android:textColor="#666666"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <Button
+                style="@style/btn_main"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="@dimen/_36sdp"
+                android:layout_marginTop="@dimen/_66sdp"
+                android:text="@string/submit"
+                android:textSize="25dp"
+                app:chipCornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/ll_form"
+                app:layout_constraintStart_toStartOf="@+id/ll_form"
+                app:layout_constraintTop_toBottomOf="@+id/ll_form" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

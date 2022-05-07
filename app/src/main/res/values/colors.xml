@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ripple_foreground">#33FFFFFF</color>
+    <color name="colorPrimary">#0071C1</color>
+    <color name="colorPrimaryDark">#0071C1</color>
+    <color name="colorAccent">#0071C1</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+    <color name="colorBackChat">#696969</color>
+    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorTextIcons">#FFFFFF</color>
+    <color name="colorBackground">#FAFAFA</color>
+    <color name="colorHintText">#BDBDBD</color>
+    <color name="colorMeetingOne">#b0e0e6</color>
+    <color name="colorReceivedMessage">#32cd32</color>
+    <color name="colorMeetingTwo">#7fffd4</color>
+    <color name="colorAccentOther">#3F51B0</color>
+    <color name="black">#212121</color>
+    <color name="green">#138808</color>
+    <color name="green_light">#6dbe45</color>
+    <color name="gray">#979797</color>
+    <color name="light_pink">#33FF8A00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light_gray">#ededed</color>
+    <color name="hint_color">#9098B1</color>
+    <color name="red">#AE1C29</color>
+    <color name="skyblue">#40b3fb</color>
+    <color name="selected">#926AA4EC</color>
+    <color name="grey">#666666</color>
+
+</resources>

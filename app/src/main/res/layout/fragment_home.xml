@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/call_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.artixtise.richdialer.custom.RecyclerViewFastScroller
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:handleHeight="32dp"
+            app:handleWidth="@dimen/_20sdp"
+            app:popupDrawable="@drawable/contacts_fastscroller_drawable"
+            android:id="@+id/fastscroll">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvContacts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbarFadeDuration="200"
+                android:scrollbars="vertical"
+                android:scrollbarSize="@dimen/_5sdp"
+                android:scrollbarThumbVertical="@color/colorAccent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                tools:itemCount="20"
+                tools:listitem="@layout/item_contacts"/>
+        </com.artixtise.richdialer.custom.RecyclerViewFastScroller>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
