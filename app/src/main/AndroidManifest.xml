@@ -114,10 +114,7 @@
             <!-- </intent-filter> -->
         </activity>
 
-        <service
-            android:name=".callService.HeadsUpNotificationService"
-            android:enabled="true"
-            android:exported="true" />
+
 
         <activity android:name=".presentation.ui.activity.userProfile.UserProfileActivity" />
         <activity android:name=".presentation.ui.activity.home.HomeActivity">
