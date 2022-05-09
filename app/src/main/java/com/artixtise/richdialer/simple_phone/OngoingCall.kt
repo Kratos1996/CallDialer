@@ -34,4 +34,14 @@ object OngoingCall {
     fun rejectWithMessage(reject:Boolean=true,message:String=""){
         call!!.reject(reject,message)
     }
+    fun onHold(){
+        call!!.hold()
+    }
+
+    fun onUnHold(){
+        call!!.unhold()
+    }
+    fun
+
+
 }
