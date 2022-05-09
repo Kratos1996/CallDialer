@@ -21,7 +21,7 @@
             android:id="@+id/info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_34sdp"
             android:orientation="vertical"
             android:paddingVertical="@dimen/_8sdp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +79,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/info" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tvEmoji"
+            style="@style/Heading_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Emoji"
+            android:textSize="@dimen/_24sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCallerImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info" />
+
+        <TextView
+            android:id="@+id/tvMessage"
+            style="@style/Heading_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="Text Message : Hello"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCallerImage" />
 
         <FrameLayout
             android:layout_width="match_parent"
