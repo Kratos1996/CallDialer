@@ -99,6 +99,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:23.0.2'
     implementation 'com.google.firebase:firebase-firestore:24.1.0'
     implementation 'com.google.firebase:firebase-auth:21.0.3'
+    //crashlytics
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'androidx.browser:browser:1.4.0'
 
     //map sdk
@@ -119,5 +122,12 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     implementation "io.reactivex.rxjava2:rxjava:2.2.3"
     implementation 'com.jakewharton.timber:timber:4.7.0'
+
+    //
+    //implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    //implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    //implementation 'com.amitshekhar.android:rx2-android-networking:1.0.2'
+   // implementation 'com.github.amitshekhariitbhu:Fast-Android-Networking:1.0.2'
+    //implementation 'com.amitshekhar.android:jackson-android-networking:1.0.2'
 
 }

@@ -4,9 +4,17 @@
 
     <uses-permission android:name="android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS" />
     <uses-permission android:name="android.permission.USE_SIP" />
-    <uses-feature android:name="android.software.sip.voip" android:required="true" />
-    <uses-feature android:name="android.hardware.wifi" android:required="true" />
-    <uses-feature android:name="android.hardware.microphone" android:required="true" />
+
+    <uses-feature
+        android:name="android.software.sip.voip"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -45,13 +53,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".simple_phone.DialerActivity"
-            android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
+            android:name=".simple_phone.RichReceiverActivity"
             android:exported="false" />
+        <activity
+            android:name=".simple_phone.DialerActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysVisible|adjustResize" />
         <activity
             android:name=".simple_phone.CallActivity"
             android:exported="false" />
-
         <activity
             android:name=".presentation.ui.activity.preview.SelectScreenActivity"
             android:exported="false" />
@@ -120,6 +130,7 @@
             <!-- </intent-filter> -->
 
         </activity>
+
         <receiver
             android:name=".brodcast.CallActionReceiver"
             android:enabled="true"
@@ -129,6 +140,7 @@
                 <action android:name="com.artixtise.richdialer.action.DECLINE_CALL" />
             </intent-filter>
         </receiver>
+
         <service
             android:name=".presentation.services.CallService"
             android:enabled="true"
@@ -142,6 +154,7 @@
                 <action android:name="android.telecom.InCallService" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_api_key" />

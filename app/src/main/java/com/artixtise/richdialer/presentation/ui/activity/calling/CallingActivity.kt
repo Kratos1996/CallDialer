@@ -11,8 +11,10 @@ import com.artixtise.richdialer.base.BaseActivity
 import com.artixtise.richdialer.brodcast.MyProperties
 import com.artixtise.richdialer.brodcast.PhonecallReceiver
 import com.artixtise.richdialer.databinding.ActivityCallingBinding
+import org.json.JSONArray
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class CallingActivity  : BaseActivity() {
     companion object {
@@ -33,6 +35,25 @@ class CallingActivity  : BaseActivity() {
 
         val myThread = Thread(myRunnable)
         myThread.start()
+        initObserver()
+    }
+
+    private fun initObserver() {
+        //fast networking
+//        AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllUsers/{pageNumber}")
+//            .addQueryParameter("limit", "3")
+//            .setTag("test")
+//            .setPriority(Priority.LOW)
+//            .build()
+//            .getAsJSONArray(object : JSONArrayRequestListener() {
+//                fun onResponse(response: JSONArray?) {
+//                    // do anything with response
+//                }
+//
+//                fun onError(error: ANError?) {
+//                    // handle error
+//                }
+//            })
     }
 
     fun CallToMetallurgGates() {
