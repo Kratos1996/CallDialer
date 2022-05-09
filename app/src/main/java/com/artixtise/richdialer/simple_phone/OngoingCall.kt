@@ -31,4 +31,7 @@ object OngoingCall {
     fun hangup() {
         call!!.disconnect()
     }
+    fun rejectWithMessage(reject:Boolean=true,message:String=""){
+        call!!.reject(reject,message)
+    }
 }
