@@ -56,22 +56,22 @@ class EmojiFragment: BaseFragment(R.layout.fragment_emoji) ,EmojiInterface{
 
     override fun onEmojiSelect(uniCode: Int) {
         viewModel!!.selectedData.postValue(uniCode.toString())
-        val richData = RichCallData(
-            contactList!!.name,
-            contactList!!.email,
-            contactList!!.phoneNumber,
-            contactList!!.phoneNumber,
-            uniCode,
-            "",
-            "",
-            "",
-            "",
-            "EMOJI"
-        )
-        lifecycleScope.launchWhenCreated {
-            viewModel?.saveSenderData(richData)!!.observe(requireActivity(), Observer {
-                Log.d("Success",it)
-            })
-        }
+//        val richData = RichCallData(
+//            contactList!!.name,
+//            contactList!!.email,
+//            contactList!!.phoneNumber,
+//            contactList!!.phoneNumber,
+//            uniCode,
+//            "",
+//            "",
+//            "",
+//            "",
+//            "EMOJI"
+//        )
+//        lifecycleScope.launchWhenCreated {
+//            viewModel?.saveSenderData(richData)!!.observe(requireActivity(), Observer {
+//                Log.d("Success",it)
+//            })
+//        }
     }
 }

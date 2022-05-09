@@ -3,9 +3,12 @@ package com.artixtise.richdialer.presentation.ui.activity.preview
 import android.Manifest
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.artixtise.richdialer.R
+import com.artixtise.richdialer.api.BaseDataSource
 import com.artixtise.richdialer.base.BaseActivity
 import com.artixtise.richdialer.custom.RichCallFragment
 import com.artixtise.richdialer.database.roomdatabase.tables.ContactList
@@ -47,6 +50,38 @@ class SelectScreenActivity : BaseActivity() {
     }
 
     private fun initObserver() {
+        //save data
+        viewModel.saveRichCallData(
+            "emoji",
+            "image",
+            "lat",
+            "lng",
+            "text_msg",
+            "senderId",
+            "senderName",
+            "gif",
+            "instaId",
+            "fbId",
+            "linkedId",
+            "twitterId",
+            "simNumber",
+            "isRichCall",
+            "receiverName",
+            "receiverId",
+            "receiverDeveiceId"
+        ).observe(this, Observer {
+            when (it.status) {
+                BaseDataSource.Resource.Status.LOADING -> {}
+                BaseDataSource.Resource.Status.SUCCESS -> {
+                    showCustomAlert(it.data!!.Params.textMsg,binding.root)
+
+                }
+                BaseDataSource.Resource.Status.ERROR -> {
+                    showCustomAlert(it.data!!.Message,binding.root)
+                }
+            }
+        })
+
         val data: ContactList = intent?.getParcelableExtra<ContactList>("FAVDATA")!!
         binding.apply {
             nameOfContact.setText(data.name)

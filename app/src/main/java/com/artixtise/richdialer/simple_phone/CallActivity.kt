@@ -7,9 +7,12 @@ import android.os.Bundle
 import android.telecom.Call
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.artixtise.richdialer.R
+import com.artixtise.richdialer.api.BaseDataSource
 import com.artixtise.richdialer.base.BaseActivity
 import com.artixtise.richdialer.databinding.ActivityCallBinding
+import com.bumptech.glide.Glide
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import java.util.concurrent.TimeUnit
@@ -26,6 +29,40 @@ class CallActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this, R.layout.activity_call)
         number = intent.data!!.schemeSpecificPart
+        initObserver()
+    }
+
+    private fun initObserver() {
+        viewModel.getRichCallData(
+            "7014586715"
+        ).observe(this, Observer {
+            when (it.status) {
+                BaseDataSource.Resource.Status.LOADING -> {}
+                BaseDataSource.Resource.Status.SUCCESS -> {
+                    binding.apply {
+                        it.data?.data.let {
+                            textView2.text = "Text message : ${it!!.textMsg}"
+                            callInfo.text = it.simNumber
+                            if (it.gif.isNullOrEmpty()){
+                                Glide.with(this@CallActivity).load(it.image).into(ivCallerImage)
+                            }
+                            else{
+                               tvEmoji.text = getEmoji(it.emoji!!.toInt())
+                            }
+                        }
+                    }
+                    showCustomAlert(it.data!!.data.textMsg,binding.root)
+
+                }
+                BaseDataSource.Resource.Status.ERROR -> {
+                    showCustomAlert(it.data!!.Message,binding.root)
+                }
+            }
+        })
+    }
+
+    fun getEmoji(unicode: Int): String {
+        return String(Character.toChars(unicode))
     }
 
     override fun onStart() {

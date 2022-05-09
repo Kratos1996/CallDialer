@@ -127,4 +127,27 @@ object Utility {
         }
         return binding.root
     }
+
+    //constants
+    const val GROUP_ID="groupId"
+
+    const val RECEIVER_ID = "receiverUserId"
+    const val SENDER_ID = "senderUserId"
+    const val RECEIVER_NAME = "receiverName"
+    const val SENDER_NAME = "senderName"
+    const val RECEIVER_DEVEICE_ID ="receiverDeveiceId"
+    const val EMOJI ="emoji"
+    const val IMAGE ="image"
+    const val GIF ="gif"
+    const val TEXT_MSG ="textMsg"
+    const val LAT = "lat"
+    const val LNG = "lng"
+    const val IS_RICH_CALL = "isRichcall"
+    const val SIM_NUMBER = "simNumber"
+    const val RECEIVER_NUMBER = "receiverNumber"
+    const val SENDER_NUMBER = "senderNumber"
+    const val INSTAGRAM_ID ="instagramId"
+    const val FACEBOOK_ID ="facebookId"
+    const val TWITTER_ID ="twitterID"
+    const val LINKED_ID = "linkedID"
 }

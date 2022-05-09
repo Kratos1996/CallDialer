@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.artixtise.richdialer.application.MyApplication.Companion.repository
 import com.artixtise.richdialer.base.USER_DATA
 import com.artixtise.richdialer.data.call.model.RichCallData
 import com.artixtise.richdialer.data.contact.contactRepository.ContactRepository
@@ -40,6 +41,47 @@ class HomeViewModel @Inject constructor(
     var richCallST = MutableLiveData<String>()
     var updateStatus = MutableLiveData<String>()
     var selectedData = MutableLiveData<String>()
+
+    fun getRichCallData(senderUserId:String) = repository.getRichCallData(senderUserId)
+
+    //save
+    fun saveRichCallData(
+        emoji: String,
+        image: String,
+        lat: String,
+        lng:String,
+        text_msg:String,
+        senderId: String,
+        senderName: String,
+        gif:String,
+        instaId:String,
+        fbId: String,
+        linkedId: String,
+        twitterId: String,
+        simNumber:String,
+        isRichCall:String,
+        receiverName: String,
+        receiverId:String,
+        receiverDeveiceId:String
+    )= repository.saveRichCallData(
+        emoji,
+        image,
+        lat,
+        lng,
+        text_msg,
+        senderId,
+        senderName,
+        gif,
+        instaId,
+        fbId,
+        linkedId,
+        twitterId,
+        simNumber,
+        isRichCall,
+        receiverName,
+        receiverId,
+        receiverDeveiceId
+    )
 
     fun getContacts() = viewModelScope.launch(Dispatchers.IO) { repositoryImpl.loadContact() }
 
