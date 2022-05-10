@@ -5,7 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class RichCallData(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
+    var id:Long=0L,
     var receiverUserId: String = "",
     var senderUserId: String = "",
     var receiverName: String = "",
@@ -16,7 +17,7 @@ data class RichCallData(
     var textMsg :String="",
     var lat :String= "",
     var lng :String= "",
-    var isRichCall :String= "",
+    var isRichCall :Boolean= false,
     var simType :String= "",
     var receiverNumber :String= "",
     var senderNumber :String= "",

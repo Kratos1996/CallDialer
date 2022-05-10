@@ -1,7 +1,10 @@
 package com.artixtise.richdialer.presentation.ui.activity.userProfile
 
+import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -11,10 +14,19 @@ import com.artixtise.richdialer.application.ErrorMessage.ADD_TO_FAV_FAILURE
 import com.artixtise.richdialer.application.ErrorMessage.ADD_TO_FAV_SUCCESSFULLY
 import com.artixtise.richdialer.application.ErrorMessage.CONTACT_SAVED
 import com.artixtise.richdialer.base.BaseActivity
+import com.artixtise.richdialer.custom.RichCallFragment
 import com.artixtise.richdialer.databinding.ActivityUserProfileBinding
 import com.artixtise.richdialer.mapper.UserAccessToContactList
+import com.artixtise.richdialer.presentation.ui.activity.home.fragments.FavouriteFragment
+import com.artixtise.richdialer.presentation.ui.activity.preview.SelectScreenActivity
 import com.artixtise.richdialer.presentation.ui.activity.userProfile.viewmodel.ProfileViewmodel
 import com.bumptech.glide.Glide
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.PermissionListener
 
 class UserProfileActivity : BaseActivity() {
     private lateinit var binding: ActivityUserProfileBinding
@@ -81,6 +93,16 @@ class UserProfileActivity : BaseActivity() {
                         viewmodel.insertContact(it)
                         showCustomAlert(CONTACT_SAVED, binding.root)
                     }
+                    binding.richCallNow.setOnClickListener {view->
+                        val intent = Intent(this@UserProfileActivity, SelectScreenActivity::class.java).apply {
+                            putExtra("FAVDATA", it)
+                        }
+                        startActivity(intent)
+                    }
+                    binding.callNow.setOnClickListener { view->
+                        selectSim(it.phoneNumber)
+                    }
+
                     showLoadingDialog("Please Wait ...")!!.dismiss()
                 } else {
                     showLoadingDialog("Please Wait ...")!!.dismiss()
@@ -90,4 +112,29 @@ class UserProfileActivity : BaseActivity() {
         }
     }
 
+    private fun selectSim(number:String) {
+        Dexter.withContext(this@UserProfileActivity)
+            .withPermission(Manifest.permission.READ_PHONE_STATE)
+            .withListener(object : PermissionListener {
+                override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
+                    if (number.isNullOrBlank()){
+                        Toast.makeText(this@UserProfileActivity,"First select number", Toast.LENGTH_LONG).show()
+                    }
+                    else{
+                        val richCallFragment= RichCallFragment.newInstance(0, viewModel!!,number)!!
+                        richCallFragment.show(manager, "add_richcall_dialog_fragment")
+                    }
+                }
+
+                override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {
+                    showCustomAlert("Need Calling  Permission", binding.root)
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissionRequest: PermissionRequest, permissionToken: PermissionToken
+                ) {
+                }
+            }).check()
+
+    }
 }

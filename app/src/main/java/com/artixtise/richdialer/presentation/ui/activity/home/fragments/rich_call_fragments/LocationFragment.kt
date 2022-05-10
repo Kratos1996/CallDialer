@@ -56,12 +56,14 @@ class LocationFragment : BaseFragment(R.layout.fragment_location), OnMapReadyCal
         var viewModel: HomeViewModel? = null
         var parent: SelectScreenActivity? = null
         var contactList: ContactList? = null
-        fun newInstance(
+        var idRichCalled: Long? = null
+        fun newInstance(idRichcall:Long,
             viewmodel: HomeViewModel,
             from: SelectScreenActivity,
             list: ContactList
         ): LocationFragment? {
             contactList = list
+            idRichCalled=idRichcall
             viewModel = viewmodel
             if (Instance == null) {
                 parent = from

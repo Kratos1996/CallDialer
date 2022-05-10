@@ -33,8 +33,10 @@ class GifFragment: BaseFragment(R.layout.fragment_gif) ,GifAdapter.OnGifInterfac
         var Instance: GifFragment? = null
         var viewModel: HomeViewModel? = null
         var contactList: ContactList? = null
-        fun newInstance(viewmodel : HomeViewModel, list : ContactList): GifFragment? {
+        var idRichCalled: Long? = null
+        fun newInstance(idRichcall:Long,viewmodel : HomeViewModel, list : ContactList): GifFragment? {
             viewModel = viewmodel
+            idRichCalled=idRichcall
             contactList = list
             Instance = GifFragment()
             return Instance

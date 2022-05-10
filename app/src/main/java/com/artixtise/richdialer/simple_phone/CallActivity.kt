@@ -34,7 +34,7 @@ class CallActivity : BaseActivity() {
 
     private fun initObserver() {
         viewModel.getRichCallData(
-            number
+            "91$number"
         ).observe(this, Observer {
             when (it.status) {
                 BaseDataSource.Resource.Status.LOADING -> {}

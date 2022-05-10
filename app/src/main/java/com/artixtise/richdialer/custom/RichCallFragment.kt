@@ -9,9 +9,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.artixtise.richdialer.R
+import com.artixtise.richdialer.api.BaseDataSource
 import com.artixtise.richdialer.databinding.RichCallOptionsBinding
 import com.artixtise.richdialer.presentation.managers.getAvailableSIMCardLabels
 import com.artixtise.richdialer.presentation.ui.activity.calling.CallingActivity
@@ -67,8 +69,10 @@ class RichCallFragment : BottomSheetDialogFragment() {
         var Instance: RichCallFragment? = null
         var viewModel: HomeViewModel? = null
         var number: String? = null
-        fun newInstance(viewmodel: HomeViewModel, phnNumber: String): RichCallFragment? {
+        var richCallIdMain: Long? = null
+        fun newInstance(richCallId: Long,viewmodel: HomeViewModel, phnNumber: String): RichCallFragment? {
             viewModel = viewmodel
+            richCallIdMain=richCallId
             number = phnNumber
             Instance = RichCallFragment()
             return Instance
@@ -86,6 +90,27 @@ class RichCallFragment : BottomSheetDialogFragment() {
                         val wantedSimIndex = if (useSimOne) 0 else 1
                         val handle = requireActivity().getAvailableSIMCardLabels()
                             .sortedBy { it.id }[wantedSimIndex].handle
+                        if(richCallIdMain!=0L){
+                            viewModel!!.getRichCallData(richCallIdMain!!).observe(viewLifecycleOwner) {
+                                if(it!=null){
+                                    it.simType=handle.id
+                                    viewModel!!.insertRichCallHistory(it)
+                                    viewModel!!.saveRichCallData(it).observe(viewLifecycleOwner){
+                                        when (it.status) {
+                                            BaseDataSource.Resource.Status.LOADING -> {}
+                                            BaseDataSource.Resource.Status.SUCCESS -> {
+                                                Toast.makeText(requireContext(),it.data!!.Message,Toast.LENGTH_SHORT).show()
+                                            }
+                                            BaseDataSource.Resource.Status.ERROR -> {
+                                                Toast.makeText(requireContext(),it.data!!.Message,Toast.LENGTH_SHORT).show()
+
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
                         val action = Intent.ACTION_CALL
                         val intent = Intent(action).apply {
                             if (recipient.startsWith("91")) {
@@ -99,6 +124,7 @@ class RichCallFragment : BottomSheetDialogFragment() {
                                 putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
                             }
                         }
+
                         startActivity(intent)
                     } else if (report.isAnyPermissionPermanentlyDenied) {
                         Log.e("permission", "no permission")

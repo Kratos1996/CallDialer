@@ -124,16 +124,16 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
         startActivity(intent)
     }
 
-    private fun selectSim() {
+    private fun selectSim(number:String) {
         Dexter.withContext(requireContext())
             .withPermission(Manifest.permission.READ_PHONE_STATE)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
-                    if (richCallData == null){
+                    if (number.isNullOrBlank()){
                         Toast.makeText(requireContext(),"First select number",Toast.LENGTH_LONG).show()
                     }
                     else{
-                        richCallFragment= RichCallFragment.newInstance(viewModel!!,richCallData.mobile!!)!!
+                        richCallFragment= RichCallFragment.newInstance(0, viewModel!!,number)!!
                         richCallFragment.show(childFragmentManager, "add_richcall_dialog_fragment")
                     }
                 }
@@ -152,7 +152,7 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
 
     override fun onCallStart(number: String) {
 
-
+        selectSim(number)
     }
 
     override fun onRichCallStart(list: ContactList) {
@@ -161,29 +161,6 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
             putExtra("FAVDATA", list)
         }
         startActivity(intent)
-       /* Dexter.withContext(requireContext())
-            .withPermission(Manifest.permission.CALL_PHONE)
-            .withListener(object : PermissionListener {
-                override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
-                    val intent = Intent(Intent.ACTION_CALL)
-                    intent.data = Uri.parse("tel:" + list.phoneNumber)
-                    startActivity(intent)
-                }
-
-                override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {
-                    showCustomAlert("Need Calling  Permission", binding.root)
-                }
-
-                override fun onPermissionRationaleShouldBeShown(
-                    permissionRequest: PermissionRequest, permissionToken: PermissionToken
-                ) {
-                }
-            }).check()*/
-//        if (SystemClock.elapsedRealtime() - lastClickTime < 1000) {
-//            return
-//        }
-//        lastClickTime = SystemClock.elapsedRealtime()
-
     }
 
 }

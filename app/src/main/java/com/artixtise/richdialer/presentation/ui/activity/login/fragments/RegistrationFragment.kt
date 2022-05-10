@@ -136,6 +136,8 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
     }
 
     private fun saveData(data: UserAccessData) {
+        getSharedPre().setName(data.name)
+        getSharedPre().setUserEmail(data.email)
         viewModel?.saveUserData(data)
     }
 

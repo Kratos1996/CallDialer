@@ -4,12 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.artixtise.richdialer.database.roomdatabase.tables.CallData
 import com.artixtise.richdialer.database.roomdatabase.tables.ContactList
+import com.artixtise.richdialer.database.roomdatabase.tables.RichCallData
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MyDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun insert(contact: ContactList)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(richCallData: RichCallData)
 
     @Update
     fun update(contact: ContactList)
@@ -19,6 +23,15 @@ interface MyDao {
 
     @Query("Select * From ContactList")
     fun GetContactList(): LiveData<List<ContactList>>
+
+    @Query("Select * From RichCallData where id=:id")
+    fun GetRichCallData(id:Long): LiveData<RichCallData>
+
+    @Query("Select * From RichCallData")
+    fun GetRichCallDataList(): LiveData<List<RichCallData>>
+
+    @Query("Delete From RichCallData where id=:id")
+    fun DeleteSingleRichCall(id: Long)
 
     @Query("Select * From ContactList where Name Like '%' || :data || '%' ")
     fun GetContactList(data: String): LiveData<List<ContactList>>

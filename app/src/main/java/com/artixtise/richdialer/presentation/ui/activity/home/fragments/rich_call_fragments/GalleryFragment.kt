@@ -68,9 +68,11 @@ class GalleryFragment: BaseFragment(R.layout.fragment_gallery),GalleryAdapter.On
         var Instance: GalleryFragment? = null
         var viewModel: HomeViewModel? = null
         var contactList: ContactList? = null
-        fun newInstance(viewmodel: HomeViewModel, list : ContactList): GalleryFragment? {
+        var idRichCalled: Long? = null
+        fun newInstance(idRichcall:Long,viewmodel: HomeViewModel, list : ContactList): GalleryFragment? {
             viewModel = viewmodel
             contactList = list
+            idRichCalled=idRichcall
             if (Instance == null) {
                 Instance = GalleryFragment()
             }

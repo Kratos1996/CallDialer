@@ -29,9 +29,11 @@ class EmojiFragment: BaseFragment(R.layout.fragment_emoji) ,EmojiInterface{
         var Instance: EmojiFragment? = null
         var viewModel: HomeViewModel? = null
         var contactList: ContactList? = null
-        fun newInstance(viewmodel : HomeViewModel , list : ContactList): EmojiFragment? {
+        var idRichCalled: Long? = null
+        fun newInstance(idRichcall:Long,viewmodel : HomeViewModel , list : ContactList): EmojiFragment? {
             viewModel = viewmodel
             contactList = list
+            idRichCalled=idRichcall
             Instance = EmojiFragment()
             return Instance
         }
@@ -55,23 +57,18 @@ class EmojiFragment: BaseFragment(R.layout.fragment_emoji) ,EmojiInterface{
     }
 
     override fun onEmojiSelect(uniCode: Int) {
-        viewModel!!.selectedData.postValue(uniCode.toString())
-//        val richData = RichCallData(
-//            contactList!!.name,
-//            contactList!!.email,
-//            contactList!!.phoneNumber,
-//            contactList!!.phoneNumber,
-//            uniCode,
-//            "",
-//            "",
-//            "",
-//            "",
-//            "EMOJI"
-//        )
-//        lifecycleScope.launchWhenCreated {
-//            viewModel?.saveSenderData(richData)!!.observe(requireActivity(), Observer {
-//                Log.d("Success",it)
-//            })
-//        }
+       // viewModel!!.selectedData.postValue(uniCode.toString())
+        viewModel!!.getRichCallData(idRichCalled!!).observe(viewLifecycleOwner) {
+            if (it != null) {
+                it.emoji=String(Character.toChars(uniCode))
+                viewModel!!.insertRichCallHistory(it)
+
+            } else {
+                val richCallData=com.artixtise.richdialer.database.roomdatabase.tables.RichCallData(idRichCalled!!, emoji = String(Character.toChars(uniCode)))
+                viewModel!!.insertRichCallHistory(richCallData)
+            }
+
+        }
+
     }
 }

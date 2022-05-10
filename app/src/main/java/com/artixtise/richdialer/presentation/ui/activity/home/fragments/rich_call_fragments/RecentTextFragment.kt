@@ -25,9 +25,11 @@ class RecentTextFragment: BaseFragment(R.layout.fragment_recent_text) {
         var Instance: RecentTextFragment? = null
         var viewModel: HomeViewModel? = null
         var contactList: ContactList? = null
-        fun newInstance(viewmodel : HomeViewModel, list : ContactList): RecentTextFragment? {
+        var idRichCalled: Long? = null
+        fun newInstance(idRichcall:Long,viewmodel : HomeViewModel, list : ContactList): RecentTextFragment? {
             viewModel = viewmodel
             contactList = list
+            idRichCalled =idRichcall
             Instance = RecentTextFragment()
             return Instance
         }
@@ -40,25 +42,20 @@ class RecentTextFragment: BaseFragment(R.layout.fragment_recent_text) {
     }
     override fun WorkStation() {
         binding.apply {
-           /* btnSend.setOnClickListener {
-                val richData = RichCallData(
-                    contactList!!.name,
-                    contactList!!.email,
-                    contactList!!.phoneNumber,
-                    contactList!!.phoneNumber,
-                    0,
-                    "",
-                    "",
-                    etText.text.toString(),
-                    "",
-                    "TEXT"
-                )
-                lifecycleScope.launchWhenCreated {
-                    viewModel?.saveSenderData(richData)!!.observe(requireActivity(), Observer {
-                        Log.d("Success",it)
-                    })
-                }
-            }*/
+          btnSend.setOnClickListener {
+             viewModel!!.getRichCallData(EmojiFragment.idRichCalled!!).observe(viewLifecycleOwner) {
+                  if (it != null) {
+                      it.textMsg=etText.text.toString()
+                      viewModel!!.insertRichCallHistory(it)
+
+                  } else {
+                      val richCallData=com.artixtise.richdialer.database.roomdatabase.tables.RichCallData(
+                          idRichCalled!!,textMsg=etText.text.toString())
+                          viewModel!!.insertRichCallHistory(richCallData)
+                  }
+
+              }
+          }
         }
     }
 }

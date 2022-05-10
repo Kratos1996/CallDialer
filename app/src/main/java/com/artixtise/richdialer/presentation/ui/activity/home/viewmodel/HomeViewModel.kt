@@ -12,6 +12,7 @@ import com.artixtise.richdialer.data.call.model.RichCallData
 import com.artixtise.richdialer.data.contact.contactRepository.ContactRepository
 import com.artixtise.richdialer.data.contact.contactRepository.ContactsRepositoryImpl
 import com.artixtise.richdialer.data.profile.model.UserAccessData
+import com.artixtise.richdialer.data.richcall.RichCallRepository
 import com.artixtise.richdialer.database.prefrence.SharedPre
 import com.artixtise.richdialer.database.roomdatabase.tables.ContactList
 import com.artixtise.richdialer.domain.model.contact.OtherUserProfileSealed
@@ -30,6 +31,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     val sharedPre: SharedPre,
     val repositoryImpl: ContactRepository,
+    val richCallRepo: RichCallRepository,
     val collectionRef: CollectionReference
 ) : ViewModel() {
 
@@ -45,42 +47,25 @@ class HomeViewModel @Inject constructor(
     fun getRichCallData(senderUserId:String) = repository.getRichCallData(senderUserId)
 
     //save
-    fun saveRichCallData(
-        emoji: String,
-        image: String,
-        lat: String,
-        lng:String,
-        text_msg:String,
-        senderId: String,
-        senderName: String,
-        gif:String,
-        instaId:String,
-        fbId: String,
-        linkedId: String,
-        twitterId: String,
-        simNumber:String,
-        isRichCall:String,
-        receiverName: String,
-        receiverId:String,
-        receiverDeveiceId:String
+    fun saveRichCallData(richCallData: com.artixtise.richdialer.database.roomdatabase.tables.RichCallData
     )= repository.saveRichCallData(
-        emoji,
-        image,
-        lat,
-        lng,
-        text_msg,
-        senderId,
-        senderName,
-        gif,
-        instaId,
-        fbId,
-        linkedId,
-        twitterId,
-        simNumber,
-        isRichCall,
-        receiverName,
-        receiverId,
-        receiverDeveiceId
+        richCallData.emoji,
+        richCallData.image,
+        richCallData.lat,
+        richCallData.lng,
+        richCallData.textMsg,
+        richCallData.senderNumber,
+        richCallData.senderName,
+        richCallData.image,
+        richCallData.instaID,
+        richCallData.instaID,
+        richCallData.linkedinID,
+        richCallData.linkedinID,
+        richCallData.simType,
+        richCallData.isRichCall.toString(),
+        richCallData.receiverName,
+        richCallData.receiverNumber,
+        richCallData.receiverDeviceToken
     )
 
     fun getContacts() = viewModelScope.launch(Dispatchers.IO) { repositoryImpl.loadContact() }
@@ -131,5 +116,18 @@ class HomeViewModel @Inject constructor(
         repositoryImpl.saveUserToken(token)
         }
 
+    }
+
+    fun insertRichCallHistory(richCallData:com.artixtise.richdialer.database.roomdatabase.tables.RichCallData){
+        viewModelScope.launch (Dispatchers.IO){  richCallRepo.insertRichCallHistory(richCallData)}
+    }
+    fun deleteRichCallHistory(id:Long){
+        viewModelScope.launch (Dispatchers.IO){  richCallRepo.deleteSingleRichCall(id)}
+    }
+    fun getRichCallData(id:Long):LiveData<com.artixtise.richdialer.database.roomdatabase.tables.RichCallData>{
+        return richCallRepo.getRichCallData(id)
+    }
+    fun getRichCallDataList():LiveData<List<com.artixtise.richdialer.database.roomdatabase.tables.RichCallData>>{
+        return richCallRepo.getRichCallDataList()
     }
 }
