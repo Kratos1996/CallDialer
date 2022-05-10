@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.artixtise.richdialer.R
@@ -48,17 +49,12 @@ class RichCallFragment : BottomSheetDialogFragment() {
         with(binding.rvSim) {
             simAdapter = SimAdapter(requireContext(), object : SimAdapter.OnSimSelectInterface {
                 override fun onSimClick(senderNumber: String, pos: Int) {
-                    if (viewModel!!.isRichCall){
-                        val intent = Intent(requireContext(), CallingActivity::class.java)
-                        startActivity(intent)
-                    }
-                    else{
-                        if (pos == 0) {
+                    if (pos == 0) {
                             callWithSim(number!!, true)
                         } else {
                             callWithSim(number!!, false)
                         }
-                    }
+
                 }
 
             })
@@ -92,13 +88,19 @@ class RichCallFragment : BottomSheetDialogFragment() {
                         val handle = requireActivity().getAvailableSIMCardLabels()
                             .sortedBy { it.id }[wantedSimIndex].handle
                         val action = Intent.ACTION_CALL
-                        val intent = Intent(action).apply {
+                        /*val intent = Intent(action).apply {
                             data = Uri.fromParts("tel", recipient, null)
                             if (handle != null) {
                                 putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
                             }
-                        }
-                        startActivity(intent)
+                        }*/
+                        val uri = "tel:${recipient}".toUri()
+                        startActivity(Intent(Intent.ACTION_CALL, uri).apply {
+                            if (handle != null) {
+                                putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
+                            }
+                        })
+
                     } else if (report.isAnyPermissionPermanentlyDenied) {
                         Log.e("permission", "no permission")
                     }

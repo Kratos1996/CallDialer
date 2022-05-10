@@ -4,8 +4,10 @@ import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.telecom.TelecomManager
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.artixtise.richdialer.R
 import com.artixtise.richdialer.base.BaseFragment
@@ -45,6 +47,7 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
             return Instance
         }
     }
+
 
     override fun WorkStation() {
         if (PermissionHelper.hasStoragePermission(requireActivity())) {

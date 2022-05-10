@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.artixtise.richdialer">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS" />
     <uses-permission android:name="android.permission.USE_SIP" />
@@ -64,7 +63,9 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.activity.preview.SelectScreenActivity"
-            android:exported="false" />
+            android:exported="false" >
+
+        </activity>
         <activity
             android:name=".presentation.ui.activity.userProfile.ProfileActivity"
             android:exported="false" />
@@ -97,11 +98,25 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.activity.splash.SplashActivity"
-            android:exported="true">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.DIAL"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="tel"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity android:name=".presentation.ui.activity.login.LoginActivity">
@@ -117,14 +132,8 @@
 
 
         <activity android:name=".presentation.ui.activity.userProfile.UserProfileActivity" />
-        <activity android:name=".presentation.ui.activity.home.HomeActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+        <activity android:name=".presentation.ui.activity.home.HomeActivity"
+            android:exported="false">
 
         </activity>
 
@@ -139,19 +148,16 @@
         </receiver>
 
         <service
-            android:name=".presentation.services.CallService"
-            android:enabled="true"
-            android:exported="true"
+            android:name=".simple_phone.CallService"
             android:permission="android.permission.BIND_INCALL_SERVICE">
             <meta-data
                 android:name="android.telecom.IN_CALL_SERVICE_UI"
-                android:value="true" />
+                android:value="true"/>
 
             <intent-filter>
-                <action android:name="android.telecom.InCallService" />
+                <action android:name="android.telecom.InCallService"/>
             </intent-filter>
         </service>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_api_key" />

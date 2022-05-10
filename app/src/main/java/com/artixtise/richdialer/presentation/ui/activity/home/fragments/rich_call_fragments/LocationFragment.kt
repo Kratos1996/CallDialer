@@ -110,7 +110,7 @@ class LocationFragment : BaseFragment(R.layout.fragment_location), OnMapReadyCal
     }
 
     private fun saveSenderData() {
-        val richData = RichCallData(
+       /* val richData = RichCallData(
             contactList!!.name,
             contactList!!.email,
             contactList!!.phoneNumber,
@@ -124,7 +124,7 @@ class LocationFragment : BaseFragment(R.layout.fragment_location), OnMapReadyCal
         )
         lifecycleScope.launchWhenCreated {
             EmojiFragment.viewModel?.saveSenderData(richData)
-        }
+        }*/
     }
 
     override fun onCreateView(

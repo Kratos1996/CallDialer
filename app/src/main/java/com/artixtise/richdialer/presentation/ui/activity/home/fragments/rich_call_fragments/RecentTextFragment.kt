@@ -40,7 +40,7 @@ class RecentTextFragment: BaseFragment(R.layout.fragment_recent_text) {
     }
     override fun WorkStation() {
         binding.apply {
-            btnSend.setOnClickListener {
+           /* btnSend.setOnClickListener {
                 val richData = RichCallData(
                     contactList!!.name,
                     contactList!!.email,
@@ -58,7 +58,7 @@ class RecentTextFragment: BaseFragment(R.layout.fragment_recent_text) {
                         Log.d("Success",it)
                     })
                 }
-            }
+            }*/
         }
     }
 }

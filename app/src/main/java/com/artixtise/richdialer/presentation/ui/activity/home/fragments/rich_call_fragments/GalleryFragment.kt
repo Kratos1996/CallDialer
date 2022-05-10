@@ -90,7 +90,7 @@ class GalleryFragment: BaseFragment(R.layout.fragment_gallery),GalleryAdapter.On
     }
 
     override fun onImageSelect(path: String) {
-        val richData = RichCallData(
+/*        val richData = RichCallData(
             EmojiFragment.contactList!!.name,
             EmojiFragment.contactList!!.email,
             EmojiFragment.contactList!!.phoneNumber,
@@ -106,6 +106,6 @@ class GalleryFragment: BaseFragment(R.layout.fragment_gallery),GalleryAdapter.On
             viewModel?.saveSenderData(richData)!!.observe(requireActivity(), Observer {
                 Log.d("Success",it)
             })
-        }
+        }*/
     }
 }

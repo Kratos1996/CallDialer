@@ -18,4 +18,5 @@ data class RichCallData(
     var receiverName:String ?=null,
     var receiverUserId:String ?=null,
     var receiverDeveiceId:String ?=null,
+    var mobile:String ?=null
 )

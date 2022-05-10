@@ -58,7 +58,7 @@ class GifFragment: BaseFragment(R.layout.fragment_gif) ,GifAdapter.OnGifInterfac
 
     override fun onGifSelect(path: String) {
         viewModel!!.selectedData.postValue(path)
-        val richData = RichCallData(
+       /* val richData = RichCallData(
             EmojiFragment.contactList!!.name,
             EmojiFragment.contactList!!.email,
             EmojiFragment.contactList!!.phoneNumber,
@@ -74,7 +74,7 @@ class GifFragment: BaseFragment(R.layout.fragment_gif) ,GifAdapter.OnGifInterfac
             viewModel?.saveSenderData(richData)!!.observe(requireActivity(), Observer {
                 Log.d("Success",it)
             })
-        }
+        }*/
     }
 
 }

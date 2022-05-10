@@ -5,6 +5,7 @@ import android.R.attr.button
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.telecom.TelecomManager
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -36,11 +37,16 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this, R.layout.activity_main)
+    }
+
+
+    override fun onResume() {
+        super.onResume()
         Dexter.withContext(this)
             .withPermission(Manifest.permission.READ_CONTACTS)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
-                     viewModel.getContacts()
+                    viewModel.getContacts()
                 }
                 override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {
                     showCustomAlert("Need Contact Permission", binding.root)
@@ -53,7 +59,6 @@ class HomeActivity : BaseActivity() {
         initViews()
         setupTabIcons()
     }
-
     private fun startCallingSer() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
            // val serviceIntent = Intent(applicationContext, HeadsUpNotificationService::class.java)

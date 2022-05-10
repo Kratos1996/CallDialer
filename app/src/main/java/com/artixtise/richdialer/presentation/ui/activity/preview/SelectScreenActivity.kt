@@ -1,9 +1,12 @@
 package com.artixtise.richdialer.presentation.ui.activity.preview
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
+import android.telecom.TelecomManager
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -29,11 +32,12 @@ class SelectScreenActivity : BaseActivity() {
     private lateinit var binding: ActivitySelectScreenBinding
 
     lateinit var richCallFragment: RichCallFragment
+    lateinit var data: ContactList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_select_screen)
-
+        data = intent?.getParcelableExtra<ContactList>("FAVDATA")!!
         init()
         initViews()
         initObserver()
@@ -44,7 +48,7 @@ class SelectScreenActivity : BaseActivity() {
         binding.initiateCal.setOnClickListener {
             selectSim()
         }
-        binding.backNow.setOnClickListener{
+        binding.backNow.setOnClickListener {
             finish()
         }
     }
@@ -73,16 +77,16 @@ class SelectScreenActivity : BaseActivity() {
             when (it.status) {
                 BaseDataSource.Resource.Status.LOADING -> {}
                 BaseDataSource.Resource.Status.SUCCESS -> {
-                    showCustomAlert(it.data!!.Params.textMsg,binding.root)
+                    showCustomAlert(it.data!!.Params.textMsg, binding.root)
 
                 }
                 BaseDataSource.Resource.Status.ERROR -> {
-                    showCustomAlert(it.data!!.Message,binding.root)
+                    showCustomAlert(it.data!!.Message, binding.root)
                 }
             }
         })
 
-        val data: ContactList = intent?.getParcelableExtra<ContactList>("FAVDATA")!!
+
         binding.apply {
             nameOfContact.setText(data.name)
             contactNumber.setText(data.phoneNumber)
@@ -188,7 +192,7 @@ class SelectScreenActivity : BaseActivity() {
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
                     viewModel.isRichCall = true
-                    richCallFragment = RichCallFragment.newInstance(viewModel, "")!!
+                    richCallFragment = RichCallFragment.newInstance(viewModel, data.phoneNumber)!!
                     richCallFragment.show(supportFragmentManager, "add_richcall_dialog_fragment")
 
                 }
