@@ -92,8 +92,8 @@ class CallActivity : BaseActivity() {
     private fun updateUi(state: Int) {
         binding.callInfo.text = "${state.asString().toLowerCase().capitalize()}\n$number"
 
-        binding.answer.isVisible = state == Call.STATE_RINGING
-        binding.hangup.isVisible = state in listOf(
+        binding.greenLinear.isVisible = state == Call.STATE_RINGING
+        binding.llEnd.isVisible = state in listOf(
             Call.STATE_DIALING,
             Call.STATE_RINGING,
             Call.STATE_ACTIVE
