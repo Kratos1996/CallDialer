@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.artixtise.richdialer.R
@@ -88,19 +87,19 @@ class RichCallFragment : BottomSheetDialogFragment() {
                         val handle = requireActivity().getAvailableSIMCardLabels()
                             .sortedBy { it.id }[wantedSimIndex].handle
                         val action = Intent.ACTION_CALL
-                        /*val intent = Intent(action).apply {
-                            data = Uri.fromParts("tel", recipient, null)
-                            if (handle != null) {
-                                putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
+                        val intent = Intent(action).apply {
+                            if (recipient.startsWith("91")) {
+                               val contactNumber = recipient.replace("91", "");
+                                data = Uri.fromParts("tel", contactNumber, null)
+                            }else{
+                                data = Uri.fromParts("tel", recipient, null)
                             }
-                        }*/
-                        val uri = "tel:${recipient}".toUri()
-                        startActivity(Intent(Intent.ACTION_CALL, uri).apply {
-                            if (handle != null) {
-                                putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
-                            }
-                        })
 
+                            if (handle != null) {
+                                putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
+                            }
+                        }
+                        startActivity(intent)
                     } else if (report.isAnyPermissionPermanentlyDenied) {
                         Log.e("permission", "no permission")
                     }
