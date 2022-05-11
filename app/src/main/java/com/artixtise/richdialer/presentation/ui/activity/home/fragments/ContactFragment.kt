@@ -45,7 +45,7 @@ class ContactFragment : BaseFragment(R.layout.fragment_home),
     }
 
     override fun WorkStation() {
-        binding.fastscroll.attachFastScrollerToRecyclerView(binding.rvContacts)
+
         Dexter.withContext(requireContext())
             .withPermission(Manifest.permission.READ_CONTACTS)
             .withListener(object : PermissionListener {
@@ -65,6 +65,7 @@ class ContactFragment : BaseFragment(R.layout.fragment_home),
         contactAdapter = ContactsAdapter(requireContext(), this)
         viewModel?.getContactsList()?.observe(viewLifecycleOwner) {
             with(binding.rvContacts) {
+                binding.fastscroll.attachFastScrollerToRecyclerView(binding.rvContacts)
                 layoutManager = LinearLayoutManager(context)
                 adapter = contactAdapter
                 Collections.sort(it,SortbyName())
