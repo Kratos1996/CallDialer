@@ -146,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
                         android:layout_marginEnd="@dimen/_8sdp"
-                        android:text="123456789"
+                        android:hint="123456789"
                         android:textSize="@dimen/_14sdp" />
                 </FrameLayout>
 
@@ -202,7 +202,7 @@
                         android:layout_marginEnd="@dimen/_8sdp"
                         android:background="@android:color/transparent"
                         android:gravity="right"
-                        android:text="abc@gmail.com"
+                        android:hint="abc@gmail.com"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
 
@@ -231,7 +231,7 @@
                         android:layout_marginEnd="@dimen/_8sdp"
                         android:background="@android:color/transparent"
                         android:gravity="right"
-                        android:text="india@fallow"
+                        android:hint="india@fallow"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
 
@@ -260,87 +260,109 @@
                         android:layout_marginEnd="@dimen/_8sdp"
                         android:background="@android:color/transparent"
                         android:gravity="right"
-                        android:text="india@"
+                        android:hint="india@"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
 
+
                 <LinearLayout
-                    android:id="@+id/flSix"
+                    android:id="@+id/fl_seven"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="#F2F2F2"
                     android:paddingHorizontal="@dimen/_12sdp"
-                    android:paddingVertical="@dimen/_8sdp"
+                    android:paddingVertical="@dimen/_12sdp"
                     app:layout_constraintTop_toBottomOf="@+id/fl_five">
 
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:layout_gravity="start|center"
-                        android:src="@drawable/ic_call_history" />
+                        android:src="@drawable/linked" />
+
 
                     <TextView
+                        android:id="@+id/linkedId"
                         style="@style/Heading_regular"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:layout_marginStart="@dimen/_14sdp"
-                        android:layout_marginEnd="@dimen/_8sdp"
-                        android:text="Call History"
-                        android:textSize="@dimen/_14sdp" />
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:textSize="@dimen/_14sdp"
+                        android:hint="india@" />
                 </LinearLayout>
 
-                <FrameLayout
-                    android:id="@+id/flSeven"
+                <LinearLayout
+                    android:id="@+id/fl_eight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:background="#F2F2F2"
                     android:paddingHorizontal="@dimen/_12sdp"
                     android:paddingVertical="@dimen/_12sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/flSix">
+                    app:layout_constraintTop_toBottomOf="@+id/fl_seven">
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="start|center"
-                        android:src="@drawable/ic_cloud" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_fb" />
+                    </LinearLayout>
 
                     <TextView
+                        android:id="@+id/facebookId"
                         style="@style/Heading_regular"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:layout_marginEnd="@dimen/_8sdp"
-                        android:text="123456789"
-                        android:textSize="@dimen/_14sdp" />
-                </FrameLayout>
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:textSize="@dimen/_14sdp"
+                        android:hint="india@" />
+                </LinearLayout>
 
-                <FrameLayout
-                    android:id="@+id/flEight"
+                <LinearLayout
+                    android:id="@+id/fl_ten"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:background="#F2F2F2"
                     android:paddingHorizontal="@dimen/_12sdp"
                     android:paddingVertical="@dimen/_12sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/flSeven">
+                    app:layout_constraintTop_toBottomOf="@+id/fl_eight">
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="start|center"
-                        android:src="@drawable/ic_incomming_call" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/url" />
+                    </LinearLayout>
 
                     <TextView
+                        android:id="@+id/websiteId"
                         style="@style/Heading_regular"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:layout_marginEnd="@dimen/_8sdp"
-                        android:text="123456789"
-                        android:textSize="@dimen/_14sdp" />
-                </FrameLayout>
+                        android:background="@android:color/transparent"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:textSize="@dimen/_14sdp"
+                        android:hint="www.devishant.com" />
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -349,7 +371,7 @@
                     android:layout_marginBottom="32dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/flEight">
+                    app:layout_constraintTop_toBottomOf="@+id/fl_ten">
 
                     <LinearLayout
                         android:layout_width="match_parent"

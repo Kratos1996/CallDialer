@@ -18,18 +18,22 @@ import com.artixtise.richdialer.presentation.ui.activity.home.viewmodel.HomeView
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class RecentTextFragment: BaseFragment(R.layout.fragment_recent_text) {
-    lateinit var binding : FragmentRecentTextBinding
+class RecentTextFragment : BaseFragment(R.layout.fragment_recent_text) {
+    lateinit var binding: FragmentRecentTextBinding
 
     companion object {
         var Instance: RecentTextFragment? = null
         var viewModel: HomeViewModel? = null
         var contactList: ContactList? = null
         var idRichCalled: Long? = null
-        fun newInstance(idRichcall:Long,viewmodel : HomeViewModel, list : ContactList): RecentTextFragment? {
+        fun newInstance(
+            idRichcall: Long,
+            viewmodel: HomeViewModel,
+            list: ContactList
+        ): RecentTextFragment? {
             viewModel = viewmodel
             contactList = list
-            idRichCalled =idRichcall
+            idRichCalled = idRichcall
             Instance = RecentTextFragment()
             return Instance
         }
@@ -40,22 +44,12 @@ class RecentTextFragment: BaseFragment(R.layout.fragment_recent_text) {
         binding = FragmentRecentTextBinding.bind(view)
         WorkStation()
     }
+
     override fun WorkStation() {
         binding.apply {
-          btnSend.setOnClickListener {
-             viewModel!!.getRichCallData(EmojiFragment.idRichCalled!!).observe(viewLifecycleOwner) {
-                  if (it != null) {
-                      it.textMsg=etText.text.toString()
-                      viewModel!!.insertRichCallHistory(it)
-
-                  } else {
-                      val richCallData=com.artixtise.richdialer.database.roomdatabase.tables.RichCallData(
-                          idRichCalled!!,textMsg=etText.text.toString())
-                          viewModel!!.insertRichCallHistory(richCallData)
-                  }
-
-              }
-          }
+            btnSend.setOnClickListener {
+                viewModel!!.UpdateText(idRichCalled!!, text = etText.text.toString())
+            }
         }
     }
 }

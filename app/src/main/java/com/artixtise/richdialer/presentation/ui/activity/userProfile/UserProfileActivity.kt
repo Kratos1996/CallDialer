@@ -1,7 +1,11 @@
 package com.artixtise.richdialer.presentation.ui.activity.userProfile
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.artixtise.richdialer.R
+import com.artixtise.richdialer.application.ErrorMessage
 import com.artixtise.richdialer.application.ErrorMessage.ADD_TO_FAV_FAILURE
 import com.artixtise.richdialer.application.ErrorMessage.ADD_TO_FAV_SUCCESSFULLY
 import com.artixtise.richdialer.application.ErrorMessage.CONTACT_SAVED
@@ -40,16 +45,14 @@ class UserProfileActivity : BaseActivity() {
             finish()
         }
         lifecycleScope.launchWhenCreated {
+            viewmodel.getOtherUserId(phoneNumber!!).observe(this@UserProfileActivity) { user->
+                if(user!=null){
+                    val contact=UserAccessToContactList.convert(user)
+                    viewmodel.updateRichCallData(contact)
+                }
+            }
             viewmodel.getContactDetail(phoneNumber!!).collect {
                 if (it != null) {
-                    if(!it.isAvailableRichCall){
-                        viewmodel.getOtherUserId(phoneNumber).observe(this@UserProfileActivity, Observer { user->
-                          if(user!=null){
-                              val contact=UserAccessToContactList.convert(user,it)
-                              viewmodel.updateRichCallData(contact.phoneNumber,contact.name,contact.richaCallUserId,contact.isAvailableRichCall)
-                          }
-                        })
-                    }
                     var isFavNow = it.isFav
                     binding.addToFav.setOnClickListener { view ->
                         if (it.isFav) {
@@ -69,8 +72,21 @@ class UserProfileActivity : BaseActivity() {
                     binding.alphabaticaName.setText(it.name)
                     binding.phoneNumber.setText(it.phoneNumber)
                     binding.email.setText(it.email)
+                    if(it.instagramAccountVisible){
+                        binding.flFive.visibility=View.VISIBLE
+                    }else{
+                        binding.flFive.visibility=View.GONE
+                    }
+                    if(it.twitterAccountVisible){
+                        binding.flFour.visibility=View.VISIBLE
+                    }else{
+                        binding.flFour.visibility=View.GONE
+                    }
                     binding.instagramAccount.setText(it.instagramAccount)
                     binding.twitterAccount.setText(it.twitterAccount)
+                    binding.websiteId.setText(it.webUrl)
+                    binding.linkedId.setText(it.LinkedInAccount)
+                    binding.facebookId.setText(it.facebookAccount)
                     if (it.isFav) {
                         binding.addToFav.setImageResource(R.drawable.ic_favourite_selected)
                     } else {
@@ -86,18 +102,25 @@ class UserProfileActivity : BaseActivity() {
                             .into(binding.callerAvatar)
                     }
                     binding.saveContact.setOnClickListener { view ->
-                        it.twitterAccount = binding.twitterAccount.text.toString()
-                        it.instagramAccount = binding.instagramAccount.text.toString()
-                        it.email = binding.email.text.toString()
                         it.isFav = isFavNow
                         viewmodel.insertContact(it)
                         showCustomAlert(CONTACT_SAVED, binding.root)
                     }
                     binding.richCallNow.setOnClickListener {view->
-                        val intent = Intent(this@UserProfileActivity, SelectScreenActivity::class.java).apply {
-                            putExtra("FAVDATA", it)
+                        if(isNetworkAvailable(this@UserProfileActivity)){
+                            if(it.isAvailableRichCall){
+                                val intent = Intent(this@UserProfileActivity, SelectScreenActivity::class.java).apply {
+                                    putExtra("FAVDATA", it)
+                                }
+                                startActivity(intent)
+                            }else{
+                                showCustomAlert(ErrorMessage.NOT_AVAILABLE__RICH_CALL_DATA, binding.root)
+                            }
+
+                        }else{
+                            showCustomAlert(ErrorMessage.INTERNET_CONNECTION_ERROR, binding.root)
                         }
-                        startActivity(intent)
+
                     }
                     binding.callNow.setOnClickListener { view->
                         selectSim(it.phoneNumber)
@@ -136,5 +159,31 @@ class UserProfileActivity : BaseActivity() {
                 }
             }).check()
 
+    }
+    fun isNetworkAvailable(context: Context?): Boolean {
+        if (context == null) return false
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            if (capabilities != null) {
+                when {
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
+                        return true
+                    }
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
+                        return true
+                    }
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
+                        return true
+                    }
+                }
+            }
+        } else {
+            val activeNetworkInfo = connectivityManager.activeNetworkInfo
+            if (activeNetworkInfo != null && activeNetworkInfo.isConnected) {
+                return true
+            }
+        }
+        return false
     }
 }

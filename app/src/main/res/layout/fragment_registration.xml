@@ -58,6 +58,7 @@
                     android:textStyle="bold"
                     android:textColor="#666666"
                     android:hint="abc"
+                    android:maxLines="1"
                     android:background="@drawable/edittext_bg"
                     android:textSize="16sp"/>
                 <TextView
@@ -78,7 +79,8 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textColor="#666666"
-                    android:hint="def"
+                    android:maxLines="1"
+                    android:hint="Enter Your Last Name"
                     android:background="@drawable/edittext_bg"
                     android:textSize="16sp"/>
                 <TextView
@@ -99,6 +101,8 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textColor="#666666"
+                    android:maxLines="1"
+                    android:inputType="textEmailAddress"
                     android:hint="abc@gmail.com"
                     android:background="@drawable/edittext_bg"
                     android:textSize="16sp"/>

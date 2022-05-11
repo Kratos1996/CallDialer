@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.artixtise.richdialer.database.roomdatabase.tables.CallData
 import com.artixtise.richdialer.database.roomdatabase.tables.ContactList
+import com.artixtise.richdialer.database.roomdatabase.tables.MyProfileTable
 import com.artixtise.richdialer.database.roomdatabase.tables.RichCallData
 import kotlinx.coroutines.flow.Flow
 
@@ -14,6 +15,9 @@ interface MyDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(richCallData: RichCallData)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(myProfile: MyProfileTable)
 
     @Update
     fun update(contact: ContactList)
@@ -27,11 +31,20 @@ interface MyDao {
     @Query("Select * From RichCallData where id=:id")
     fun GetRichCallData(id:Long): LiveData<RichCallData>
 
+    @Query("Select * From MyProfileTable")
+    fun GetMyProfile(): LiveData<MyProfileTable>
+
     @Query("Select * From RichCallData")
     fun GetRichCallDataList(): LiveData<List<RichCallData>>
 
     @Query("Delete From RichCallData where id=:id")
     fun DeleteSingleRichCall(id: Long)
+
+    @Query("Update RichCallData set emoji=:emoji  Where id=:richCallId")
+    fun updateRichCallEmojiData(emoji: String,richCallId:Long): Int
+
+    @Query("Update RichCallData set textMsg=:text  Where id=:richCallId")
+    fun updateRichCallTextData(text: String,richCallId:Long): Int
 
     @Query("Select * From ContactList where Name Like '%' || :data || '%' ")
     fun GetContactList(data: String): LiveData<List<ContactList>>

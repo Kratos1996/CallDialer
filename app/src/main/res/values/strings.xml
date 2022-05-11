@@ -206,6 +206,7 @@
     <string name="open_dialpad_by_default">Open the dialpad by default when the app opens</string>
     <string name="disable_proximity_sensor">Disable proximity sensor during calls</string>
     <string name="disable_swipe_to_answer">Replace swiping at responding to incoming calls with clicking</string>
+    <string name="user_not_found">User Not Found</string>
 
 
 </resources>

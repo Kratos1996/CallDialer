@@ -7,6 +7,8 @@ import android.os.Build
 import android.view.View
 import androidx.core.view.isVisible
 import com.artixtise.richdialer.R
+import com.artixtise.richdialer.application.ErrorMessage.INTERNET_CONNECTION_ERROR
+import com.artixtise.richdialer.application.ErrorMessage.NOT_AVAILABLE__RICH_CALL_DATA
 import com.artixtise.richdialer.base.BaseAdapter
 import com.artixtise.richdialer.base.BaseViewHolder
 import com.artixtise.richdialer.data.call.CallInterface
@@ -42,12 +44,24 @@ class FavouriteAdapter constructor(context: Context,val callData: CallInterface)
           //  alphabaticaName.text = data.name
             phoneOfContact.text = data.phoneNumber
         }
+        if(data.isAvailableRichCall){
+            binding.richCall.setAlpha(.9f)
+        }else{
+            binding.richCall.setAlpha(0.5f)
+        }
         binding.cloudCallNow.setOnClickListener {
            callData.onCallStart(data.phoneNumber)
         }
         binding.richCall.setOnClickListener {
             if(isNetworkAvailable(context)){
-                callData.onRichCallStart(data)
+                if(data.isAvailableRichCall){
+                    callData.onRichCallStart(data)
+                }else{
+                    callData.message(NOT_AVAILABLE__RICH_CALL_DATA)
+                }
+
+            }else{
+                callData.message(INTERNET_CONNECTION_ERROR)
             }
 
         }

@@ -13,8 +13,8 @@
         android:id="@+id/call_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -79,14 +79,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center_horizontal"
-                    android:textSize="14dp"
                     android:text="@{data.mobile}"
+                    android:textSize="14dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/caller_name_label"
                     tools:text="@string/number" />
 
-                <FrameLayout
+                <LinearLayout
                     android:id="@+id/flOne"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,25 +100,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
                         android:layout_gravity="start|center"
-                        android:textColor="@color/black"
-                        android:text="@string/name"/>
+                        android:text="@string/name"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/etName"
                         style="@style/Heading_regular"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="end|center"
-                        android:text="@{data.name}"
-                        android:enabled="false"
                         android:background="@android:color/transparent"
-                        android:paddingHorizontal="@dimen/_12sdp"
-                        tools:text="123456789"
+                        android:enabled="false"
+                        android:gravity="right"
                         android:maxLines="1"
-                        android:textSize="@dimen/_14sdp" />
-                </FrameLayout>
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:text="@{data.name}"
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="123456789" />
+                </LinearLayout>
 
-                <FrameLayout
+                <LinearLayout
                     android:id="@+id/flTwo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -131,25 +131,26 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
-                        android:textColor="@color/black"
                         android:layout_gravity="start|center"
-                        android:text="@string/email"/>
+                        android:text="@string/email"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/etEmail"
                         style="@style/Heading_regular"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:text="@{data.email}"
-                        android:paddingHorizontal="@dimen/_12sdp"
                         android:background="@android:color/transparent"
-                        tools:text="123456789"
+                        android:gravity="right"
                         android:maxLines="1"
-                        android:textSize="@dimen/_14sdp" />
-                </FrameLayout>
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:text="@{data.email}"
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="123456789" />
+                </LinearLayout>
 
-                <FrameLayout
+                <LinearLayout
                     android:id="@+id/flThree"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -162,25 +163,25 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
-                        android:textColor="@color/black"
                         android:layout_gravity="start|center"
-                        android:text="@string/phone_1"/>
+                        android:text="@string/phone_1"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/etPhone1"
                         style="@style/Heading_regular"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:text="@{data.mobile}"
+                        android:background="@android:color/transparent"
                         android:enabled="false"
+                        android:gravity="right"
                         android:maxLines="1"
                         android:paddingHorizontal="@dimen/_12sdp"
-                        android:background="@android:color/transparent"
-                        android:gravity="right"
-                        tools:text="123456"
-                        android:textSize="@dimen/_14sdp" />
-                </FrameLayout>
+                        android:text="@{data.mobile}"
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="123456" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/flFour"
@@ -195,9 +196,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
-                        android:textColor="@color/black"
                         android:layout_gravity="start|center"
-                        android:text="@string/phone_2"/>
+                        android:text="@string/phone_2"
+                        android:textColor="@color/black" />
 
                     <EditText
                         android:id="@+id/etPhone2"
@@ -205,13 +206,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:paddingHorizontal="@dimen/_12sdp"
                         android:background="@android:color/transparent"
                         android:gravity="right"
                         android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_12sdp"
                         android:text="@{data.mobile2}"
-                        tools:text="india@fallow"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="india@fallow" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -227,9 +228,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
-                        android:textColor="@color/black"
                         android:layout_gravity="start|center"
-                        android:text="@string/address"/>
+                        android:text="@string/address"
+                        android:textColor="@color/black" />
+
                     <EditText
                         android:id="@+id/etAddress"
                         style="@style/Heading_regular"
@@ -258,17 +260,18 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <CheckBox
                             android:id="@+id/twitterCheckbox"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:checked="@{data.twitterVisible}"
-                           />
+                            android:checked="@{data.twitterVisible}" />
+
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginStart="@dimen/_24sdp"
-                            android:src="@drawable/ic_twitter"/>
+                            android:src="@drawable/ic_twitter" />
                     </LinearLayout>
 
                     <EditText
@@ -277,14 +280,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:paddingHorizontal="@dimen/_12sdp"
                         android:background="@android:color/transparent"
                         android:gravity="right"
-                        android:text="@{data.twitterUrl}"
-                        tools:text="india@"
                         android:maxLines="1"
-                        android:textSize="@dimen/_14sdp" />
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:text="@{data.twitterUrl}"
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="india@" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/fl_seven"
                     android:layout_width="match_parent"
@@ -298,17 +302,18 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <CheckBox
                             android:id="@+id/linkedinCheckbox"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:checked="@{data.linkedInVisible}"
-                         />
+                            android:checked="@{data.linkedInVisible}" />
+
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginStart="@dimen/_24sdp"
-                            android:src="@drawable/linked"/>
+                            android:src="@drawable/linked" />
                     </LinearLayout>
 
                     <EditText
@@ -317,14 +322,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:paddingHorizontal="@dimen/_12sdp"
                         android:background="@android:color/transparent"
                         android:gravity="right"
-                        android:text="@{data.linkedInUrl}"
-                        tools:text="india@"
                         android:maxLines="1"
-                        android:textSize="@dimen/_14sdp" />
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:text="@{data.linkedInUrl}"
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="india@" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/fl_eight"
                     android:layout_width="match_parent"
@@ -338,16 +344,18 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <CheckBox
+                            android:id="@+id/facebookCheckBox"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:checked="@{data.facebookVisible}"
-                          android:id="@+id/facebookCheckBox"/>
+                            android:checked="@{data.facebookVisible}" />
+
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginStart="@dimen/_24sdp"
-                            android:src="@drawable/ic_fb"/>
+                            android:src="@drawable/ic_fb" />
                     </LinearLayout>
 
                     <EditText
@@ -356,14 +364,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:paddingHorizontal="@dimen/_12sdp"
                         android:background="@android:color/transparent"
                         android:gravity="right"
-                        android:text="@{data.facebookUrl}"
-                        tools:text="india@"
                         android:maxLines="1"
-                        android:textSize="@dimen/_14sdp" />
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:text="@{data.facebookUrl}"
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="india@" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/fl_nine"
                     android:layout_width="match_parent"
@@ -377,16 +386,18 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <CheckBox
+                            android:id="@+id/instaCheckbox"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:checked="@{data.instagramVisible}"
-                          android:id="@+id/instaCheckbox"/>
+                            android:checked="@{data.instagramVisible}" />
+
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginStart="@dimen/_24sdp"
-                            android:src="@drawable/ic_instagram"/>
+                            android:src="@drawable/ic_instagram" />
                     </LinearLayout>
 
                     <EditText
@@ -395,16 +406,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:paddingHorizontal="@dimen/_12sdp"
                         android:background="@android:color/transparent"
                         android:gravity="right"
-                        android:text="@{data.instagramUrl}"
-                        tools:text="india@"
                         android:maxLines="1"
-                        android:textSize="@dimen/_14sdp" />
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:text="@{data.instagramUrl}"
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="india@" />
 
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/fl_ten"
                     android:layout_width="match_parent"
@@ -418,16 +430,18 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <CheckBox
+                            android:id="@+id/webCheckbox0"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:checked="@{data.websiteVisible}"
-                           android:id="@+id/webCheckbox0"/>
+                            android:checked="@{data.websiteVisible}" />
+
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginStart="@dimen/_24sdp"
-                            android:src="@drawable/url"/>
+                            android:src="@drawable/url" />
                     </LinearLayout>
 
                     <EditText
@@ -436,13 +450,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center"
-                        android:paddingHorizontal="@dimen/_12sdp"
                         android:background="@android:color/transparent"
                         android:gravity="right"
-                        android:text="@{data.facebookUrl}"
-                        tools:text="india@"
                         android:maxLines="1"
-                        android:textSize="@dimen/_14sdp" />
+                        android:paddingHorizontal="@dimen/_12sdp"
+                        android:text="@{data.facebookUrl}"
+                        android:textSize="@dimen/_14sdp"
+                        tools:text="india@" />
                 </LinearLayout>
 
                 <Button
@@ -460,6 +474,16 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
+        <TextView
+            android:id="@+id/emptyData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/user_not_found"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

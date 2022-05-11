@@ -24,6 +24,7 @@ data class RichCallData(
     var instaID :String="",
     var fbID :String="",
     var twitterID :String="",
-    var linkedinID :String= ""
+    var linkedinID :String= "",
+    var webUrl :String= ""
 
 )

@@ -4,6 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.25" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/activity_call.xml" value="0.25" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/activity_rich_receiver.xml" value="0.25" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/activity_select_screen.xml" value="0.3569230769230769" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/activity_user_profile.xml" value="0.2713541666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_favourite.xml" value="0.3569230769230769" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_location.xml" value="0.33611111111111114" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_recent_text.xml" value="0.33611111111111114" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_registration.xml" value="0.29074074074074074" />
         <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable-v24/curved_background.xml" value="0.1475" />
         <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable-v24/round_ripple.xml" value="0.1475" />
         <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/btn_search_outline.xml" value="0.1935" />
@@ -63,7 +72,7 @@
         <entry key="app/src/main/res/layout/activity_permission.xml" value="0.19829059829059828" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.19829059829059828" />
         <entry key="app/src/main/res/layout/activity_rich_receiver.xml" value="0.19829059829059828" />
-        <entry key="app/src/main/res/layout/activity_select_screen.xml" value="0.2565338134765625" />
+        <entry key="app/src/main/res/layout/activity_select_screen.xml" value="0.14496612548828125" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.12588602701822915" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.19829059829059828" />
         <entry key="app/src/main/res/layout/dialpad.xml" value="0.23596014492753623" />

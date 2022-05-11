@@ -7,4 +7,5 @@ import com.google.android.material.tabs.TabLayout
 interface CallInterface {
     fun onCallStart(number:String)
     fun onRichCallStart(list: ContactList)
+    fun message(message: String)
 }

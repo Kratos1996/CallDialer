@@ -33,5 +33,13 @@ class RichRepositoryImpl @Inject constructor(
 
     override suspend fun deleteSingleRichCall(id: Long) = db.getDao().DeleteSingleRichCall(id)
 
+    override suspend fun updateRichCallEmojiData(emoji:String,id: Long) {
+        db.getDao().updateRichCallEmojiData(emoji,id)
+    }
+
+    override suspend fun updateRichCallTextData(text:String,id: Long) {
+        db.getDao().updateRichCallTextData(text,id)
+    }
+
 
 }

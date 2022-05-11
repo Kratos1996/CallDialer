@@ -63,6 +63,9 @@ class ContactsRepositoryImpl @Inject constructor(
     var updateStatus = MutableLiveData<String>()
 
     override suspend fun insertContact(contact: ContactList) = db.getDao().insert(contact)
+    override suspend fun updateContact(contact: ContactList) {
+      db.getDao().update(contact)
+    }
 
     override suspend fun getProfileData(number: String): MutableLiveData<UserAccessData> {
         otherUserId.value = OtherUserProfileSealed.FetchOtherUserState.Loading(true)
@@ -72,13 +75,13 @@ class ContactsRepositoryImpl @Inject constructor(
             if (data != null && !data.userId.isNullOrBlank()) {
                 otherUserDetail.postValue(data!!)
                 otherUserId.value = OtherUserProfileSealed.FetchOtherUserState.Success(data)
-                Log.d("OtherUserData", "DocumentSnapshot data: " + data.toString())
             }
         } catch (e: Exception) {
             otherUserId.value = OtherUserProfileSealed.FetchOtherUserState.Error(e.message ?: "")
         }
         return otherUserDetail
     }
+
 
     override suspend fun saveSenderData(data: RichCallData): MutableLiveData<String>  {
         richCallState.value = RichCallSealed.SaveRichCallState.Loading(true)
@@ -149,8 +152,8 @@ class ContactsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend  fun setRichCallData(number: String,name:String,userId: String, isAvailable: Boolean) {
-        db.getDao().updateRichCallData(number, userId, true)
+    override suspend  fun setRichCallData(contact: ContactList) {
+        db.getDao().update(contact)
     }
 
     override fun deleteAll() {
@@ -268,12 +271,8 @@ class ContactsRepositoryImpl @Inject constructor(
                     var contact = ContactList(
                         number,
                         name,
-                        "",
+                        profile = "",
                         email,
-                        "",
-                        "",
-                        "",
-                        false,
                     )
                     insertContact(contact)
                 }
@@ -282,20 +281,13 @@ class ContactsRepositoryImpl @Inject constructor(
                         number,
                         name,
                         photo,
-                        email,
-                        "",
-                        "",
-                        "",
-                        false
+                        email
                     )
                     insertContact(contact)
                 }
 
             }
-            Log.d(
-                "contacts",
-                " Phone Number: name = " + name + " No = " + number
-            )
+
         }
     }
 

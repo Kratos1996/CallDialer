@@ -58,17 +58,6 @@ class EmojiFragment: BaseFragment(R.layout.fragment_emoji) ,EmojiInterface{
 
     override fun onEmojiSelect(uniCode: Int) {
        // viewModel!!.selectedData.postValue(uniCode.toString())
-        viewModel!!.getRichCallData(idRichCalled!!).observe(viewLifecycleOwner) {
-            if (it != null) {
-                it.emoji=String(Character.toChars(uniCode))
-                viewModel!!.insertRichCallHistory(it)
-
-            } else {
-                val richCallData=com.artixtise.richdialer.database.roomdatabase.tables.RichCallData(idRichCalled!!, emoji = String(Character.toChars(uniCode)))
-                viewModel!!.insertRichCallHistory(richCallData)
-            }
-
-        }
-
+        viewModel!!.UpdateEmoji(idRichCalled!!, emoji = String(Character.toChars(uniCode)))
     }
 }

@@ -80,8 +80,12 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentFavouriteBinding.bind(view)
-
         calldata = this
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         WorkStation()
     }
 
@@ -92,6 +96,7 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
                 binding.hasData.visibility = View.GONE
             } else {
                 binding.hasNotData.visibility = View.GONE
+                binding.flFreq.visibility = View.GONE
                 binding.hasData.visibility = View.VISIBLE
                 with(binding.rvFavrouties) {
                     favAdapter = FavouriteAdapter(context, calldata)
@@ -99,12 +104,12 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
                     adapter = favAdapter
                     favAdapter.UpdateList(ArrayList(it.toMutableList()))
                 }
-                with(binding.rvFrequentlyDialed) {
+               /* with(binding.rvFrequentlyDialed) {
                     favAdapter = FavouriteAdapter(context, calldata)
                     layoutManager = LinearLayoutManager(context)
                     adapter = favAdapter
                     favAdapter.UpdateList(ArrayList(it.toMutableList()))
-                }
+                }*/
             }
 
         }
@@ -161,6 +166,10 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
             putExtra("FAVDATA", list)
         }
         startActivity(intent)
+    }
+
+    override fun message(message: String) {
+        showCustomAlert(message, binding.root)
     }
 
 }

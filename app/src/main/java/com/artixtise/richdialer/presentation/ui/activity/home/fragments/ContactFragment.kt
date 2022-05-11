@@ -3,12 +3,7 @@ package com.artixtise.richdialer.presentation.ui.activity.home.fragments
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.BaseAdapter
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.artixtise.richdialer.R
 import com.artixtise.richdialer.base.BaseFragment
@@ -23,6 +18,9 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import java.util.*
+import kotlin.Comparator
+import kotlin.collections.ArrayList
 
 
 class ContactFragment : BaseFragment(R.layout.fragment_home),
@@ -69,6 +67,7 @@ class ContactFragment : BaseFragment(R.layout.fragment_home),
             with(binding.rvContacts) {
                 layoutManager = LinearLayoutManager(context)
                 adapter = contactAdapter
+                Collections.sort(it,SortbyName())
                 contactAdapter.UpdateList(ArrayList(it.toMutableList()))
             }
 
@@ -78,6 +77,10 @@ class ContactFragment : BaseFragment(R.layout.fragment_home),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
+    }
+
+    override fun onResume() {
+        super.onResume()
         WorkStation()
     }
 
@@ -87,8 +90,14 @@ class ContactFragment : BaseFragment(R.layout.fragment_home),
             putExtra("contactNumber", data.phoneNumber)
         })
     }
+    internal class SortbyName: Comparator<ContactList?> {
+        // Used for sorting in ascending order of
+        // roll number
+        override fun compare(o1: ContactList?, o2: ContactList?): Int {
+           return  o1!!.name.compareTo(o2!!.name)
+        }
 
-
+    }
 
 
 }

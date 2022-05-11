@@ -5,7 +5,6 @@ package com.artixtise.richdialer.application
 * */
 
 import android.app.Application
-import com.artixtise.richdialer.api.AppNetworkRepository
 import com.artixtise.richdialer.application.ThemeHelper.applyTheme
 import com.artixtise.richdialer.database.prefrence.SharedPre
 import dagger.hilt.android.HiltAndroidApp
@@ -15,7 +14,7 @@ import dagger.hilt.android.HiltAndroidApp
 class MyApplication : Application(){
     companion object{
         private var instance: MyApplication? = null
-        lateinit var repository: AppNetworkRepository
+
 
         //private lateinit var appDatabase: AppDB
 
@@ -31,7 +30,6 @@ class MyApplication : Application(){
     override fun onCreate() {
         super.onCreate()
         instance = this
-        repository = AppNetworkRepository(this)
         sharedPre = SharedPre.getInstance(getApplicationContext())!!
         val themePref = sharedPre.GetCurrentTheme
         if(!themePref.isNullOrEmpty()){
@@ -54,7 +52,5 @@ class MyApplication : Application(){
     fun setIsNightModeEnabled(isNightModeEnabled: Boolean) {
         sharedPre.isDarkModeEnable=isNightModeEnabled
     }
-    fun getNetworkRepo(): AppNetworkRepository {
-        return repository
-    }
+
 }
