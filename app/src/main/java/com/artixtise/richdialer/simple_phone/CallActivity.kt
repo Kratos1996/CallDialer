@@ -33,16 +33,10 @@ class CallActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_call)
         number = intent.data!!.schemeSpecificPart
-        initObserver()
-    }
-
-    private fun initObserver() {
-        if (number.startsWith("+91")) {
-            val numberMain = number.replace("+91", "");
-            viewModel.getRichCallData("91$numberMain")
-        }
 
     }
+
+
 
     override fun onStart() {
         super.onStart()
@@ -76,6 +70,14 @@ class CallActivity : BaseActivity() {
             Call.STATE_RINGING,
             Call.STATE_ACTIVE
         )
+        if (number.startsWith("+")) {
+            val numberMain = number.replace("+", "");
+            if (state == Call.STATE_RINGING) {
+                viewModel.getRichCallData(numberMain)
+            } else if (state == Call.STATE_DIALING) {
+                viewModel.getRichCallData(sharedPre.userMobile!!)
+            }
+        }
         lifecycleScope.launchWhenCreated {
             viewModel.getRichCallMutable.collect {
                 when (it) {
