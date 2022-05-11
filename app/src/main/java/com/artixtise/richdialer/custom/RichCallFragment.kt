@@ -87,6 +87,7 @@ class RichCallFragment : BottomSheetDialogFragment() {
     }
 
     fun callWithSim(recipient: String, useSimOne: Boolean) {
+        var isCallStarted=false
         Dexter.withContext(requireActivity())
             .withPermissions(
                 Manifest.permission.READ_PHONE_STATE,
@@ -114,24 +115,28 @@ class RichCallFragment : BottomSheetDialogFragment() {
                                         }
                                         is RichCallSealed.SaveRichCalldata.Success->{
                                             Toast.makeText(requireContext(),"RichCall Started",Toast.LENGTH_SHORT).show()
-                                            val action = Intent.ACTION_CALL
-                                            val intent = Intent(action).apply {
-                                                if (recipient.startsWith("91")) {
-                                                    val contactNumber = recipient.replace("91", "");
-                                                    data = Uri.fromParts("tel", contactNumber, null)
-                                                } else {
-                                                    data = Uri.fromParts("tel", recipient, null)
+                                            if(!isCallStarted){
+                                                isCallStarted=true
+                                                val action = Intent.ACTION_CALL
+                                                val intent = Intent(action).apply {
+                                                    if (recipient.startsWith("91")) {
+                                                        val contactNumber = recipient.replace("91", "");
+                                                        data = Uri.fromParts("tel", contactNumber, null)
+                                                    } else {
+                                                        data = Uri.fromParts("tel", recipient, null)
+                                                    }
+
+                                                    if (handle != null) {
+                                                        putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
+                                                    }
                                                 }
 
-                                                if (handle != null) {
-                                                    putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
-                                                }
+                                                startActivity(intent)
                                             }
 
-                                            startActivity(intent)
                                         }
                                         is RichCallSealed.SaveRichCalldata.Error->{
-                                            Toast.makeText(requireContext(),"Error on Setting Data",Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(requireContext(),"Error on RichCall Data",Toast.LENGTH_SHORT).show()
                                         }
                                     }
                                 }

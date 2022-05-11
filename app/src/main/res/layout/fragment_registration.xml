@@ -3,15 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:fillViewport="true"
-        tools:context=".ui.launchFlow.login.LoginActivity">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rootContainer"
@@ -20,7 +12,7 @@
             <TextView
                 android:id="@+id/tv_verify_text"
                 style="@style/Heading3_semiBold"
-                android:layout_marginTop="82dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/take_bit"
                 android:textAlignment="center"
                 android:textStyle="bold"
@@ -123,5 +115,5 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+
 </layout>

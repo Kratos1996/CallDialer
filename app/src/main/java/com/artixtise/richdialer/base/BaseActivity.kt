@@ -36,7 +36,9 @@ import com.artixtise.richdialer.database.datastore.DataStoreBase
 import com.artixtise.richdialer.database.prefrence.SharedPre
 import com.artixtise.richdialer.databinding.DialogProgressBinding
 import com.artixtise.richdialer.presentation.ui.activity.home.fragments.ContactFragment
+import com.artixtise.richdialer.presentation.ui.activity.home.fragments.FavouriteFragment
 import com.artixtise.richdialer.presentation.ui.activity.home.viewmodel.HomeViewModel
+import com.artixtise.richdialer.presentation.ui.activity.login.fragments.LoginFragment
 import com.artixtise.richdialer.repositories.methods.MethodsRepo
 import com.google.android.material.snackbar.Snackbar
 import com.karumi.dexter.Dexter
@@ -241,21 +243,27 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     public fun startFragment(fragment: Fragment?, addToBackStack: Boolean, backStackTag: String?) {
-        this.addToBackStack = addToBackStack
-        /* if(manager==null){
-             manager = supportFragmentManager
-         }*/
-        val fragmentPopped = manager.popBackStackImmediate(backStackTag, 0)
-        if (!fragmentPopped) {
-            transaction = manager.beginTransaction()
-            if (addToBackStack) {
-                transaction!!.addToBackStack(backStackTag)
-            } else {
-                transaction!!.addToBackStack(null)
+        try{
+            this.addToBackStack = addToBackStack
+            /* if(manager==null){
+                 manager = supportFragmentManager
+             }*/
+            val fragmentPopped = manager.popBackStackImmediate(backStackTag, 0)
+            if (!fragmentPopped) {
+                transaction = manager.beginTransaction()
+                if (addToBackStack) {
+                    transaction!!.addToBackStack(backStackTag)
+                } else {
+                    transaction!!.addToBackStack(null)
+                }
+                transaction!!.replace(R.id.container, fragment!!)
+                transaction!!.commit()
+
             }
-            transaction!!.replace(R.id.container, fragment!!)
-            transaction!!.commit()
+        }catch (e:Exception){
+            finish()
         }
+
     }
 
     open fun startFragment(
@@ -321,7 +329,7 @@ abstract class BaseActivity : AppCompatActivity() {
             manager = supportFragmentManager
         }
         if (addToBackStack) {
-            if (fragment is ContactFragment) {
+            if (fragment is FavouriteFragment) {
                 if (doubleBackToExitPressedOnce) {
                     finish()
                     return
@@ -333,7 +341,10 @@ abstract class BaseActivity : AppCompatActivity() {
                     delay(2000)
                     doubleBackToExitPressedOnce = false
                 }
-            } else {
+            } else if(fragment is LoginFragment){
+                finish()
+            }
+            else {
                 if (manager != null && manager!!.backStackEntryCount > 0) {
                     manager!!.popBackStackImmediate()
                 } else {
