@@ -71,7 +71,14 @@ class CallActivity : BaseActivity() {
             Call.STATE_ACTIVE
         )
         if (number.startsWith("+")) {
-            val numberMain = number.replace("+", "");
+            val numberMain = number.replace("+", "")
+            if (state == Call.STATE_RINGING) {
+                viewModel.getRichCallData(numberMain)
+            } else if (state == Call.STATE_DIALING) {
+                viewModel.getRichCallData(sharedPre.userMobile!!)
+            }
+        } else {
+            val numberMain = "91" + number
             if (state == Call.STATE_RINGING) {
                 viewModel.getRichCallData(numberMain)
             } else if (state == Call.STATE_DIALING) {
