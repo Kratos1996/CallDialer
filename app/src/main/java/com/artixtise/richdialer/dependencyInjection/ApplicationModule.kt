@@ -24,6 +24,8 @@ import com.artixtise.richdialer.database.roomdatabase.AppDB
 import com.artixtise.richdialer.data.contact.contactRepository.ContactsRepositoryImpl
 import com.artixtise.richdialer.data.login.LoginRepository
 import com.artixtise.richdialer.data.login.LoginRepositoryImpl
+import com.artixtise.richdialer.data.richcall.RichCallRepository
+import com.artixtise.richdialer.data.richcall.RichRepositoryImpl
 import com.artixtise.richdialer.database.roomdatabase.MyDao
 import com.artixtise.richdialer.repositories.methods.MethodsRepo
 import com.google.firebase.auth.FirebaseAuth
@@ -79,6 +81,12 @@ object ApplicationModule {
                                    onlineDatastore:CollectionReference):
             ContactRepository = ContactsRepositoryImpl(db, context, auth = getFirebaseAuth(),dataStore,
         onlineDatastore,sharedPre)
+
+
+    @Provides
+    fun providesRichCallRepository(@ApplicationContext context: Context,
+                                   db: AppDB):
+            RichCallRepository = RichRepositoryImpl(db, context)
 
     @Provides
     fun providesLoginRepository(@ApplicationContext context: Context, db: AppDB,dataStore: DataStoreBase,sharedPre: SharedPre,onlineDatastore:CollectionReference): LoginRepositoryImpl = LoginRepositoryImpl(db, context, auth = getFirebaseAuth(),dataStore,

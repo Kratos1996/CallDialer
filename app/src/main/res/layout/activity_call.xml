@@ -9,7 +9,7 @@
         android:orientation="vertical">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:visibility="visible"
             android:id="@+id/clRinging"
             android:layout_width="match_parent"
@@ -21,8 +21,8 @@
                 android:id="@+id/info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_64sdp"
                 android:orientation="vertical"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:paddingVertical="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -31,11 +31,11 @@
                 <TextView
                     android:id="@+id/textView"
                     style="@style/Heading_regular"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:text="@string/cal_ring"
+                   android:text="@string/cal_ring"
                     android:textSize="@dimen/_12sdp" />
 
                 <LinearLayout
@@ -63,7 +63,8 @@
                 <TextView
                     android:id="@+id/callInfo"
                     style="@style/Heading_regular"
-                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_2sdp"
@@ -74,7 +75,7 @@
             <ImageView
                 android:id="@+id/ivCallerImage"
                 android:layout_width="wrap_content"
-                android:layout_height="320dp"
+                android:layout_height="200dp"
                 android:src="@drawable/woman"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,8 +98,13 @@
             <TextView
                 android:id="@+id/tvMessage"
                 style="@style/Heading_regular"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:maxLength="200"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:text="Text Message : Hello"
@@ -106,13 +112,90 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivCallerImage" />
-
-            <FrameLayout
+            <LinearLayout
+                android:id="@+id/isRichCallData"
+                android:gravity="center"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:paddingHorizontal="@dimen/_32sdp"
-                android:layout_marginBottom="@dimen/_64sdp"
+                android:weightSum="5">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/ic_twitter"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/twitterAccount"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/ic_fb"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/facebookAccount"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/ic_instagram"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/instaAccount"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/linked"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/linkedIdAccount"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/url"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/webUrl"/>
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:weightSum="5">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/ic_twitter"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/speaker"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/ic_fb"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/mute"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/ic_instagram"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/record"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/linked"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/hold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
@@ -122,12 +205,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_margin="@dimen/_20sdp"
                     android:paddingVertical="@dimen/_8sdp">
 
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_gravity="center"
+                        android:visibility="invisible"
                         android:src="@drawable/ic_chat" />
 
                     <ImageView
@@ -140,10 +225,10 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_calli"
+                    android:id="@+id/greenLinear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+                    android:layout_margin="@dimen/_20sdp"
                     android:orientation="vertical"
                     android:paddingVertical="@dimen/_8sdp">
 
@@ -151,6 +236,7 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_gravity="center"
+                        android:visibility="invisible"
                         android:src="@drawable/ic_alarm" />
 
                     <ImageView
@@ -161,8 +247,8 @@
                         android:layout_marginTop="@dimen/_12sdp"
                         android:src="@drawable/accept_call" />
                 </LinearLayout>
-            </FrameLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </LinearLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -101,6 +101,7 @@ abstract class BaseActivity : AppCompatActivity() {
         )
     }
 
+
     fun showLoadingDialog(message: String): Dialog? {
         if (progressDialog == null) {
             progressDialog = Dialog(this)

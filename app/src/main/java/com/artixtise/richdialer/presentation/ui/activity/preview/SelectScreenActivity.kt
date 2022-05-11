@@ -1,14 +1,21 @@
 package com.artixtise.richdialer.presentation.ui.activity.preview
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
+import android.telecom.TelecomManager
 import android.view.View
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.artixtise.richdialer.R
+import com.artixtise.richdialer.api.BaseDataSource
 import com.artixtise.richdialer.base.BaseActivity
 import com.artixtise.richdialer.custom.RichCallFragment
 import com.artixtise.richdialer.database.roomdatabase.tables.ContactList
+import com.artixtise.richdialer.database.roomdatabase.tables.RichCallData
 import com.artixtise.richdialer.databinding.ActivitySelectScreenBinding
 import com.artixtise.richdialer.presentation.ui.activity.home.fragments.FavouriteFragment
 import com.artixtise.richdialer.presentation.ui.activity.home.fragments.rich_call_fragments.*
@@ -24,13 +31,16 @@ import com.karumi.dexter.listener.single.PermissionListener
 
 class SelectScreenActivity : BaseActivity() {
     private lateinit var binding: ActivitySelectScreenBinding
-
     lateinit var richCallFragment: RichCallFragment
+    lateinit var data: ContactList
+    var richCallData =RichCallData()
+    val richCallId by lazy { System.currentTimeMillis() }
+    var richCallDataObj=com.artixtise.richdialer.database.roomdatabase.tables.RichCallData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_select_screen)
-
+        data = intent?.getParcelableExtra<ContactList>("FAVDATA")!!
         init()
         initViews()
         initObserver()
@@ -41,30 +51,53 @@ class SelectScreenActivity : BaseActivity() {
         binding.initiateCal.setOnClickListener {
             selectSim()
         }
-        binding.backNow.setOnClickListener{
+        binding.backNow.setOnClickListener {
             finish()
         }
     }
 
     private fun initObserver() {
-        val data: ContactList = intent?.getParcelableExtra<ContactList>("FAVDATA")!!
+
+       viewModel!!.getRichCallData(richCallId).observe(this) {
+            if (it != null) {
+                richCallDataObj=it
+                if(!it.emoji.isNullOrBlank()){
+                    binding.ivPreviewEmoji.setText(it.emoji)
+                    binding.ivPreviewEmoji.visibility=View.VISIBLE
+                }else{
+                    binding.ivPreviewEmoji.visibility=View.GONE
+
+                }
+                if(!it.textMsg.isNullOrBlank()){
+                    binding.textPreview.setText(it.textMsg)
+                }else{
+                    binding.textPreview.setText("")
+                }
+            } else{
+                val richCallData=com.artixtise.richdialer.database.roomdatabase.tables.RichCallData(
+                    richCallId, receiverName = data.name
+                    , receiverUserId = data.phoneNumber
+                    , receiverDeviceToken =data.deviceToken
+                    , isRichCall = true
+                    , senderName = viewModel.sharedPre.name?:""
+                    , senderUserId = viewModel.sharedPre.userId?:""
+                    , senderNumber = viewModel.sharedPre.userMobile?:""
+                    , instaID = data.instagramAccount?:""
+                    , twitterID = data.twitterAccount?:"")
+                viewModel!!.insertRichCallHistory(richCallData)
+            }
+
+        }
+        //save data
+
         binding.apply {
             nameOfContact.setText(data.name)
             contactNumber.setText(data.phoneNumber)
         }
-        FavouriteFragment.viewModel!!.selectedData.observe(this) {
-            binding.apply {
-                clPreview.visibility = View.VISIBLE
-                tvPreview.visibility = View.VISIBLE
-                tvPreview.text = getEmoji(it.toInt())
-            }
-        }
+
 
     }
 
-    fun getEmoji(unicode: Int): String {
-        return String(Character.toChars(unicode))
-    }
 
     fun init() {
         with(binding) {
@@ -121,23 +154,23 @@ class SelectScreenActivity : BaseActivity() {
         override fun getItemCount() = 5
 
         override fun createFragment(position: Int) = when (position) {
-            0 -> EmojiFragment.newInstance(
+            0 -> EmojiFragment.newInstance(idRichcall = richCallId,
                 viewModel,
                 intent?.getParcelableExtra<ContactList>("FAVDATA")!!
             )!!
-            1 -> GifFragment.newInstance(
+            1 -> GifFragment.newInstance(idRichcall = richCallId,
                 viewModel,
                 intent?.getParcelableExtra<ContactList>("FAVDATA")!!
             )!!
-            2 -> GalleryFragment.newInstance(
+            2 -> GalleryFragment.newInstance(idRichcall = richCallId,
                 viewModel,
                 intent?.getParcelableExtra<ContactList>("FAVDATA")!!
             )!!
-            3 -> RecentTextFragment.newInstance(
+            3 -> RecentTextFragment.newInstance(idRichcall = richCallId,
                 viewModel,
                 intent?.getParcelableExtra<ContactList>("FAVDATA")!!
             )!!
-            else -> LocationFragment.newInstance(
+            else -> LocationFragment.newInstance(idRichcall = richCallId,
                 viewModel,
                 this@SelectScreenActivity,
                 intent?.getParcelableExtra<ContactList>("FAVDATA")!!
@@ -153,7 +186,8 @@ class SelectScreenActivity : BaseActivity() {
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
                     viewModel.isRichCall = true
-                    richCallFragment = RichCallFragment.newInstance(viewModel, "")!!
+
+                    richCallFragment = RichCallFragment.newInstance(richCallId,viewModel, data.phoneNumber)!!
                     richCallFragment.show(supportFragmentManager, "add_richcall_dialog_fragment")
 
                 }

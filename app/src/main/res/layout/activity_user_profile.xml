@@ -103,15 +103,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/caller_name_label">
 
                     <ImageView
+                        android:id="@+id/callNow"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/ic_cloud" />
 
                     <ImageView
+                        android:id="@+id/richCallNow"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="@dimen/_38sdp"
-                        android:src="@drawable/ic_smile" />
+                        android:src="@drawable/rich_call" />
 
                     <ImageView
                         android:layout_width="40dp"

@@ -33,8 +33,10 @@ class GifFragment: BaseFragment(R.layout.fragment_gif) ,GifAdapter.OnGifInterfac
         var Instance: GifFragment? = null
         var viewModel: HomeViewModel? = null
         var contactList: ContactList? = null
-        fun newInstance(viewmodel : HomeViewModel, list : ContactList): GifFragment? {
+        var idRichCalled: Long? = null
+        fun newInstance(idRichcall:Long,viewmodel : HomeViewModel, list : ContactList): GifFragment? {
             viewModel = viewmodel
+            idRichCalled=idRichcall
             contactList = list
             Instance = GifFragment()
             return Instance
@@ -58,7 +60,7 @@ class GifFragment: BaseFragment(R.layout.fragment_gif) ,GifAdapter.OnGifInterfac
 
     override fun onGifSelect(path: String) {
         viewModel!!.selectedData.postValue(path)
-        val richData = RichCallData(
+       /* val richData = RichCallData(
             EmojiFragment.contactList!!.name,
             EmojiFragment.contactList!!.email,
             EmojiFragment.contactList!!.phoneNumber,
@@ -74,7 +76,7 @@ class GifFragment: BaseFragment(R.layout.fragment_gif) ,GifAdapter.OnGifInterfac
             viewModel?.saveSenderData(richData)!!.observe(requireActivity(), Observer {
                 Log.d("Success",it)
             })
-        }
+        }*/
     }
 
 }
