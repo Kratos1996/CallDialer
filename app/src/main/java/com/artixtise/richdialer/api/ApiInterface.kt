@@ -35,8 +35,8 @@ interface ApiInterface {
                                  @Field("receiverDeveiceId") receiverDeveiceId:String,
     ):RichCallDataResponse
 
-
-    @GET("GetRichcallData.php")
+    @FormUrlEncoded
+    @POST("GetRichcallData.php")
     suspend fun getRichCallData( @Field(SENDER_ID) senderId: String): RichCallDataGetResponse
 
 
