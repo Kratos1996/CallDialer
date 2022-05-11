@@ -88,6 +88,7 @@
         <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/activity_dialer.xml" value="0.11752786220871327" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.19829059829059828" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2109375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/activity_member_selection.xml" value="0.19829059829059828" />
         <entry key="app/src/main/res/layout/activity_permission.xml" value="0.19829059829059828" />
@@ -110,7 +111,7 @@
         <entry key="app/src/main/res/layout/fragment_recent.xml" value="0.2057460611677479" />
         <entry key="app/src/main/res/layout/fragment_recent_add.xml" value="0.19829059829059828" />
         <entry key="app/src/main/res/layout/fragment_recent_text.xml" value="0.19829059829059828" />
-        <entry key="app/src/main/res/layout/fragment_registration.xml" value="0.23596014492753623" />
+        <entry key="app/src/main/res/layout/fragment_registration.xml" value="0.2185430463576159" />
         <entry key="app/src/main/res/layout/fragment_user_profile.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/item_add_on.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/item_community.xml" value="0.24166666666666667" />
