@@ -120,7 +120,7 @@ class CallActivity : BaseActivity() {
                             binding.facebookAccount.visibility = View.GONE
                         }
                         if (it.response.data?.textMsg.isNullOrBlank()) {
-                            binding.tvEmoji.visibility = View.GONE
+                            binding.tvMessage.visibility = View.GONE
                         } else {
                             binding.tvMessage.setText(it.response.data?.textMsg)
                             binding.tvMessage.visibility = View.VISIBLE
