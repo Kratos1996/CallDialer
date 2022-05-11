@@ -131,7 +131,7 @@ class RichCallFragment : BottomSheetDialogFragment() {
                                             startActivity(intent)
                                         }
                                         is RichCallSealed.SaveRichCalldata.Error->{
-                                            Toast.makeText(requireContext(),"Error on Setting Data",Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(requireContext(),"Error on RichCall Data",Toast.LENGTH_SHORT).show()
                                         }
                                     }
                                 }
