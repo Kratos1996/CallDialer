@@ -70,8 +70,7 @@ class ContactsRepositoryImpl @Inject constructor(
     override suspend fun getProfileData(number: String): MutableLiveData<UserAccessData> {
         otherUserId.value = OtherUserProfileSealed.FetchOtherUserState.Loading(true)
         try {
-            val data =
-                collectionRef.document(number).collection(USER_DATA).document(number).get().await().toObject(UserAccessData::class.java)
+            val data = collectionRef.document(number).collection(USER_DATA).document(number).get().await().toObject(UserAccessData::class.java)
             if (data != null && !data.userId.isNullOrBlank()) {
                 otherUserDetail.postValue(data!!)
                 otherUserId.value = OtherUserProfileSealed.FetchOtherUserState.Success(data)

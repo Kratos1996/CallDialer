@@ -52,7 +52,6 @@ class ProfileViewmodel @Inject constructor(val repositoryImpl: ContactRepository
         }
         return otherUserDetail
     }
-
     fun getMyProfile()=profileRepo.getMyProfile()
     fun insertMyProfile(table:MyProfileTable){
         viewModelScope.launch (Dispatchers.IO){

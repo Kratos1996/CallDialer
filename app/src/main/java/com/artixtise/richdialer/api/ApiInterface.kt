@@ -15,8 +15,25 @@ import java.util.concurrent.TimeUnit
 
 interface ApiInterface {
 
+    @FormUrlEncoded
     @POST("CallRequest.php")
-    suspend fun richCallDataSave(@Body params:HashMap<String,String>):RichCallDataResponse
+    suspend fun richCallDataSave(@Field("senderUserId") senderUserId:String,
+                                 @Field("senderName") senderUsername:String,
+                                 @Field("textMsg") textMsg:String,
+                                 @Field("emoji") emoji:String,
+                                 @Field("image") image:String,
+                                 @Field("lat") latitude:String,
+                                 @Field("lng") longitude:String,
+                                 @Field("instagramId") instagramId:String,
+                                 @Field("facebookId") facebookId:String,
+                                 @Field("twitterId") twitterId:String,
+                                 @Field("linkedID") linkedID:String,
+                                 @Field("simNumber") simNumber:String,
+                                 @Field("isRichcall") isRichcall:String,
+                                 @Field("receiverName") receiverName:String,
+                                 @Field("receiverUserId") receiverUserId:String,
+                                 @Field("receiverDeveiceId") receiverDeveiceId:String,
+    ):RichCallDataResponse
 
     @FormUrlEncoded
     @GET("GetRichcallData.php")
