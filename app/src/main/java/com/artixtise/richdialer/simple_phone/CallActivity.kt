@@ -37,7 +37,11 @@ class CallActivity : BaseActivity() {
     }
 
     private fun initObserver() {
-        viewModel.getRichCallData("91$number")
+        if (number.startsWith("+91")) {
+            val numberMain = number.replace("+91", "");
+            viewModel.getRichCallData("91$numberMain")
+        }
+
     }
 
     override fun onStart() {
@@ -73,55 +77,56 @@ class CallActivity : BaseActivity() {
             Call.STATE_ACTIVE
         )
         lifecycleScope.launchWhenCreated {
-            viewModel.getRichCallMutable.collect{
-                when(it){
-                    is RichCallSealed.GetRichCalldata.Loading->{
+            viewModel.getRichCallMutable.collect {
+                when (it) {
+                    is RichCallSealed.GetRichCalldata.Loading -> {
 
                     }
-                    is RichCallSealed.GetRichCalldata.Success->{
-                        if( state == Call.STATE_RINGING){
+                    is RichCallSealed.GetRichCalldata.Success -> {
+                        if (state == Call.STATE_RINGING) {
                             binding.callInfo.setText(it.response.data?.senderUserId)
                             binding.userName.setText(it.response.data?.senderName)
-                        }else if( state == Call.STATE_DIALING ){
+                        } else if (state == Call.STATE_DIALING) {
                             binding.callInfo.setText(it.response.data?.receiverUserId)
                             binding.userName.setText(it.response.data?.receiverName)
                         }
-                        if(it.response.data?.image.isNullOrBlank()){
-                            binding.ivCallerImage.visibility=View.GONE
-                        }else{
-                            Glide.with(this@CallActivity).load(it.response.data?.image).into(  binding.ivCallerImage)
-                            binding.ivCallerImage.visibility=View.VISIBLE
+                        if (it.response.data?.image.isNullOrBlank()) {
+                            binding.ivCallerImage.visibility = View.GONE
+                        } else {
+                            Glide.with(this@CallActivity).load(it.response.data?.image)
+                                .into(binding.ivCallerImage)
+                            binding.ivCallerImage.visibility = View.VISIBLE
                         }
-                        binding.isRichCallData.visibility=View.VISIBLE
-                        if(it.response.data?.instagramId.isNullOrBlank()){
-                            binding.instaAccount.visibility=View.GONE
+                        binding.isRichCallData.visibility = View.VISIBLE
+                        if (it.response.data?.instagramId.isNullOrBlank()) {
+                            binding.instaAccount.visibility = View.GONE
                         }
-                        if(it.response.data?.twitterId.isNullOrBlank()){
-                            binding.twitterAccount.visibility=View.GONE
+                        if (it.response.data?.twitterId.isNullOrBlank()) {
+                            binding.twitterAccount.visibility = View.GONE
                         }
-                        if(it.response.data?.linkedID.isNullOrBlank()){
-                            binding.twitterAccount.visibility=View.GONE
+                        if (it.response.data?.linkedID.isNullOrBlank()) {
+                            binding.twitterAccount.visibility = View.GONE
                         }
-                        if(it.response.data?.facebookId.isNullOrBlank()){
-                            binding.facebookAccount.visibility=View.GONE
+                        if (it.response.data?.facebookId.isNullOrBlank()) {
+                            binding.facebookAccount.visibility = View.GONE
                         }
-                        if(it.response.data?.textMsg.isNullOrBlank()){
-                            binding.tvEmoji.visibility=View.GONE
-                        }else{
+                        if (it.response.data?.textMsg.isNullOrBlank()) {
+                            binding.tvEmoji.visibility = View.GONE
+                        } else {
                             binding.tvMessage.setText(it.response.data?.textMsg)
-                            binding.tvMessage.visibility=View.VISIBLE
+                            binding.tvMessage.visibility = View.VISIBLE
                         }
-                        if(it.response.data?.emoji.isNullOrBlank()){
-                            binding.tvEmoji.visibility=View.GONE
-                        }else{
+                        if (it.response.data?.emoji.isNullOrBlank()) {
+                            binding.tvEmoji.visibility = View.GONE
+                        } else {
                             binding.tvEmoji.setText(it.response.data?.emoji)
-                            binding.tvEmoji.visibility=View.VISIBLE
+                            binding.tvEmoji.visibility = View.VISIBLE
                         }
 
                         binding.callInfo.setText(it.response.data?.receiverUserId)
                     }
-                    is RichCallSealed.GetRichCalldata.Error->{
-                        showCustomAlert("Error on Fetching RichCallData",binding.root)
+                    is RichCallSealed.GetRichCalldata.Error -> {
+                        showCustomAlert("Error on Fetching RichCallData", binding.root)
                     }
                 }
             }
