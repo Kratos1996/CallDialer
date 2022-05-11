@@ -258,7 +258,7 @@ abstract class BaseActivity : AppCompatActivity() {
                 }
                 transaction!!.replace(R.id.container, fragment!!)
                 transaction!!.commit()
-                manager.executePendingTransactions()
+
             }
         }catch (e:Exception){
             finish()
