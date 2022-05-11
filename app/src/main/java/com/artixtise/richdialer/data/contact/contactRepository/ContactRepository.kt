@@ -24,12 +24,13 @@ import kotlinx.coroutines.tasks.await
 
 interface ContactRepository {
     suspend fun insertContact(contact: ContactList)
+    suspend fun updateContact(contact: ContactList)
     suspend fun getUserFromDB():List<ContactList>
     fun getContact(phone:String): Flow<ContactList>
     fun getPhoneWithoutFlow(phone:String): ContactList
     suspend fun getContact(phone:String,isFav: Boolean):ContactList
     fun setFavContact( phone:String,isFav:Boolean)
-    suspend fun setRichCallData( number:String,name:String,userId:String,isAvailable:Boolean)
+    suspend fun setRichCallData( contact: ContactList)
     fun deleteAll()
     fun deleteSingleContact(contact:ContactList)
     fun getContactList(): LiveData<List<ContactList>>

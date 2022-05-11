@@ -2,4 +2,5 @@
 <resources>
     <string name="save_contact">Save Contact</string>
     <string name="aws_pool_id">awsPoolId??</string>
+    <string name="user_not_found">User Not Found</string>
 </resources>

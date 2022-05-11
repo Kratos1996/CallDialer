@@ -1,20 +1,25 @@
 package com.artixtise.richdialer.presentation.ui.activity.userProfile
 
+
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.artixtise.richdialer.R
+import com.artixtise.richdialer.application.ErrorMessage
+import com.artixtise.richdialer.application.ErrorMessage.ERROR_ON_GETTING_USER
 import com.artixtise.richdialer.base.BaseActivity
 import com.artixtise.richdialer.data.profile.model.UserAccessData
 import com.artixtise.richdialer.databinding.ActivityProfileBinding
-import com.artixtise.richdialer.presentation.ui.activity.login.viewmodel.LoginViewmodel
+import com.artixtise.richdialer.domain.model.login.LoginSealed
+import com.artixtise.richdialer.mapper.UserAccessToProfile
+import com.artixtise.richdialer.presentation.ui.activity.userProfile.viewmodel.ProfileViewmodel
+
 
 class ProfileActivity : BaseActivity() {
     private lateinit var binding: ActivityProfileBinding
-    val loginVModel: LoginViewmodel by viewModels()
+    val viewmodel: ProfileViewmodel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,10 +32,10 @@ class ProfileActivity : BaseActivity() {
     }
 
     private fun initViews() {
-
         binding.update.setOnClickListener {
+
             val data = UserAccessData(
-                binding.etName.text.toString().trim(),
+                binding.etName.text.toString(),
                 "",
                 binding.etEmail.text.toString(),
                 sharedPre.userId ?: "",
@@ -44,7 +49,7 @@ class ProfileActivity : BaseActivity() {
                 binding.facebookId.text.toString(),
                 binding.websiteId.text.toString(),
                 binding.twitterId.text.toString(),
-                sharedPre.firebaseDeviceToken ?: "",
+                deviceToken = sharedPre.firebaseDeviceToken ?: "",
                 binding.instaCheckbox.isChecked,
                 binding.linkedinCheckbox.isChecked,
                 binding.facebookCheckBox.isChecked,
@@ -52,24 +57,56 @@ class ProfileActivity : BaseActivity() {
                 binding.twitterCheckbox.isChecked,
             )
             updateData(data)
+
         }
     }
 
     private fun updateData(data: UserAccessData) {
-        loginVModel.updateUserData(data)
+        viewmodel.updateUserData(data)
     }
 
     fun fetchData() {
-        lifecycleScope.launchWhenCreated {
-            viewModel.getOtherUserId(sharedPre.userMobile!!).observe(this@ProfileActivity,
-                Observer {
-                    if (it != null) {
-                        setData(it)
-                    }
-
-                })
+        viewmodel.getMyProfile().observe(this) {
+            if (it != null) {
+                setData(UserAccessToProfile.reverce(it))
+                binding.emptyData.visibility=View.GONE
+            } else {
+                getOnlineProfile()
+                binding.emptyData.visibility=View.VISIBLE
+            }
         }
+        lifecycleScope.launchWhenCreated {
+            viewmodel.registerState.collect {
+                when (it) {
+                    is LoginSealed.RegisterUserState.Loading -> {
+                        showLoadingDialog(ErrorMessage.PLEASE_WAIT)!!
+                            .show()
+                    }
+                    is LoginSealed.RegisterUserState.Success -> {
+                        showLoadingDialog(it.response)!!
+                            .dismiss()
+                        showCustomAlert(it.response, binding.root)
+                    }
+                    is LoginSealed.RegisterUserState.Error -> {
+                        showLoadingDialog(it.response)!!.dismiss()
+                        showCustomAlert(it.response, binding.root)
+                    }
+                }
+            }
+        }
+    }
 
+    fun getOnlineProfile() {
+        lifecycleScope.launchWhenCreated {
+            viewmodel.getOtherUserId(sharedPre.userMobile!!).observe(this@ProfileActivity) { user ->
+                if (user != null) {
+                    viewmodel.insertMyProfile(UserAccessToProfile.convert(user))
+                    binding.emptyData.visibility=View.GONE
+                }else{
+                    binding.emptyData.visibility=View.VISIBLE
+                }
+            }
+        }
 
     }
 

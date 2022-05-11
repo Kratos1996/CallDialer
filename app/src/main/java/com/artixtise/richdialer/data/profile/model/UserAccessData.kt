@@ -15,11 +15,11 @@ data class UserAccessData(var name: String ="",
                           var websiteUrl:String ="",
                           var twitterUrl:String ="",
                           var deviceToken:String="",
-                          var instagramVisible:Boolean=true,
-                          var linkedInVisible:Boolean=true,
-                          var facebookVisible:Boolean=true,
-                          var websiteVisible:Boolean=true,
-                          var twitterVisible:Boolean=true,
+                          var instagramVisible:Boolean=false,
+                          var linkedInVisible:Boolean=false,
+                          var facebookVisible:Boolean=false,
+                          var websiteVisible:Boolean=false,
+                          var twitterVisible:Boolean=false,
 
                           )
 

@@ -16,7 +16,10 @@ object ErrorMessage {
     val CALL_PERMISSION="Need Call Permission"
     val LOCATION_SERVICE_PERMISSION="Require Location Permission from Setting"
     val USER_REGISTERED="User Register Successfully"
+    val USER_SAVED="User Data Saved Successfully"
     val OTHER_USER_DATA="success"
     val SAVE_RICH_CALL_DATA="Successfully send."
+    val NOT_AVAILABLE__RICH_CALL_DATA="Rich Call not Available for this Contact"
     val ERROR="error"
+    val ERROR_ON_GETTING_USER="User Not Found"
 }

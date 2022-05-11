@@ -1,22 +1,22 @@
 package com.artixtise.richdialer.data.call.model
 
 data class RichCallData(
-    var emoji: String ?=null,
-    var image: String ?=null,
-    var lat: String ?=null,
-    var lng: String ?=null,
+    var emoji: String ?="",
+    var image: String ?="",
+    var lat: String ?="",
+    var lng: String ?="",
     var textMsg: String = "",
-    var senderUserId:String ?=null,
-    var senderName:String ?=null,
-    var gif:String ?=null,
-    var instagramId:String ?=null,
-    var facebookId:String ?=null,
-    var twitterId: String ?=null,
+    var senderUserId:String ?="",
+    var senderName:String ?="",
+    var gif:String ?="",
+    var instagramId:String ?="",
+    var facebookId:String ?="",
+    var twitterId: String ?="",
     var linkedID: String = "",
-    var simNumber:String ?=null,
-    var isRichcall:String ?=null,
-    var receiverName:String ?=null,
-    var receiverUserId:String ?=null,
-    var receiverDeveiceId:String ?=null,
-    var mobile:String ?=null
+    var simNumber:String ?="",
+    var isRichcall:String ?="",
+    var receiverName:String ?="",
+    var receiverUserId:String ?="",
+    var receiverDeveiceId:String ?="",
+    var mobile:String ?=""
 )

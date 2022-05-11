@@ -8,4 +8,6 @@ interface RichCallRepository {
     fun getRichCallData(id: Long): LiveData<RichCallData>
     fun getRichCallDataList(): LiveData<List<RichCallData>>
     suspend fun deleteSingleRichCall(id: Long)
+    suspend fun updateRichCallTextData(text:String,id: Long)
+    suspend fun updateRichCallEmojiData(emoji:String,id: Long)
 }

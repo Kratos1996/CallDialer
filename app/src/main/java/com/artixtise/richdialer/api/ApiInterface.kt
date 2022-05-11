@@ -1,5 +1,7 @@
 package com.artixtise.richdialer.api
 
+import com.artixtise.richdialer.base.BASE_URL
+import com.artixtise.richdialer.base.SENDER_ID
 import com.artixtise.richdialer.data.call.model.RichCallDataGetResponse
 import com.artixtise.richdialer.data.call.model.RichCallDataResponse
 import okhttp3.OkHttpClient
@@ -13,49 +15,29 @@ import java.util.concurrent.TimeUnit
 
 interface ApiInterface {
 
-
-//    @GET("getpostofstate")
-//    suspend fun getUserPost(@Body hashMap: HashMap<String,String>):Response<PostResponse>
-
+    @FormUrlEncoded
     @POST("CallRequest.php")
-    suspend fun richCallDataSave(
-        @Body params:HashMap<String,String>
-    ):Response<RichCallDataResponse>
+    suspend fun richCallDataSave(@Field("senderUserId") senderUserId:String,
+                                 @Field("senderName") senderUsername:String,
+                                 @Field("textMsg") textMsg:String,
+                                 @Field("emoji") emoji:String,
+                                 @Field("image") image:String,
+                                 @Field("lat") latitude:String,
+                                 @Field("lng") longitude:String,
+                                 @Field("instagramId") instagramId:String,
+                                 @Field("facebookId") facebookId:String,
+                                 @Field("twitterId") twitterId:String,
+                                 @Field("linkedID") linkedID:String,
+                                 @Field("simNumber") simNumber:String,
+                                 @Field("isRichcall") isRichcall:String,
+                                 @Field("receiverName") receiverName:String,
+                                 @Field("receiverUserId") receiverUserId:String,
+                                 @Field("receiverDeveiceId") receiverDeveiceId:String,
+    ):RichCallDataResponse
 
-
+    @FormUrlEncoded
     @GET("GetRichcallData.php")
-    suspend fun getRichCallData(
-        @Body params:HashMap<String,String>):
-            Response<RichCallDataGetResponse>
+    suspend fun getRichCallData( @Field(SENDER_ID) senderId: String): RichCallDataGetResponse
 
 
-//    @GET("GetRichcallData.php")
-//    suspend fun sendOtp(@Query("senderUserId") senderUserId: String):
-//            Response<OtpResponse>
-
-
-
-    companion object {
-
-        private const val BASE_URL = "https://codetesting.xyz/CallingAppApi/"
-
-        fun createRichCalDialer(): ApiInterface {
-            val httpClient = OkHttpClient().newBuilder()
-                .connectTimeout(300, TimeUnit.SECONDS)
-                .readTimeout(600, TimeUnit.SECONDS)
-                .writeTimeout(600, TimeUnit.SECONDS)
-                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .addInterceptor(AuthorizationInterceptor())
-                .build()
-
-
-            return Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(httpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build().create(ApiInterface::class.java)
-        }
-
-
-    }
 }

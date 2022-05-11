@@ -7,6 +7,7 @@ import com.artixtise.richdialer.application.ErrorMessage.OTP_VERIFICATION_FAILED
 import com.artixtise.richdialer.application.ErrorMessage.OTP_VERIFICATION_SUCCESSFULLY
 import com.artixtise.richdialer.application.ErrorMessage.USER_REGISTERED
 import com.artixtise.richdialer.base.USER_DATA
+import com.artixtise.richdialer.data.profile.ProfileRepository
 import com.artixtise.richdialer.data.profile.model.UserAccessData
 import com.artixtise.richdialer.database.datastore.DataStoreBase
 import com.artixtise.richdialer.database.datastore.DataStoreCoroutinesHandler
@@ -15,6 +16,7 @@ import com.artixtise.richdialer.database.roomdatabase.AppDB
 import com.artixtise.richdialer.domain.model.login.LoginModel
 import com.artixtise.richdialer.domain.model.login.LoginSealed
 import com.artixtise.richdialer.domain.model.login.VerificationModel
+import com.artixtise.richdialer.mapper.UserAccessToProfile
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -37,6 +39,7 @@ class LoginRepositoryImpl @Inject constructor(
     val dataStore: DataStoreBase,
     val document: CollectionReference,
     val sharedPre: SharedPre,
+    val profileRepo:ProfileRepository
 ) : LoginRepository {
 
     var loginState =
@@ -128,6 +131,7 @@ class LoginRepositoryImpl @Inject constructor(
     }
 
     override fun saveUserData(data: UserAccessData) {
+        GlobalScope.launch {  profileRepo.insertMyProfile(UserAccessToProfile.convert(data)) }
         registerState.value = LoginSealed.RegisterUserState.Loading(true)
         document.document(data.mobile).collection(USER_DATA).document(data.mobile).set(data).addOnSuccessListener {
             registerState.value = LoginSealed.RegisterUserState.Success(USER_REGISTERED)

@@ -83,26 +83,6 @@ class LoginViewmodel @Inject constructor(val repositoryImpl: LoginRepositoryImpl
 
     }
 
-    fun updateUserData(data: UserAccessData) {
-        viewModelScope.launch {
-            repositoryImpl.saveUserData(data)
-            repositoryImpl.registerState.collect {
-                when (it) {
-                    is LoginSealed.RegisterUserState.Loading -> {
-                        registerState.value = it
-                    }
-                    is LoginSealed.RegisterUserState.Success -> {
-                        registerState.value = it
-                    }
-                    is LoginSealed.RegisterUserState.Error -> {
-                        registerState.value = it
-                    }
-                }
-            }
-        }
-
-    }
-
     suspend fun isUserAvailable(): Boolean {
         val data = viewModelScope.async {
             repositoryImpl.isUserAvailable()
