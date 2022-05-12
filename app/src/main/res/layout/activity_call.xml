@@ -107,7 +107,7 @@
                 android:maxLength="200"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_12sdp"
-                android:text="Text Message : Hello"
+                android:text=""
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
