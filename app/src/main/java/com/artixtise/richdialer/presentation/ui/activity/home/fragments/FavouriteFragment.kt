@@ -156,7 +156,6 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
     }
 
     override fun onCallStart(number: String) {
-
         selectSim(number)
     }
 

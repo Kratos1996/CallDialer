@@ -9,6 +9,7 @@
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/activity_rich_receiver.xml" value="0.25" />
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/activity_select_screen.xml" value="0.3569230769230769" />
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/activity_user_profile.xml" value="0.2713541666666667" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_add_on.xml" value="0.3625" />
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_favourite.xml" value="0.3569230769230769" />
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_location.xml" value="0.33611111111111114" />
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_recent_text.xml" value="0.33611111111111114" />
@@ -108,7 +109,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="16" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -15,6 +15,7 @@ import com.artixtise.richdialer.database.roomdatabase.tables.ContactList
 import com.artixtise.richdialer.domain.model.contact.OtherUserProfileSealed
 import com.artixtise.richdialer.domain.model.contact.RichCallSealed
 import com.artixtise.richdialer.domain.model.login.LoginSealed
+import com.artixtise.richdialer.domain.recent.RecentCallData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,6 +39,7 @@ interface ContactRepository {
     fun getFavList(): LiveData<List<ContactList>>
     fun getFavList(data:String): LiveData<List<ContactList>>
     suspend fun loadContact()
+    fun loadRecentCalls():ArrayList<RecentCallData>
     fun getMedia(cursor: Cursor?): Flow<MutableList<MediaItem>>
     suspend fun getProfileData(number: String): MutableLiveData<UserAccessData>
     suspend fun saveSenderData(data: RichCallData): MutableLiveData<String>
