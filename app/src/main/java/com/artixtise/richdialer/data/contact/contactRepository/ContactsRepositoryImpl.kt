@@ -5,6 +5,7 @@ import android.content.ContentResolver
 import android.content.ContentUris
 import android.content.Context
 import android.database.Cursor
+import android.provider.CallLog
 import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.util.Log
@@ -26,19 +27,25 @@ import com.artixtise.richdialer.database.roomdatabase.tables.ContactList
 import com.artixtise.richdialer.domain.model.contact.OtherUserProfileSealed
 import com.artixtise.richdialer.domain.model.contact.RichCallSealed
 import com.artixtise.richdialer.domain.model.contact.UserStatusSealed
-import com.artixtise.richdialer.domain.model.login.LoginSealed
 import com.artixtise.richdialer.domain.model.login.UserStatusModel
+import com.artixtise.richdialer.domain.recent.RecentCallData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
+import java.lang.Long
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.Boolean
+import kotlin.Exception
+import kotlin.String
+import kotlin.arrayOf
+import kotlin.let
+import kotlin.toString
 
 
 @Singleton
@@ -248,6 +255,44 @@ class ContactsRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun loadRecentCalls():ArrayList<RecentCallData> {
+        var ricentCallList=ArrayList<RecentCallData>()
+        val sb = StringBuffer()
+        val details = arrayOf(
+            CallLog.Calls.NUMBER,
+            CallLog.Calls.TYPE,
+            CallLog.Calls.DURATION,
+            CallLog.Calls.CACHED_NAME,
+            CallLog.Calls._ID
+        )
+        val managedCursor: Cursor = context.contentResolver.query(CallLog.Calls.CONTENT_URI, details, null, null, CallLog.Calls._ID + " DESC")!!
+        val number = managedCursor.getColumnIndex(CallLog.Calls.NUMBER)
+        val type = managedCursor.getColumnIndex(CallLog.Calls.TYPE)
+        val date = managedCursor.getColumnIndex(CallLog.Calls.DATE)
+        val duration = managedCursor.getColumnIndex(CallLog.Calls.DURATION)
+        sb.append("Call Details :")
+        while (managedCursor.moveToNext()) {
+            val phNumber = managedCursor.getString(number) // mobile number
+            val callType = managedCursor.getString(type) // call type
+            val callDate = managedCursor.getString(date) // call date
+            val callDayTime = Date(Long.valueOf(callDate))
+            val callDuration = managedCursor.getString(duration)
+            var dir: String? = null
+            val dircode = callType.toInt()
+            when (dircode) {
+                CallLog.Calls.OUTGOING_TYPE -> dir = "OUTGOING CALL"
+                CallLog.Calls.INCOMING_TYPE -> dir = "INCOMING CALL"
+                CallLog.Calls.MISSED_TYPE -> dir = "MISSED CALL"
+            }
+            val data= RecentCallData(phNumber,callType,callDate,callDayTime.toString(),callDuration,dir)
+            ricentCallList.add(data)
+            sb.append("\nPhone Number:--- $phNumber \nCall Type:--- $dir \nCall Date:--- $callDayTime \nCall duration in sec :--- $callDuration")
+            sb.append("\n----------------------------------")
+        }
+        managedCursor.close()
+        Log.e("Agil value --- ", sb.toString())
+        return ricentCallList
+    }
     fun getMeMyNumber(number: String, countryCode: String="91"): String? {
         return number.replace("[^0-9\\+]".toRegex(), "") //remove all the non numbers (brackets dashes spaces etc.) except the + signs
             .replace("(^[1-9].+)".toRegex(), "$countryCode$1") //if the number is starting with no zero and +, its a local number. prepend cc
@@ -333,3 +378,4 @@ class ContactsRepositoryImpl @Inject constructor(
         }
     }
 }
+

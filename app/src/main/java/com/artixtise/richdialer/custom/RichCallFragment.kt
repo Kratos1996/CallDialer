@@ -111,10 +111,10 @@ class RichCallFragment : BottomSheetDialogFragment() {
                                 viewModel!!.setRichCallMutable.collect{
                                     when(it) {
                                         is RichCallSealed.SaveRichCalldata.Loading -> {
-                                            Toast.makeText(requireContext(),PLEASE_WAIT,Toast.LENGTH_SHORT).show()
+                                          //  Toast.makeText(requireContext(),PLEASE_WAIT,Toast.LENGTH_SHORT).show()
                                         }
                                         is RichCallSealed.SaveRichCalldata.Success->{
-                                            Toast.makeText(requireContext(),"RichCall Started",Toast.LENGTH_SHORT).show()
+                                           // Toast.makeText(requireContext(),"RichCall Started",Toast.LENGTH_SHORT).show()
                                             if(!isCallStarted){
                                                 isCallStarted=true
                                                 val action = Intent.ACTION_CALL
@@ -125,7 +125,6 @@ class RichCallFragment : BottomSheetDialogFragment() {
                                                     } else {
                                                         data = Uri.fromParts("tel", recipient, null)
                                                     }
-
                                                     if (handle != null) {
                                                         putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
                                                     }

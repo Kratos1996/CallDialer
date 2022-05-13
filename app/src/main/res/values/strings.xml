@@ -218,6 +218,7 @@
     <string name="slider3_msg">Make HD audio conference calls \n
     with video conferencing and screen, \n
     sharing</string>
+    <string name="fetching">fetching...</string>
 
 
 </resources>

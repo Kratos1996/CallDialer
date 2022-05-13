@@ -56,7 +56,7 @@
                         android:layout_marginStart="@dimen/_4sdp"
                         android:textStyle="bold"
                         android:layout_marginTop="@dimen/_2sdp"
-                        android:text="@string/jennifer"
+                        android:text="@string/fetching"
                         android:textSize="@dimen/_16sdp" />
                 </LinearLayout>
 
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_2sdp"
-                    android:text="@string/number"
+                    android:text="@string/fetching"
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
 
@@ -82,14 +82,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/info" />
 
             <TextView
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/tvEmoji"
                 style="@style/Heading_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Emoji"
-                android:textSize="@dimen/_24sdp"
+                android:textSize="@dimen/_50ssp"
                 app:layout_constraintBottom_toBottomOf="@+id/ivCallerImage"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
