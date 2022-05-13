@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.artixtise.richdialer.presentation.ui.activity.splash
 
 import android.app.role.RoleManager
@@ -15,6 +17,7 @@ import com.artixtise.richdialer.database.datastore.DataStoreBase
 import com.artixtise.richdialer.databinding.ActivitySplashBinding
 import com.artixtise.richdialer.presentation.ui.activity.home.HomeActivity
 import com.artixtise.richdialer.presentation.ui.activity.login.LoginActivity
+import com.artixtise.richdialer.presentation.ui.activity.welcome.WelcomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -86,7 +89,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
                 finish()
             }else{
-                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+                startActivity(Intent(this@SplashActivity, WelcomeActivity::class.java))
                 finish()
             }
         }

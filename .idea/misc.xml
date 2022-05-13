@@ -62,6 +62,22 @@
         <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/rich_call_options.xml" value="0.23703703703703705" />
         <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/layout/toolbar.xml" value="0.3625" />
         <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/menu/pop_up.xml" value="0.3569230769230769" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/drawable-v24/btn_dialpad_key.xml" value="0.1265" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.1265" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/drawable/btn_search_outline.xml" value="0.1265" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/drawable/fill_main_btn.xml" value="0.1265" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/activity_about_us.xml" value="0.1796875" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/activity_call.xml" value="0.15885416666666666" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/activity_dialer.xml" value="0.15885416666666666" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/activity_rich_receiver.xml" value="0.15885416666666666" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/activity_select_screen.xml" value="0.1796875" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/activity_welcome.xml" value="0.133984375" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/first_fragment.xml" value="0.17864583333333334" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/fragment_emoji.xml" value="0.15833333333333333" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/fragment_login.xml" value="0.1796875" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/item_emoji.xml" value="0.1140625" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/second_fragment.xml" value="0.1796875" />
+        <entry key="..\:/CallDialerMain/app/src/main/res/layout/third_fragment.xml" value="0.1796875" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.133" />
         <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.19829059829059828" />
         <entry key="app/src/main/res/layout/activity_app_settings.xml" value="0.19140930175781257" />

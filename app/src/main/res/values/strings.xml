@@ -79,7 +79,7 @@
     </string>
     <string name="this_will_only_take_a_bit">This will only take a bit</string>
     <string name="email">Email</string>
-    <string name="search">Search...</string>
+    <string name="search">Search…</string>
     <string name="first_name">First Name</string>
     <string name="name">Name</string>
     <string name="vijay">Vijay</string>
@@ -98,9 +98,9 @@
     <string name="outgoing_call">Outgoing Call</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="chat_with">Chat With...</string>
+    <string name="chat_with">Chat With…</string>
     <string name="chats">Chats</string>
-    <string name="type_a_message">Type a message...</string>
+    <string name="type_a_message">Type a message…</string>
     <string name="im">IM</string>
     <string name="available">Available</string>
     <string name="lastseenat">Last Seen:</string>
@@ -140,7 +140,7 @@
     <string name="number">+91 1234567890</string>
     <string name="permission_setting">Permission Setting</string>
 
-    <string name="member_selection">Member Selection...</string>
+    <string name="member_selection">Member Selection…</string>
     <string name="dark_light">Dark/Light</string>
     <string name="ask_question">Frequently asked questions</string>
     <string name="small_large">Font Small/Large</string>
@@ -207,6 +207,17 @@
     <string name="disable_proximity_sensor">Disable proximity sensor during calls</string>
     <string name="disable_swipe_to_answer">Replace swiping at responding to incoming calls with clicking</string>
     <string name="user_not_found">User Not Found</string>
+    <string name="slider1_msg">Make it easy HD video call to \n
+    start, join, and collaborate \n
+    across any device </string>
+
+    <string name="slider2_msg">Make call with explicit context like \n
+    logos, images, location information, \n
+    the call reason, among many others </string>
+
+    <string name="slider3_msg">Make HD audio conference calls \n
+    with video conferencing and screen, \n
+    sharing</string>
     <string name="fetching">fetching...</string>
 
 

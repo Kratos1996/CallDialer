@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.artixtise.richdialer">
 
-    <uses-permission android:name="android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS" />
+    <uses-permission android:name="android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.USE_SIP" />
 
     <uses-feature
@@ -35,10 +37,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.telecom.action.CONFIGURE_PHONE_ACCOUNT" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
-
-    <uses-feature
-        android:name="android.hardware.microphone"
-        android:required="true" />
 
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -99,6 +97,7 @@
             android:exported="false" />
         <activity
             android:name=".presentation.ui.activity.splash.SplashActivity"
+            android:exported="true"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -137,6 +136,10 @@
             android:exported="false">
 
         </activity>
+     <activity android:name=".presentation.ui.activity.welcome.WelcomeActivity"
+            android:exported="false">
+
+        </activity>
 
         <receiver
             android:name=".brodcast.CallActionReceiver"
@@ -150,7 +153,8 @@
 
         <service
             android:name=".simple_phone.CallService"
-            android:permission="android.permission.BIND_INCALL_SERVICE">
+            android:permission="android.permission.BIND_INCALL_SERVICE"
+            android:exported="true">
             <meta-data
                 android:name="android.telecom.IN_CALL_SERVICE_UI"
                 android:value="true"/>

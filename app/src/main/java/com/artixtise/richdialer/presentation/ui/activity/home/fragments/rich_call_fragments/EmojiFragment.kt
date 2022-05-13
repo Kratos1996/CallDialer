@@ -1,19 +1,14 @@
 package com.artixtise.richdialer.presentation.ui.activity.home.fragments.rich_call_fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.artixtise.richdialer.R
 import com.artixtise.richdialer.base.BaseFragment
-import com.artixtise.richdialer.data.call.model.RichCallData
 import com.artixtise.richdialer.database.roomdatabase.tables.ContactList
 import com.artixtise.richdialer.databinding.FragmentEmojiBinding
 import com.artixtise.richdialer.presentation.ui.activity.home.EmojiInterface
 import com.artixtise.richdialer.presentation.ui.activity.home.adapter.EmojiAdapter
-import com.artixtise.richdialer.presentation.ui.activity.home.fragments.ContactFragment
 import com.artixtise.richdialer.presentation.ui.activity.home.viewmodel.HomeViewModel
 import com.artixtise.richdialer.utility.EmojiArray
 
