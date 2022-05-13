@@ -9,26 +9,25 @@ import com.artixtise.richdialer.databinding.ItemGalleryBinding
 import com.bumptech.glide.Glide
 
 class GifAdapter constructor(context: Context,private var onGifClick:OnGifInterface) :
-    BaseAdapter<Int, ItemGalleryBinding>(context, R.layout.item_gallery) {
+    BaseAdapter<String, ItemGalleryBinding>(context, R.layout.item_gallery) {
 
     override fun onViewHolderBind(
         viewHolder: BaseViewHolder<ItemGalleryBinding>,
         binding: ItemGalleryBinding,
         position: Int,
-        data: Int,
-        list: ArrayList<Int>
+        data: String,
+        list: ArrayList<String>
     ) {
         binding.ivImage.setOnClickListener {
-            onGifClick.onGifSelect("")
+            onGifClick.onGifSelect(data)
         }
-        //binding.ivImage.setImageDrawable(data)
         Glide.with(binding.root.context)
-            .load(R.drawable.one_gif)
+            .load(data)
             .into(binding.ivImage)
 
     }
 
-    override fun onClickItemListner(data: Int, position: Int) {
+    override fun onClickItemListner(  binding: ItemGalleryBinding,data: String, position: Int) {
         //Toast.makeText(context, "Click on item : " +( position + 1), Toast.LENGTH_SHORT).show()
     }
 

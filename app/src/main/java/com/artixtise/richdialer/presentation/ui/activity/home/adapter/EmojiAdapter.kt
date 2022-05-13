@@ -33,7 +33,7 @@ class EmojiAdapter constructor(context: Context, val emojiData: EmojiInterface) 
         return String(Character.toChars(unicode))
     }
 
-    override fun onClickItemListner(data: Int, position: Int) {
+    override fun onClickItemListner( binding: ItemEmojiBinding,data: Int, position: Int) {
         //Toast.makeText(context, "Click on item : " +( position + 1), Toast.LENGTH_SHORT).show()
     }
 }

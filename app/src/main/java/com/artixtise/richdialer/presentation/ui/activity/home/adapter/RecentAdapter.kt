@@ -9,32 +9,29 @@ import com.artixtise.richdialer.R
 import com.artixtise.richdialer.base.BaseAdapter
 import com.artixtise.richdialer.base.BaseViewHolder
 import com.artixtise.richdialer.databinding.ItemRecentBinding
+import com.artixtise.richdialer.domain.recent.RecentCallData
 import com.google.android.material.tabs.TabLayout
 import java.util.ArrayList
 
 class RecentAdapter constructor(context: Context,private val onClick:OnRecenInterface) :
-BaseAdapter<String, ItemRecentBinding>(context, R.layout.item_recent) {
+BaseAdapter<RecentCallData, ItemRecentBinding>(context, R.layout.item_recent) {
 
     override fun onViewHolderBind(
         viewHolder: BaseViewHolder<ItemRecentBinding>,
         binding: ItemRecentBinding,
         position: Int,
-        data: String,
-        list: ArrayList<String>
+        data: RecentCallData,
+        list: ArrayList<RecentCallData>
     ) {
+
         if (position % 2 == 0) {
             binding.recentBackground.setBackgroundColor(context.resources.getColor(R.color.white))
         } else {
             binding.recentBackground.setBackgroundColor(context.resources.getColor(R.color.light_gray))
         }
-        binding.ExpandNow.setOnClickListener {
-            onClick.updateContact("")
-            if(binding.expandView.isVisible){
-                binding.expandView.visibility= View.GONE
-            }else{
-                binding.expandView.visibility= View.VISIBLE
-            }
-        }
+        binding.nameOfContact.setText(data.name?:"Unknown")
+        binding.NumberOfContact.setText(data.phNumber)
+
         binding.icAdd.setOnClickListener {
             onClick.add()
         }
@@ -49,8 +46,12 @@ BaseAdapter<String, ItemRecentBinding>(context, R.layout.item_recent) {
         }
     }
 
-    override fun onClickItemListner(data: String, position: Int) {
-        Toast.makeText(context, "Click on item : " +( position + 1), Toast.LENGTH_SHORT).show()
+    override fun onClickItemListner( binding: ItemRecentBinding,data: RecentCallData, position: Int) {
+        if(binding.expandView.isVisible){
+            binding.expandView.visibility= View.GONE
+        }else{
+            binding.expandView.visibility= View.VISIBLE
+        }
 
 
     }

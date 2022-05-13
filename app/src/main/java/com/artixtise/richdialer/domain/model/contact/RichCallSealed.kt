@@ -2,6 +2,7 @@ package com.artixtise.richdialer.domain.model.contact
 
 import com.artixtise.richdialer.data.call.model.RichCallDataGetResponse
 import com.artixtise.richdialer.data.call.model.RichCallDataResponse
+import com.artixtise.richdialer.data.call.model.uplodeImage.UplodeImageResponse
 
 object RichCallSealed {
     sealed class SaveRichCallState {
@@ -22,6 +23,14 @@ object RichCallSealed {
         class Error(val response: String) : GetRichCalldata()
         class Loading(val isLoading: Boolean) : GetRichCalldata()
         object Empty : GetRichCalldata()
+    }
+
+    sealed class UplodeImage {
+
+        class Success(val response: UplodeImageResponse) : UplodeImage()
+        class Error(val response: String) : UplodeImage()
+        class Loading(val isLoading: Boolean) : UplodeImage()
+        object Empty : UplodeImage()
     }
 
 }

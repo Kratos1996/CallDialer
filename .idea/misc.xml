@@ -10,10 +10,14 @@
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/activity_select_screen.xml" value="0.3569230769230769" />
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/activity_user_profile.xml" value="0.2713541666666667" />
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_add_on.xml" value="0.3625" />
-        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_favourite.xml" value="0.3569230769230769" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_favourite.xml" value="0.17402597402597403" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_location.xml" value="0.33611111111111114" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_recent.xml" value="0.3625" />
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_recent_text.xml" value="0.33611111111111114" />
         <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/fragment_registration.xml" value="0.29074074074074074" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/item_favourite.xml" value="0.1" />
+        <entry key="..\:/2022/Personal/Artistixe llp/CallDialer/app/src/main/res/layout/item_recent.xml" value="0.18541666666666667" />
         <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable-v24/curved_background.xml" value="0.1475" />
         <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable-v24/round_ripple.xml" value="0.1475" />
         <entry key="..\:/2022/Personal/Artistixe llp/RichCallApp/app/src/main/res/drawable/btn_search_outline.xml" value="0.1935" />
@@ -109,7 +113,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="16" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

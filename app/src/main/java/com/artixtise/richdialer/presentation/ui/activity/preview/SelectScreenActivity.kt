@@ -2,6 +2,7 @@ package com.artixtise.richdialer.presentation.ui.activity.preview
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.telecom.TelecomManager
 import android.view.View
@@ -23,6 +24,7 @@ import com.artixtise.richdialer.presentation.ui.activity.home.fragments.Favourit
 import com.artixtise.richdialer.presentation.ui.activity.home.fragments.rich_call_fragments.*
 import com.artixtise.richdialer.presentation.ui.activity.userProfile.viewmodel.ProfileViewmodel
 import com.artixtise.richdialer.utility.Utility
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.karumi.dexter.Dexter
@@ -38,6 +40,7 @@ class SelectScreenActivity : BaseActivity() {
     val viewmodel: ProfileViewmodel by viewModels()
     lateinit var data: ContactList
     var richCallData =RichCallData()
+    var finalImage=""
     val richCallId by lazy { System.currentTimeMillis() }
     var richCallDataObj=com.artixtise.richdialer.database.roomdatabase.tables.RichCallData()
 
@@ -78,6 +81,7 @@ class SelectScreenActivity : BaseActivity() {
                 if(senderProfile.websiteVisible)binding.swUrl.isChecked=true else false
                 if(senderProfile.instagramVisible)binding.swInsta.isChecked=true else false
                 if(senderProfile.websiteVisible)binding.urlPreview.setText(senderProfile.websiteUrl) else ""
+
                 binding.swUrl.setOnClickListener {
                     if(binding.swUrl.isChecked){
                         binding.webLay.visibility=View.VISIBLE
@@ -120,13 +124,30 @@ class SelectScreenActivity : BaseActivity() {
                     if (it != null) {
                         richCallDataObj=it
                         if(!it.emoji.isNullOrBlank()){
+                            binding.ivPreviewEmoji.requestFocus()
                             binding.ivPreviewEmoji.setText(it.emoji)
                             binding.ivPreviewEmoji.visibility=View.VISIBLE
                         }else{
                             binding.ivPreviewEmoji.visibility=View.GONE
 
                         }
+                        if(!it.gif.isNullOrBlank()){
+                            finalImage=it.gif
+                            binding.ivPreview.visibility=View.VISIBLE
+                            Glide.with(this).load(it.gif).into(binding.ivPreview)
+                        }else if(!it.image.isNullOrBlank()){
+                            finalImage=it.image
+                            binding.ivPreview.visibility=View.VISIBLE
+                            val imageArray=convertStringToByteArray(it.image)
+                            val bitmap= BitmapFactory.decodeByteArray(imageArray,0,imageArray.size)
+                            Glide.with(this).load(bitmap).into(binding.ivPreview)
+                        }else{
+                            Glide.with(this).load(R.drawable.lets_meet).into(binding.ivPreview)
+                            binding.ivPreview.visibility=View.GONE
+                        }
+
                         if(!it.textMsg.isNullOrBlank()){
+                            binding.textPreview.requestFocus()
                             binding.textPreview.setText(it.textMsg)
                             binding.messageLay.visibility=View.VISIBLE
 
@@ -134,6 +155,7 @@ class SelectScreenActivity : BaseActivity() {
                             binding.textPreview.setText("")
                             binding.messageLay.visibility=View.GONE
                         }
+
                     } else{
                          richCallData=com.artixtise.richdialer.database.roomdatabase.tables.RichCallData(
                             richCallId, receiverName = data.name
@@ -152,6 +174,8 @@ class SelectScreenActivity : BaseActivity() {
                     }
 
                 }
+            }else{
+                showCustomAlert("Please Update your Profile First !!",binding.root)
             }
         }
 

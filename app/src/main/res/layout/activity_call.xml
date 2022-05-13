@@ -29,7 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/callingType"
                     style="@style/Heading_regular"
                     android:layout_width="match_parent"
                     android:gravity="center"

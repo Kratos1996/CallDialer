@@ -31,7 +31,7 @@ class SimAdapter constructor(context: Context, private var onSimClick:OnSimSelec
 
     }
 
-    override fun onClickItemListner(data: SIMAccount, position: Int) {
+    override fun onClickItemListner(binding: ItemSimBinding,data: SIMAccount, position: Int) {
         selectedPos = position
         //binding.llSim.background = ContextCompat.getDrawable(binding.root.context, R.drawable.theme_curved_border);
         onSimClick.onSimClick(data.phoneNumber,position)

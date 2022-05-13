@@ -5,12 +5,15 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.telecom.TelecomManager
+import android.util.Base64
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -31,11 +34,11 @@ import com.artixtise.richdialer.application.ErrorMessage
 import com.artixtise.richdialer.application.ErrorMessage.INTERNET_CONNECTION_ERROR
 import com.artixtise.richdialer.application.ErrorMessage.THEME_ERROR
 import com.artixtise.richdialer.application.ThemeHelper
-import com.artixtise.richdialer.presentation.managers.getAvailableSIMCardLabels
 import com.artixtise.richdialer.database.datastore.DataStoreBase
 import com.artixtise.richdialer.database.prefrence.SharedPre
 import com.artixtise.richdialer.databinding.DialogProgressBinding
-import com.artixtise.richdialer.presentation.ui.activity.home.fragments.ContactFragment
+import com.artixtise.richdialer.mapper.UserAccessToProfile
+import com.artixtise.richdialer.presentation.managers.getAvailableSIMCardLabels
 import com.artixtise.richdialer.presentation.ui.activity.home.fragments.FavouriteFragment
 import com.artixtise.richdialer.presentation.ui.activity.home.viewmodel.HomeViewModel
 import com.artixtise.richdialer.presentation.ui.activity.login.fragments.LoginFragment
@@ -50,8 +53,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.LinkedHashMap
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.nio.charset.StandardCharsets
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.LinkedHashMap
 
 
 @AndroidEntryPoint
@@ -393,5 +400,27 @@ abstract class BaseActivity : AppCompatActivity() {
         }
 
     }
+    open fun converBitmap(image: File):ByteArray{
+        val filePath: String = image.getPath()
+        val bitmap = BitmapFactory.decodeFile(filePath)
+        return converBitmaptoArray(bitmap)
+    }
 
+    fun converBitmaptoArray(bitmap:Bitmap) :ByteArray{
+        val bmp: Bitmap = bitmap
+        val stream = ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.PNG, 60, stream)
+        val byteArray: ByteArray = stream.toByteArray()
+        bmp.recycle()
+        return byteArray
+
+    }
+    fun convertStringToByteArray(data:String):ByteArray{
+        var  b = Base64.decode(data.toByteArray(), Base64.DEFAULT)
+        return b
+    }
+    fun convertByteArraytoString(data:ByteArray):String{
+        var  b =  Base64.encodeToString(data, Base64.DEFAULT)
+        return b
+    }
 }

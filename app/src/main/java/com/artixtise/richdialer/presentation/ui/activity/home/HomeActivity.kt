@@ -12,10 +12,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.artixtise.richdialer.R
 import com.artixtise.richdialer.base.BaseActivity
 import com.artixtise.richdialer.databinding.ActivityMainBinding
+import com.artixtise.richdialer.mapper.UserAccessToProfile
 import com.artixtise.richdialer.presentation.ui.activity.home.fragments.*
 import com.artixtise.richdialer.presentation.ui.activity.userProfile.ProfileActivity
 import com.artixtise.richdialer.utility.Utility
@@ -37,6 +39,7 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this, R.layout.activity_main)
+        getOnlineProfile()
     }
 
 
@@ -135,7 +138,23 @@ class HomeActivity : BaseActivity() {
         })
     }
 
+    fun getOnlineProfile() {
+        viewModel.getMyProfile().observe(this) {
+            if (it== null) {
+                lifecycleScope.launchWhenCreated {
+                    viewModel.getOtherUserId(sharedPre.userMobile!!).observe(this@HomeActivity) { user ->
+                        if (user != null) {
+                            viewModel.insertMyProfile(UserAccessToProfile.convert(user))
+                        }else{
 
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
     inner class FragmentsViewPagerAdapter :
         FragmentStateAdapter(supportFragmentManager, lifecycle) {
 

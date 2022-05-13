@@ -36,15 +36,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
-import java.lang.Long
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.Boolean
-import kotlin.Exception
-import kotlin.String
-import kotlin.arrayOf
-import kotlin.let
 import kotlin.toString
 
 
@@ -68,6 +62,7 @@ class ContactsRepositoryImpl @Inject constructor(
     var otherUserDetail = MutableLiveData<UserAccessData>()
     var richCallST = MutableLiveData<String>()
     var updateStatus = MutableLiveData<String>()
+    var recenCallData = MutableLiveData<ArrayList<RecentCallData>>()
 
     override suspend fun insertContact(contact: ContactList) = db.getDao().insert(contact)
     override suspend fun updateContact(contact: ContactList) {
@@ -255,7 +250,7 @@ class ContactsRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun loadRecentCalls():ArrayList<RecentCallData> {
+    override fun loadRecentCalls():LiveData<ArrayList<RecentCallData>> {
         var ricentCallList=ArrayList<RecentCallData>()
         val sb = StringBuffer()
         val details = arrayOf(
@@ -265,17 +260,20 @@ class ContactsRepositoryImpl @Inject constructor(
             CallLog.Calls.CACHED_NAME,
             CallLog.Calls._ID
         )
-        val managedCursor: Cursor = context.contentResolver.query(CallLog.Calls.CONTENT_URI, details, null, null, CallLog.Calls._ID + " DESC")!!
+        val managedCursor: Cursor =
+            context.getContentResolver().query(CallLog.Calls.CONTENT_URI, null, null, null, null)!!
         val number = managedCursor.getColumnIndex(CallLog.Calls.NUMBER)
+        val name = managedCursor.getColumnIndex(CallLog.Calls.CACHED_NAME)
         val type = managedCursor.getColumnIndex(CallLog.Calls.TYPE)
         val date = managedCursor.getColumnIndex(CallLog.Calls.DATE)
         val duration = managedCursor.getColumnIndex(CallLog.Calls.DURATION)
         sb.append("Call Details :")
         while (managedCursor.moveToNext()) {
+            val mName = managedCursor.getString(name)
             val phNumber = managedCursor.getString(number) // mobile number
             val callType = managedCursor.getString(type) // call type
             val callDate = managedCursor.getString(date) // call date
-            val callDayTime = Date(Long.valueOf(callDate))
+           // val callDayTime = Date(Long.valueOf(callDate))
             val callDuration = managedCursor.getString(duration)
             var dir: String? = null
             val dircode = callType.toInt()
@@ -284,14 +282,13 @@ class ContactsRepositoryImpl @Inject constructor(
                 CallLog.Calls.INCOMING_TYPE -> dir = "INCOMING CALL"
                 CallLog.Calls.MISSED_TYPE -> dir = "MISSED CALL"
             }
-            val data= RecentCallData(phNumber,callType,callDate,callDayTime.toString(),callDuration,dir)
+            val data= RecentCallData(phNumber,callType,callDate,callDuration,dir,mName)
             ricentCallList.add(data)
-            sb.append("\nPhone Number:--- $phNumber \nCall Type:--- $dir \nCall Date:--- $callDayTime \nCall duration in sec :--- $callDuration")
-            sb.append("\n----------------------------------")
+            recenCallData.postValue(ricentCallList)
         }
         managedCursor.close()
         Log.e("Agil value --- ", sb.toString())
-        return ricentCallList
+        return recenCallData
     }
     fun getMeMyNumber(number: String, countryCode: String="91"): String? {
         return number.replace("[^0-9\\+]".toRegex(), "") //remove all the non numbers (brackets dashes spaces etc.) except the + signs

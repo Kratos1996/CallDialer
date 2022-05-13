@@ -39,7 +39,7 @@ interface ContactRepository {
     fun getFavList(): LiveData<List<ContactList>>
     fun getFavList(data:String): LiveData<List<ContactList>>
     suspend fun loadContact()
-    fun loadRecentCalls():ArrayList<RecentCallData>
+    fun loadRecentCalls():LiveData<ArrayList<RecentCallData>>
     fun getMedia(cursor: Cursor?): Flow<MutableList<MediaItem>>
     suspend fun getProfileData(number: String): MutableLiveData<UserAccessData>
     suspend fun saveSenderData(data: RichCallData): MutableLiveData<String>

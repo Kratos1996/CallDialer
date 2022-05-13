@@ -1,6 +1,7 @@
 package com.artixtise.richdialer.presentation.ui.activity.home.adapter
 
 import android.content.Context
+import android.net.Uri
 import com.artixtise.richdialer.R
 import com.artixtise.richdialer.base.BaseAdapter
 import com.artixtise.richdialer.base.BaseViewHolder
@@ -20,16 +21,16 @@ class GalleryAdapter constructor(context: Context,private val onImageSelect:OnGa
     ) {
         Glide.with(context).load(data.absolutePath).into(binding.ivImage);
         binding.ivImage.setOnClickListener {
-            onImageSelect.onImageSelect("")
+            onImageSelect.onImageSelect(Uri.parse(data.mMediaUri))
         }
     }
 
-    override fun onClickItemListner(data: MediaItem, position: Int) {
+    override fun onClickItemListner(  binding: ItemGalleryBinding,data: MediaItem, position: Int) {
         //Toast.makeText(context, "Click on item : " +( position + 1), Toast.LENGTH_SHORT).show()
     }
 
     interface OnGalleryInterface{
-        fun onImageSelect(path:String)
+        fun onImageSelect(path:Uri)
     }
 
 }

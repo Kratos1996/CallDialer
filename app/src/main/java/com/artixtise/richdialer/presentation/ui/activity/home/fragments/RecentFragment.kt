@@ -4,25 +4,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.artixtise.richdialer.R
 import com.artixtise.richdialer.base.BaseFragment
-import com.artixtise.richdialer.custom.RichCallFragment
 import com.artixtise.richdialer.databinding.DialpadBinding
 import com.artixtise.richdialer.databinding.FragmentRecentBinding
-import com.artixtise.richdialer.databinding.SimSelectionDialogBinding
 import com.artixtise.richdialer.dialogs.BottomSheetDialogs
+import com.artixtise.richdialer.domain.recent.RecentCallData
 import com.artixtise.richdialer.presentation.ui.activity.home.adapter.RecentAdapter
-import com.artixtise.richdialer.presentation.ui.activity.home.adapter.SimAdapter
-import com.artixtise.richdialer.presentation.ui.activity.home.fragments.rich_call_fragments.*
 import com.artixtise.richdialer.presentation.ui.activity.home.viewmodel.HomeViewModel
-import com.artixtise.richdialer.utility.Utility
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
-import java.util.ArrayList
+import kotlinx.coroutines.launch
 
 class RecentFragment : BaseFragment(R.layout.fragment_recent),RecentAdapter.OnRecenInterface {
 
@@ -41,15 +34,7 @@ class RecentFragment : BaseFragment(R.layout.fragment_recent),RecentAdapter.OnRe
             return Instance
         }
     }
-
-    var recentData = ArrayList<String>().also {
-        it.add("Ishant")
-        it.add("Ishant")
-        it.add("Ishant")
-        it.add("Ishant")
-        it.add("Ishant")
-        it.add("Ishant")
-    }
+    var recentData = ArrayList<RecentCallData>()
 
     override fun WorkStation() {
         setupRecyclerView()
@@ -68,6 +53,15 @@ class RecentFragment : BaseFragment(R.layout.fragment_recent),RecentAdapter.OnRe
                 openDialpad()
             }
             linearLayout2.setOnClickListener {}
+        }
+        lifecycleScope.launch {
+            viewModel!!.getRecentData().observe(requireActivity()){
+                if(it!=null){
+                    val list=removeDuplicates(it)
+                    recentAdapter.UpdateList(list!!)
+                }
+            }
+
         }
     }
 
@@ -121,5 +115,23 @@ class RecentFragment : BaseFragment(R.layout.fragment_recent),RecentAdapter.OnRe
             })
         }
 
+    }
+    fun <T> removeDuplicates(list: ArrayList<T>): ArrayList<T>? {
+
+        // Create a new ArrayList
+        val newList = ArrayList<T>()
+
+        // Traverse through the first list
+        for (element in list) {
+
+            // If this element is not present in newList
+            // then add it
+            if (!newList.contains(element)) {
+                newList.add(element)
+            }
+        }
+
+        // return the new list
+        return newList
     }
 }

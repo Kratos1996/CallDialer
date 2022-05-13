@@ -37,10 +37,11 @@ import com.artixtise.richdialer.domain.remote.apiUsecase.getData.GetRicCallDataU
 import com.artixtise.richdialer.domain.remote.apiUsecase.getData.UseCaseGetData
 import com.artixtise.richdialer.domain.remote.apiUsecase.setData.SetRicCallDataUseCase
 import com.artixtise.richdialer.domain.remote.apiUsecase.setData.UseCaseSetData
+import com.artixtise.richdialer.domain.remote.apiUsecase.uplodeImage.UplodeImageUseCase
+import com.artixtise.richdialer.domain.remote.apiUsecase.uplodeImage.UseCaseImage
 import com.artixtise.richdialer.repositories.methods.MethodsRepo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import dagger.Module
@@ -170,6 +171,12 @@ object ApplicationModule {
     @Singleton
     fun provideSetRichCallDataUseCase(repository: ApiRepository): UseCaseSetData {
        return SetRicCallDataUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun UplodeImage(repository: ApiRepository): UseCaseImage {
+       return UplodeImageUseCase(repository)
     }
 
     @Module

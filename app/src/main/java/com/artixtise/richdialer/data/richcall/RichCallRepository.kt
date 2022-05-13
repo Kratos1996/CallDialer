@@ -10,4 +10,9 @@ interface RichCallRepository {
     suspend fun deleteSingleRichCall(id: Long)
     suspend fun updateRichCallTextData(text:String,id: Long)
     suspend fun updateRichCallEmojiData(emoji:String,id: Long)
+    suspend fun updateImageData(image: String, id: Long)
+    suspend fun updateGifData(image: String, id: Long)
+    suspend fun updateLocation(lat: String,long:String ,id: Long)
+
+
 }

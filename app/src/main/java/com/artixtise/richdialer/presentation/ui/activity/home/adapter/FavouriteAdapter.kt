@@ -31,13 +31,7 @@ class FavouriteAdapter constructor(context: Context,val callData: CallInterface)
         } else {
             binding.contactBackground.setBackgroundColor(context.resources.getColor(R.color.light_gray))
         }
-        binding.ExpandNow.setOnClickListener {
-            if(binding.expandView.isVisible){
-                binding.expandView.visibility= View.GONE
-            }else{
-                binding.expandView.visibility= View.VISIBLE
-            }
-        }
+
 
         with(binding) {
             nameOfContact.text = data.name
@@ -67,8 +61,12 @@ class FavouriteAdapter constructor(context: Context,val callData: CallInterface)
         }
     }
 
-    override fun onClickItemListner(data: ContactList, position: Int) {
-        //Toast.makeText(context, "Click on item : " +( position + 1), Toast.LENGTH_SHORT).show()
+    override fun onClickItemListner(binding:ItemFavouriteBinding,data: ContactList, position: Int) {
+        if(binding.expandView.isVisible){
+            binding.expandView.visibility= View.GONE
+        }else{
+            binding.expandView.visibility= View.VISIBLE
+        }
     }
     fun isNetworkAvailable(context: Context?): Boolean {
         if (context == null) return false

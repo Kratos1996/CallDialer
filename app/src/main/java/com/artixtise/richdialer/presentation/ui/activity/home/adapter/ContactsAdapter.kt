@@ -34,7 +34,7 @@ class ContactsAdapter(context:Context,val openProcess:OpenContactDetails) : Base
         }
     }
 
-    override fun onClickItemListner(get: ContactList, position: Int) {
+    override fun onClickItemListner( binding: ItemContactsBinding,get: ContactList, position: Int) {
         openProcess.openContactDetail(get)
     }
     interface OpenContactDetails{

@@ -29,7 +29,7 @@ class ConfrenceRecentAdapter constructor(context: Context) :
         setupRecyclerView(binding.rvItem)
     }
 
-    override fun onClickItemListner(data: String, position: Int) {
+    override fun onClickItemListner(  binding: ItemRecentConfrenceBinding,data: String, position: Int) {
         Toast.makeText(context, "Click on item : " +( position + 1), Toast.LENGTH_SHORT).show()
     }
 

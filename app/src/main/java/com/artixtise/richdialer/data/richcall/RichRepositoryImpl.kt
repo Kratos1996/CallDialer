@@ -23,18 +23,27 @@ class RichRepositoryImpl @Inject constructor(
     override fun getRichCallDataList(): LiveData<List<RichCallData>> {
         val data = db.getDao().GetRichCallDataList()
         return data
-
     }
 
     override fun getRichCallData(id: Long): LiveData<RichCallData> {
         return db.getDao().GetRichCallData(id)
     }
 
-
     override suspend fun deleteSingleRichCall(id: Long) = db.getDao().DeleteSingleRichCall(id)
 
     override suspend fun updateRichCallEmojiData(emoji:String,id: Long) {
         db.getDao().updateRichCallEmojiData(emoji,id)
+    }
+
+    override suspend fun updateImageData(image: String, id: Long) {
+        db.getDao().updateRichCallImageData(image,id)
+    }
+  override suspend fun updateGifData(gif: String, id: Long) {
+        db.getDao().updateRichCallGifData(gif,id)
+    }
+
+    override suspend fun updateLocation(lat: String, long: String, id: Long) {
+        db.getDao().updateLocationData(lat,long,id)
     }
 
     override suspend fun updateRichCallTextData(text:String,id: Long) {

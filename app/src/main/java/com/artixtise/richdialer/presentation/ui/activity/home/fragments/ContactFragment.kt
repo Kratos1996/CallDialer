@@ -3,6 +3,8 @@ package com.artixtise.richdialer.presentation.ui.activity.home.fragments
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.artixtise.richdialer.R
@@ -63,22 +65,56 @@ class ContactFragment : BaseFragment(R.layout.fragment_home),
                 }
             }).check()
         contactAdapter = ContactsAdapter(requireContext(), this)
-        viewModel?.getContactsList()?.observe(viewLifecycleOwner) {
-            with(binding.rvContacts) {
-                binding.fastscroll.attachFastScrollerToRecyclerView(binding.rvContacts)
-                layoutManager = LinearLayoutManager(context)
-                adapter = contactAdapter
-                Collections.sort(it,SortbyName())
-                contactAdapter.UpdateList(ArrayList(it.toMutableList()))
+        getContacts()
+        binding.search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
             }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s.isNullOrEmpty() || s.isNullOrBlank()) {
+                    getContacts()
+                } else {
+                    viewModel!!.getFavContactsList(s.toString()).observe(
+                        requireActivity()
+                    ) {
+                        if (it != null && it.size > 0) {
+                            val sortedList = it.sortedWith(compareBy({ it.name }))
+                            contactAdapter.UpdateList(ArrayList(sortedList.toMutableList()))
+                        }
+                    }
+                }
+
+
+            }
+        })
+    }
+
+    fun getContacts(){
+        viewModel?.getContactsList()?.observe(viewLifecycleOwner) {
+            if(it!=null){
+                with(binding.rvContacts) {
+
+                    layoutManager = LinearLayoutManager(context)
+                    adapter = contactAdapter
+                    Collections.sort(it,SortbyName())
+                    contactAdapter.UpdateList(ArrayList(it.toMutableList()))
+                }
+            }
+
 
         }
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
+        binding.fastscroll.attachFastScrollerToRecyclerView(binding.rvContacts)
     }
+
 
     override fun onResume() {
         super.onResume()

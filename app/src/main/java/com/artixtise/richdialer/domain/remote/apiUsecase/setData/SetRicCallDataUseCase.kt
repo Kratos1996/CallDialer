@@ -17,15 +17,15 @@ class SetRicCallDataUseCase @Inject constructor(
     ): Flow<Resource<RichCallDataResponse>> = flow {
         try {
             emit(Resource.Loading<RichCallDataResponse>())
-            val response = repository.SetDataOnServer(
+            val response = repository.setDataOnServer(
                 data.emoji,
-                data.image,
+                if(!data.image.isNullOrBlank()) data.image else "",
                 data.lat,
                 data.lng,
                 data.textMsg,
                 data.senderUserId,
                 data.senderName,
-                data.image,
+                if(!data.gif.isNullOrBlank())data.gif else "",
                 data.instaID,
                 data.fbID,
                 data.linkedinID,

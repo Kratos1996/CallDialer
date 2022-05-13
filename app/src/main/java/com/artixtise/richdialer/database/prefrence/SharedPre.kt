@@ -60,6 +60,13 @@ class SharedPre private constructor(context: Context) {
     val userMobile: String?
         get() = GetDataString(MOBILE_NO)
 
+    fun setCountryCode(code: String) {
+        SetDataString(COUNTRY_CODE, code)
+    }
+
+    val countryCode: String?
+        get() = GetDataString(COUNTRY_CODE)
+
     fun setName(name: String) {
         SetDataString(NAME, name)
     }
@@ -241,6 +248,7 @@ class SharedPre private constructor(context: Context) {
         private const val DARK_MODE = "darkmoded"
         private const val FONT = "fontsize"
         private const val ISFONTAPPLICABLE = "fontApplied"
+        private const val COUNTRY_CODE = "countryCode"
         private var Instance: SharedPre? = null
 
         @Synchronized

@@ -22,4 +22,6 @@ object ErrorMessage {
     val NOT_AVAILABLE__RICH_CALL_DATA="Rich Call not Available for this Contact"
     val ERROR="error"
     val ERROR_ON_GETTING_USER="User Not Found"
+    val GIF_UPLODED="Gif Uploaded Successfully"
+    val SOME_THIING_WRONG="Something went wrong"
 }

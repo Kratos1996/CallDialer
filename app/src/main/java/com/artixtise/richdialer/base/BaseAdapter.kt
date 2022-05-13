@@ -19,10 +19,10 @@ abstract class BaseAdapter<N,Y:ViewBinding>(val context: Context, private val la
         return BaseViewHolder(binding)
     }
 
-    override fun onBindViewHolder(viewHolder: BaseViewHolder<Y>, position: Int) {
+    override fun onBindViewHolder(viewHolder: BaseViewHolder<Y>,  position: Int) {
         if(list!=null && list!!.size>0){
             onViewHolderBind(viewHolder,viewHolder.binding, position, list!!.get(position),list!!)
-            viewHolder.binding.root.setOnClickListener { onClickItemListner(list!!.get(position),position) }
+            viewHolder.binding.root.setOnClickListener { onClickItemListner(binding =  viewHolder.binding,list!!.get(position),position) }
         }
     }
 
@@ -32,5 +32,5 @@ abstract class BaseAdapter<N,Y:ViewBinding>(val context: Context, private val la
 
     abstract fun onViewHolderBind(viewHolder: BaseViewHolder<Y>,binding: Y, position: Int, data: N,list:java.util.ArrayList<N>)
 
-    abstract fun onClickItemListner(get: N, position: Int)
+    abstract fun onClickItemListner(binding: Y,get: N, position: Int)
 }

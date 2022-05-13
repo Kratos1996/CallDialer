@@ -46,10 +46,19 @@ interface MyDao {
     @Query("Update RichCallData set textMsg=:text  Where id=:richCallId")
     fun updateRichCallTextData(text: String,richCallId:Long): Int
 
-    @Query("Select * From ContactList where Name Like '%' || :data || '%' ")
+    @Query("Update RichCallData set image=:image ,gif=:gif  Where id=:richCallId")
+    fun updateRichCallImageData(image: String,richCallId:Long,gif: String=""): Int
+
+    @Query("Update RichCallData set gif=:gif , image=:image  Where id=:richCallId")
+    fun updateRichCallGifData(gif: String,richCallId:Long ,image:String =""): Int
+
+    @Query("Update RichCallData set lat=:lat , lng=:lang  Where id=:richCallId")
+    fun updateLocationData(lat: String,lang:String,richCallId:Long): Int
+
+    @Query("Select * From ContactList where Name Like '%' || :data || '%' or PhoneNumber  Like '%' || :data || '%' ")
     fun GetContactList(data: String): LiveData<List<ContactList>>
 
-    @Query("Select * From ContactList where Name Like '%' || :data || '%' and isFav=:isFav ")
+    @Query("Select * From ContactList where Name Like '%' || :data || '%' or PhoneNumber  Like '%' || :data || '%' and isFav=:isFav ")
     fun GetFavContactListLive(data: String, isFav: Boolean): LiveData<List<ContactList>>
 
     @Query("Delete From ContactList")

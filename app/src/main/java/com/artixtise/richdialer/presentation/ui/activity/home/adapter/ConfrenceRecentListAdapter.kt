@@ -23,7 +23,7 @@ class ConfrenceRecentListAdapter constructor(context: Context) :
         }
     }
 
-    override fun onClickItemListner(data: String, position: Int) {
+    override fun onClickItemListner(binding: ItemAddOnBinding,data: String, position: Int) {
         Toast.makeText(context, "Click on item : " +( position + 1), Toast.LENGTH_SHORT).show()
     }
 }

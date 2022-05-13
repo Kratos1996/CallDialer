@@ -16,12 +16,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.artixtise.richdialer.R
 import com.artixtise.richdialer.api.BaseDataSource
 import com.artixtise.richdialer.application.ErrorMessage.PLEASE_WAIT
+import com.artixtise.richdialer.base.BaseActivity
 import com.artixtise.richdialer.databinding.RichCallOptionsBinding
 import com.artixtise.richdialer.domain.model.contact.RichCallSealed
 import com.artixtise.richdialer.presentation.managers.getAvailableSIMCardLabels
 import com.artixtise.richdialer.presentation.ui.activity.calling.CallingActivity
 import com.artixtise.richdialer.presentation.ui.activity.home.adapter.SimAdapter
 import com.artixtise.richdialer.presentation.ui.activity.home.viewmodel.HomeViewModel
+import com.artixtise.richdialer.presentation.ui.activity.login.LoginActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -104,6 +106,7 @@ class RichCallFragment : BottomSheetDialogFragment() {
                                     .observe(viewLifecycleOwner) {
                                         if (it != null) {
                                             it.simType = handle.id
+                                            it.callStartTime=System.currentTimeMillis()
                                             viewModel!!.insertRichCallHistory(it)
                                             viewModel!!.saveRichCallData(it)
                                         }
@@ -112,9 +115,12 @@ class RichCallFragment : BottomSheetDialogFragment() {
                                     when(it) {
                                         is RichCallSealed.SaveRichCalldata.Loading -> {
                                           //  Toast.makeText(requireContext(),PLEASE_WAIT,Toast.LENGTH_SHORT).show()
+                                            (requireActivity() as BaseActivity).showLoadingDialog("")!!
+                                                .show()
                                         }
                                         is RichCallSealed.SaveRichCalldata.Success->{
-                                           // Toast.makeText(requireContext(),"RichCall Started",Toast.LENGTH_SHORT).show()
+                                            (requireActivity() as BaseActivity).showLoadingDialog("")!!
+                                                .dismiss()
                                             if(!isCallStarted){
                                                 isCallStarted=true
                                                 val action = Intent.ACTION_CALL
@@ -135,6 +141,8 @@ class RichCallFragment : BottomSheetDialogFragment() {
 
                                         }
                                         is RichCallSealed.SaveRichCalldata.Error->{
+                                            (requireActivity() as BaseActivity).showLoadingDialog("")!!
+                                                .dismiss()
                                             Toast.makeText(requireContext(),"Error on RichCall Data",Toast.LENGTH_SHORT).show()
                                         }
                                     }

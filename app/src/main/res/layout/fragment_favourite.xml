@@ -106,7 +106,8 @@
                 android:background="@drawable/circle_bg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -121,6 +122,7 @@
                 android:layout_height="50dp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:background="@drawable/circle_bg"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -129,36 +131,47 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="@dimen/_8sdp"
+
                     android:src="@drawable/ic_phone" />
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/_36sdp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/search_bg"
                 android:paddingHorizontal="@dimen/_16sdp"
+                android:weightSum="1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
                 app:layout_constraintStart_toEndOf="@+id/linearLayout"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal">
 
                 <EditText
-                    android:layout_width="@dimen/_120sdp"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/search"
+                    android:layout_weight=".9"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="@dimen/_5sdp"
                     android:layout_gravity="center"
                     android:background="@color/white"
-                    android:textColor="@color/black"
-                    android:hint="@string/search"/>
+                    android:hint="@string/search"
+                    android:textColor="@color/black" />
+
                 <View
-                    android:layout_width="1dp"
-                    android:layout_marginVertical="@dimen/_8sdp"
+                    android:layout_width="0dp"
+                    android:layout_weight=".009"
                     android:layout_height="match_parent"
+                    android:layout_marginVertical="@dimen/_8sdp"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:background="@color/grey"/>
+                    android:background="@color/grey" />
 
                 <ImageView
-                    android:layout_width="20dp"
+                    android:layout_width="0dp"
+                    android:layout_weight=".09"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="16dp"

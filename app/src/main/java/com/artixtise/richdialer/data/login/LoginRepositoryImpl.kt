@@ -88,6 +88,7 @@ class LoginRepositoryImpl @Inject constructor(
             dataStore.setCountryCode(countryCode)
             dataStore.setPhoneNumber(phoneNumber)
             sharedPre.setUserMobile("$countryCode$phoneNumber")
+            sharedPre.setCountryCode(countryCode)
         }
         PhoneAuthProvider.verifyPhoneNumber(options)
     }

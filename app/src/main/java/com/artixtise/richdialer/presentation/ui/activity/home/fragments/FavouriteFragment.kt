@@ -5,6 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.telecom.TelecomManager
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
@@ -33,7 +35,7 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
     lateinit var binding: FragmentFavouriteBinding
     lateinit var favAdapter: FavouriteAdapter
     lateinit var calldata: CallInterface
-    lateinit  var richCallFragment: RichCallFragment
+    lateinit var richCallFragment: RichCallFragment
     private var lastClickTime = 0L
 
     var richCallData = RichCallData()
@@ -61,18 +63,23 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
                 override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
                     setupRecyclerView()
                 }
+
                 override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {
                     showCustomAlert("Need Read Externel Storage Permission", binding.root)
                 }
-                override fun onPermissionRationaleShouldBeShown(permissionRequest: PermissionRequest, permissionToken: PermissionToken
-                ) {} }).check()
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissionRequest: PermissionRequest, permissionToken: PermissionToken
+                ) {
+                }
+            }).check()
         binding.apply {
             linearLayout.setOnClickListener {
                 openDialpad()
             }
             linearLayout2.setOnClickListener {
                 ///selectSim()
-                startActivity(Intent(requireActivity(),DialerActivity::class.java))
+                startActivity(Intent(requireActivity(), DialerActivity::class.java))
             }
         }
     }
@@ -90,6 +97,43 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
     }
 
     private fun setupRecyclerView() {
+        getFavData()
+        binding.search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s.isNullOrEmpty() || s.isNullOrBlank()) {
+                    getFavData()
+                } else {
+                    viewModel!!.getFavContactsList(s.toString()).observe(
+                        requireActivity()
+                    ) {
+                        if (it != null && it.size > 0) {
+                            binding.hasNotData.visibility = View.GONE
+                            binding.flFreq.visibility = View.GONE
+                            binding.hasData.visibility = View.VISIBLE
+                            val sortedList = it.sortedWith(compareBy({ it.name }))
+                            favAdapter.UpdateList(ArrayList(sortedList.toMutableList()))
+                        } else {
+                            binding.hasNotData.visibility = View.VISIBLE
+                            binding.hasData.visibility = View.GONE
+                        }
+                    }
+                }
+
+
+            }
+        })
+
+    }
+    private fun getFavData()
+    {
         viewModel?.getFavContactsList()?.observe(requireActivity()) {
             if (it.isNullOrEmpty()) {
                 binding.hasNotData.visibility = View.VISIBLE
@@ -104,17 +148,15 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
                     adapter = favAdapter
                     favAdapter.UpdateList(ArrayList(it.toMutableList()))
                 }
-               /* with(binding.rvFrequentlyDialed) {
-                    favAdapter = FavouriteAdapter(context, calldata)
-                    layoutManager = LinearLayoutManager(context)
-                    adapter = favAdapter
-                    favAdapter.UpdateList(ArrayList(it.toMutableList()))
-                }*/
+                /* with(binding.rvFrequentlyDialed) {
+                     favAdapter = FavouriteAdapter(context, calldata)
+                     layoutManager = LinearLayoutManager(context)
+                     adapter = favAdapter
+                     favAdapter.UpdateList(ArrayList(it.toMutableList()))
+                 }*/
             }
 
         }
-
-
     }
 
     private fun openDialpad() {
@@ -129,16 +171,16 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
         startActivity(intent)
     }
 
-    private fun selectSim(number:String) {
+    private fun selectSim(number: String) {
         Dexter.withContext(requireContext())
             .withPermission(Manifest.permission.READ_PHONE_STATE)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
-                    if (number.isNullOrBlank()){
-                        Toast.makeText(requireContext(),"First select number",Toast.LENGTH_LONG).show()
-                    }
-                    else{
-                        richCallFragment= RichCallFragment.newInstance(0, viewModel!!,number)!!
+                    if (number.isNullOrBlank()) {
+                        Toast.makeText(requireContext(), "First select number", Toast.LENGTH_LONG)
+                            .show()
+                    } else {
+                        richCallFragment = RichCallFragment.newInstance(0, viewModel!!, number)!!
                         richCallFragment.show(childFragmentManager, "add_richcall_dialog_fragment")
                     }
                 }
