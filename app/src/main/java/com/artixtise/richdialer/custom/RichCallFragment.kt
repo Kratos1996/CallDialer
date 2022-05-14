@@ -137,6 +137,7 @@ class RichCallFragment : BottomSheetDialogFragment() {
                                                 }
 
                                                 startActivity(intent)
+                                                dismiss()
                                             }
 
                                         }
@@ -144,7 +145,9 @@ class RichCallFragment : BottomSheetDialogFragment() {
                                             (requireActivity() as BaseActivity).showLoadingDialog("")!!
                                                 .dismiss()
                                             Toast.makeText(requireContext(),"Error on RichCall Data",Toast.LENGTH_SHORT).show()
+
                                         }
+
                                     }
                                 }
                             }
