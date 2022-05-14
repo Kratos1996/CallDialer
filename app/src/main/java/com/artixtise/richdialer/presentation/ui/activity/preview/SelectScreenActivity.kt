@@ -55,6 +55,11 @@ class SelectScreenActivity : BaseActivity() {
         setupTabIcons()
     }
 
+    override fun onResume() {
+        super.onResume()
+        (this as BaseActivity).showLoadingDialog("")!!
+            .dismiss()
+    }
     private fun initViews() {
         binding.initiateCal.setOnClickListener {
             selectSim()
@@ -75,6 +80,11 @@ class SelectScreenActivity : BaseActivity() {
     private fun initObserver() {
         viewmodel!!.getMyProfile().observe(this) {senderProfile ->
             if (senderProfile != null) {
+                if(senderProfile.facebookUrl.isNullOrBlank())binding.facebookLay.visibility=View.GONE else binding.facebookLay.visibility=View.VISIBLE
+                if(senderProfile.twitterUrl.isNullOrBlank())binding.twitterLay.visibility=View.GONE else binding.twitterLay.visibility=View.VISIBLE
+                if(senderProfile.instagramUrl.isNullOrBlank())binding.instaLay.visibility=View.GONE else binding.instaLay.visibility=View.VISIBLE
+                if(senderProfile.linkedInUrl.isNullOrBlank())binding.linkedLay.visibility=View.GONE else binding.linkedLay.visibility=View.VISIBLE
+                if(senderProfile.websiteUrl.isNullOrBlank())binding.webLay.visibility=View.GONE else binding.webLay.visibility=View.VISIBLE
                 if(senderProfile.facebookVisible)binding.swFacebook.isChecked=true else false
                 if(senderProfile.twitterVisible)binding.swTwitter.isChecked=true else false
                 if(senderProfile.linkedInVisible)binding.swLinked.isChecked=true else false

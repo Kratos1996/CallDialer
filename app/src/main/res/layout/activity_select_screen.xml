@@ -143,6 +143,7 @@
                     android:weightSum="3">
 
                     <LinearLayout
+                        android:id="@+id/twitterLay"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_24sdp"
@@ -164,6 +165,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/facebookLay"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_24sdp"
@@ -186,6 +188,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/linkedLay"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_12sdp"
@@ -220,6 +223,7 @@
                     android:weightSum="3">
 
                     <LinearLayout
+                        android:id="@+id/instaLay"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_24sdp"
@@ -241,6 +245,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/urlLay"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_24sdp"

@@ -1,6 +1,9 @@
 package com.artixtise.richdialer.presentation.ui.activity.home.fragments
 
 import android.Manifest
+import android.app.admin.DevicePolicyManager
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -18,6 +21,7 @@ import com.artixtise.richdialer.data.call.CallInterface
 import com.artixtise.richdialer.data.call.model.RichCallData
 import com.artixtise.richdialer.database.roomdatabase.tables.ContactList
 import com.artixtise.richdialer.databinding.FragmentFavouriteBinding
+import com.artixtise.richdialer.presentation.managers.DeviceAdminManger
 import com.artixtise.richdialer.presentation.ui.activity.home.adapter.FavouriteAdapter
 import com.artixtise.richdialer.presentation.ui.activity.home.fragments.rich_call_fragments.*
 import com.artixtise.richdialer.presentation.ui.activity.home.viewmodel.HomeViewModel
@@ -52,11 +56,25 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
 
 
     override fun WorkStation() {
-        if (PermissionHelper.hasStoragePermission(requireActivity())) {
-            setupRecyclerView()
-        } else {
-            PermissionHelper.requestPermission(requireActivity())
+
+        try {
+            // Initiate DevicePolicyManager.
+           val mDPM =  requireActivity().getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+            val mAdminName = ComponentName(requireActivity(), DeviceAdminManger::class.java)
+
+            if (!mDPM.isAdminActive(mAdminName)) {
+                val intent =   Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
+                intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, mAdminName)
+                intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "Click on Activate button to secure your application.");
+                startActivityForResult(intent, 110);
+            } else {
+                // mDPM.lockNow();
+
+            }
+        } catch (e:Exception ) {
+            e.printStackTrace();
         }
+
         Dexter.withContext(requireActivity())
             .withPermission(Manifest.permission.CALL_PHONE)
             .withListener(object : PermissionListener {
