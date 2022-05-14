@@ -131,15 +131,23 @@ class CallActivity : BaseActivity() {
                         binding.isRichCallData.visibility = View.VISIBLE
                         if (it.response.data?.instagramId.isNullOrBlank()) {
                             binding.instaAccount.visibility = View.GONE
+                        }else{
+                            binding.instaAccount.visibility = View.VISIBLE
                         }
                         if (it.response.data?.twitterId.isNullOrBlank()) {
                             binding.twitterAccount.visibility = View.GONE
+                        }else{
+                            binding.twitterAccount.visibility = View.VISIBLE
                         }
                         if (it.response.data?.linkedID.isNullOrBlank()) {
-                            binding.twitterAccount.visibility = View.GONE
+                            binding.linkedIdAccount.visibility = View.GONE
+                        }else{
+                            binding.linkedIdAccount.visibility = View.VISIBLE
                         }
                         if (it.response.data?.facebookId.isNullOrBlank()) {
                             binding.facebookAccount.visibility = View.GONE
+                        }else{
+                            binding.facebookAccount.visibility = View.VISIBLE
                         }
                         if (it.response.data?.textMsg.isNullOrBlank()) {
                             binding.tvMessage.visibility = View.GONE
