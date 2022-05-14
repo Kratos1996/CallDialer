@@ -10,7 +10,7 @@ object RichCallApiToDatabase {
         richCallData.receiverUserId = response.data!!.receiverUserId!!
         richCallData.senderUserId = response.data.senderUserId!!
         richCallData.receiverName = response.data.receiverName!!
-            richCallData.senderName= response.data.senderName!!
+        richCallData.senderName= response.data.senderName!!
         richCallData.receiverDeviceToken= response.data.receiverDeveiceId!!
         richCallData.emoji= response.data.emoji!!
         richCallData.gif= response.data.gif!!
@@ -19,8 +19,8 @@ object RichCallApiToDatabase {
         richCallData.lng= response.data.lng!!
         richCallData.isRichCall= response.data.isRichcall!!.equals("true",true)
         richCallData.simType= response.data.simNumber!!
-        richCallData.receiverNumber= ""
-        richCallData.senderNumber= ""
+        richCallData.receiverNumber= response.data!!.receiverUserId!!
+        richCallData.senderNumber=response.data.senderUserId!!
         richCallData.instaID= response.data.instagramId!!
         richCallData.fbID= response.data.facebookId!!
         richCallData.twitterID= response.data.twitterId!!

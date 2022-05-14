@@ -19,13 +19,13 @@ class SetRicCallDataUseCase @Inject constructor(
             emit(Resource.Loading<RichCallDataResponse>())
             val response = repository.setDataOnServer(
                 data.emoji,
-                if(!data.image.isNullOrBlank()) data.image else "",
+                data.image,
                 data.lat,
                 data.lng,
                 data.textMsg,
                 data.senderUserId,
                 data.senderName,
-                if(!data.gif.isNullOrBlank())data.gif else "",
+                data.gif ,
                 data.instaID,
                 data.fbID,
                 data.linkedinID,
