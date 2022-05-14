@@ -20,6 +20,7 @@ interface ApiInterface {
         @Field("senderName") senderUsername: String,
         @Field("textMsg") textMsg: String,
         @Field("emoji") emoji: String,
+        @Field("gif") gif: String,
         @Field("image") image: String,
         @Field("lat") latitude: String,
         @Field("lng") longitude: String,

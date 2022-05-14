@@ -35,14 +35,22 @@ class ApiRepositoryImpl @Inject constructor(private val api: ApiInterface
                                           receiverDeveiceId:String): RichCallDataResponse {
        // return api.richCallDataSave(map)
         return api.richCallDataSave(senderId,
-            senderName,
-            text_msg,
-            emoji,
-            image,
+            senderUsername =senderName,
+            textMsg = text_msg,
+            emoji = emoji,
+            gif=gif,
+            image=image,
             latitude = lat,
             longitude = lng,
-            instaId,
-            fbId,twitterId,linkedId,simNumber,isRichCall,receiverName,receiverId,receiverDeveiceId)
+            instagramId = instaId,
+            facebookId = fbId,
+            twitterId = twitterId,
+            linkedID = linkedId,
+            simNumber = simNumber,
+            isRichcall = isRichCall,
+            receiverName=receiverName,
+            receiverUserId =receiverId,
+            receiverDeveiceId = receiverDeveiceId)
     }
 
     override suspend fun UplodeImage(senderId: String, image: File): UplodeImageResponse {
