@@ -3,6 +3,7 @@ package com.artixtise.richdialer.presentation.ui.activity.userProfile
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -98,7 +99,9 @@ class UserProfileActivity : BaseActivity() {
                     } else {
                         binding.circleTextView.visibility = View.GONE
                         binding.callerAvatar.visibility = View.VISIBLE
-                        Glide.with(this@UserProfileActivity).load(it.profile)
+                        val imageArray=convertStringToByteArray(it.profile)
+                        val bitmap= BitmapFactory.decodeByteArray(imageArray,0,imageArray.size)
+                        Glide.with(this@UserProfileActivity).load(bitmap)
                             .into(binding.callerAvatar)
                     }
                     binding.saveContact.setOnClickListener { view ->
