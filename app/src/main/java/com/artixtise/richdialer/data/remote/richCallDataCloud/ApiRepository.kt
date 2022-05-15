@@ -1,10 +1,9 @@
 package com.artixtise.richdialer.data.remote.richCallDataCloud
 
-import com.artixtise.richdialer.base.SENDER_ID
 import com.artixtise.richdialer.data.call.model.RichCallDataGetResponse
 import com.artixtise.richdialer.data.call.model.RichCallDataResponse
 import com.artixtise.richdialer.data.call.model.uplodeImage.UplodeImageResponse
-import retrofit2.http.Field
+import com.artixtise.richdialer.domain.model.delete.DeleteResponse
 import java.io.File
 
 interface ApiRepository {
@@ -28,5 +27,6 @@ interface ApiRepository {
                                  receiverDeveiceId:String): RichCallDataResponse
 
     suspend fun UplodeImage( senderId: String, image: File): UplodeImageResponse
+    suspend fun deleteRichCall( senderId: String): DeleteResponse
 
 }

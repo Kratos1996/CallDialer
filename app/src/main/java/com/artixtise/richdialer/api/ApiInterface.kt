@@ -4,11 +4,9 @@ import com.artixtise.richdialer.base.SENDER_ID
 import com.artixtise.richdialer.data.call.model.RichCallDataGetResponse
 import com.artixtise.richdialer.data.call.model.RichCallDataResponse
 import com.artixtise.richdialer.data.call.model.uplodeImage.UplodeImageResponse
+import com.artixtise.richdialer.domain.model.delete.DeleteResponse
 import com.squareup.okhttp.RequestBody
-import retrofit2.Call
 import retrofit2.http.*
-import java.io.File
-import java.util.*
 
 
 interface ApiInterface {
@@ -39,6 +37,8 @@ interface ApiInterface {
     @POST("GetRichcallData.php")
     suspend fun getRichCallData( @Field(SENDER_ID) senderId: String): RichCallDataGetResponse
 
+    @GET("deleteFile.php")
+    suspend fun deleteRichCallData( @Path(SENDER_ID) senderId: String): DeleteResponse
 
     @Multipart
     @POST("CallRequestImage.php")

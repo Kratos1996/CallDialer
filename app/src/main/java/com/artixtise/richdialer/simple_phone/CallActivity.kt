@@ -9,18 +9,22 @@ import android.os.Bundle
 import android.os.Environment
 import android.telecom.Call
 import android.view.View
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.artixtise.richdialer.R
+import com.artixtise.richdialer.application.ErrorMessage.SOME_THIING_WRONG
 import com.artixtise.richdialer.base.BaseActivity
 import com.artixtise.richdialer.database.roomdatabase.tables.RichCallData
 import com.artixtise.richdialer.databinding.ActivityCallBinding
 import com.artixtise.richdialer.domain.model.contact.RichCallSealed
 import com.artixtise.richdialer.mapper.RichCallApiToDatabase
+import com.artixtise.richdialer.presentation.ui.activity.userProfile.viewmodel.ProfileViewmodel
 import com.bumptech.glide.Glide
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.flow.collect
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.TimeUnit
@@ -34,6 +38,7 @@ class CallActivity : BaseActivity() {
     var i_am_receiver = false
     var onHold = false
     var numberMain = ""
+    private val viewmodel: ProfileViewmodel by viewModels()
     var recorder: MediaRecorder? = null
     var audiofile: File? = null
     private var recordstarted = false
@@ -132,8 +137,8 @@ class CallActivity : BaseActivity() {
 
                     }
                     is RichCallSealed.GetRichCalldata.Success -> {
-                        richCallHistory =
-                            RichCallApiToDatabase.convert(richCallHistory, it.response)
+                        viewmodel.deletRichCall(it.response.data!!.senderUserId!!)
+                        richCallHistory = RichCallApiToDatabase.convert(richCallHistory, it.response)
                         richCallHistory.receiverNumber = numberMain
                         if (i_am_receiver) {
                             richCallHistory.callType = "INCOMING"
@@ -188,8 +193,7 @@ class CallActivity : BaseActivity() {
                             binding.ivCallerImage.visibility = View.VISIBLE
                         } else if (!it.response.data!!.image.isNullOrBlank()) {
                             val imageArray = convertStringToByteArray(it.response.data!!.image!!)
-                            val bitmap =
-                                BitmapFactory.decodeByteArray(imageArray, 0, imageArray.size)
+                            val bitmap = BitmapFactory.decodeByteArray(imageArray, 0, imageArray.size)
                             Glide.with(this@CallActivity).load(bitmap).into(binding.ivCallerImage)
                             binding.ivCallerImage.visibility = View.VISIBLE
                         } else {
@@ -202,6 +206,18 @@ class CallActivity : BaseActivity() {
                         showCustomAlert("Error on Fetching RichCallData", binding.root)
                     }
                 }
+            }
+        }
+        lifecycleScope.launchWhenCreated {
+            viewmodel.deletRichCallMutable.collect{
+                when (it) {
+                    is RichCallSealed.DeleteRichCall.Loading -> {
+
+                    }
+                    is RichCallSealed.DeleteRichCall.Error ->{
+                        showCustomAlert(SOME_THIING_WRONG, binding.root)
+
+                    }                    }
             }
         }
     }

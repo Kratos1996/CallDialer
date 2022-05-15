@@ -4,6 +4,7 @@ import com.artixtise.richdialer.api.ApiInterface
 import com.artixtise.richdialer.data.call.model.RichCallDataGetResponse
 import com.artixtise.richdialer.data.call.model.RichCallDataResponse
 import com.artixtise.richdialer.data.call.model.uplodeImage.UplodeImageResponse
+import com.artixtise.richdialer.domain.model.delete.DeleteResponse
 import com.squareup.okhttp.MediaType
 import com.squareup.okhttp.RequestBody
 import java.io.File
@@ -64,4 +65,9 @@ class ApiRepositoryImpl @Inject constructor(private val api: ApiInterface
         )
        return api.UplodeImage(userId,imageMain)
     }
+
+    override suspend fun deleteRichCall(senderId: String): DeleteResponse {
+        return api.deleteRichCallData(senderId)
+    }
+
 }

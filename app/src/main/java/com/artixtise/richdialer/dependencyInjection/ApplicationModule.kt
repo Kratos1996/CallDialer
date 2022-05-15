@@ -24,7 +24,6 @@ import com.artixtise.richdialer.database.datastore.DataStoreCustom
 import com.artixtise.richdialer.database.prefrence.SharedPre
 import com.artixtise.richdialer.database.roomdatabase.AppDB
 import com.artixtise.richdialer.data.contact.contactRepository.ContactsRepositoryImpl
-import com.artixtise.richdialer.data.login.LoginRepository
 import com.artixtise.richdialer.data.login.LoginRepositoryImpl
 import com.artixtise.richdialer.data.profile.ProfileRepository
 import com.artixtise.richdialer.data.profile.ProfileRepositoryImpl
@@ -33,6 +32,8 @@ import com.artixtise.richdialer.data.remote.richCallDataCloud.ApiRepositoryImpl
 import com.artixtise.richdialer.data.richcall.RichCallRepository
 import com.artixtise.richdialer.data.richcall.RichRepositoryImpl
 import com.artixtise.richdialer.database.roomdatabase.MyDao
+import com.artixtise.richdialer.domain.remote.apiUsecase.delete.DeleteUseCase
+import com.artixtise.richdialer.domain.remote.apiUsecase.delete.UseCaseDelete
 import com.artixtise.richdialer.domain.remote.apiUsecase.getData.GetRicCallDataUseCase
 import com.artixtise.richdialer.domain.remote.apiUsecase.getData.UseCaseGetData
 import com.artixtise.richdialer.domain.remote.apiUsecase.setData.SetRicCallDataUseCase
@@ -171,6 +172,12 @@ object ApplicationModule {
     @Singleton
     fun provideSetRichCallDataUseCase(repository: ApiRepository): UseCaseSetData {
        return SetRicCallDataUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDeleteRichCallDataUseCase(repository: ApiRepository): UseCaseDelete {
+        return DeleteUseCase(repository)
     }
 
     @Provides
