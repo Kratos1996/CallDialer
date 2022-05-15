@@ -409,7 +409,7 @@ abstract class BaseActivity : AppCompatActivity() {
     fun converBitmaptoArray(bitmap:Bitmap) :ByteArray{
         val bmp: Bitmap = bitmap
         val stream = ByteArrayOutputStream()
-        bmp.compress(Bitmap.CompressFormat.PNG, 60, stream)
+        bmp.compress(Bitmap.CompressFormat.PNG, 5, stream)
         val byteArray: ByteArray = stream.toByteArray()
         bmp.recycle()
         return byteArray
