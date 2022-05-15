@@ -13,6 +13,7 @@ import com.artixtise.richdialer.database.roomdatabase.tables.ContactList
 import com.artixtise.richdialer.databinding.FragmentHomeBinding
 import com.artixtise.richdialer.presentation.ui.activity.home.adapter.ContactsAdapter
 import com.artixtise.richdialer.presentation.ui.activity.home.viewmodel.HomeViewModel
+import com.artixtise.richdialer.presentation.ui.activity.userProfile.ProfileActivity
 import com.artixtise.richdialer.presentation.ui.activity.userProfile.UserProfileActivity
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
@@ -123,9 +124,16 @@ class ContactFragment : BaseFragment(R.layout.fragment_home),
 
     override fun openContactDetail(data: ContactList) {
         //getUserId(data.phoneNumber)
-        startActivity(Intent(requireActivity(), UserProfileActivity::class.java).apply {
-            putExtra("contactNumber", data.phoneNumber)
-        })
+        if(data.phoneNumber.equals(getSharedPre().userMobile)){
+            startActivity(Intent(requireActivity(), ProfileActivity::class.java).apply {
+                putExtra("contactNumber", data.phoneNumber)
+            })
+        }else{
+            startActivity(Intent(requireActivity(), UserProfileActivity::class.java).apply {
+                putExtra("contactNumber", data.phoneNumber)
+            })
+        }
+
     }
     internal class SortbyName: Comparator<ContactList?> {
         // Used for sorting in ascending order of

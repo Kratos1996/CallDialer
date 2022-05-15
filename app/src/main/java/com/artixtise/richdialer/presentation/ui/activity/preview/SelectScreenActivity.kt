@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.telecom.TelecomManager
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -47,6 +48,7 @@ class SelectScreenActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_select_screen)
+        Log.e("error","error1")
         data = intent?.getParcelableExtra<ContactList>("FAVDATA")!!
         richCallData.id=richCallId
         init()
@@ -74,6 +76,11 @@ class SelectScreenActivity : BaseActivity() {
         binding.ivClearText.setOnClickListener {
             binding.messageLay.visibility=View.GONE
             richCallData.textMsg=""
+        }
+        binding.ivClearImage.setOnClickListener {
+            binding.clPreview.visibility=View.GONE
+            richCallData.image=""
+            richCallData.gif=""
         }
     }
 
@@ -144,10 +151,12 @@ class SelectScreenActivity : BaseActivity() {
                         if(!it.gif.isNullOrBlank()){
                             finalImage=it.gif
                             binding.ivPreview.visibility=View.VISIBLE
+                            binding.clPreview.visibility=View.VISIBLE
                             Glide.with(this).load(it.gif).into(binding.ivPreview)
                         }else if(!it.image.isNullOrBlank()){
                             finalImage=it.image
                             binding.ivPreview.visibility=View.VISIBLE
+                            binding.clPreview.visibility=View.VISIBLE
                             val imageArray=convertStringToByteArray(it.image)
                             val bitmap= BitmapFactory.decodeByteArray(imageArray,0,imageArray.size)
                             Glide.with(this).load(bitmap).into(binding.ivPreview)

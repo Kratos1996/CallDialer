@@ -36,12 +36,10 @@ class ProfileViewmodel @Inject constructor(val repositoryImpl: ContactRepository
                                            val loginRepositoryImpl: LoginRepositoryImpl
 ) : ViewModel() {
     var otherUserDetail = MutableLiveData<UserAccessData>()
-    var otherUserId =
-        MutableStateFlow<OtherUserProfileSealed.FetchOtherUserState>(OtherUserProfileSealed.FetchOtherUserState.Empty)
-    var deletRichCallMutable =
-        MutableStateFlow<RichCallSealed.DeleteRichCall>(RichCallSealed.DeleteRichCall.Empty)
-
+    var otherUserId = MutableStateFlow<OtherUserProfileSealed.FetchOtherUserState>(OtherUserProfileSealed.FetchOtherUserState.Empty)
+    var deletRichCallMutable = MutableStateFlow<RichCallSealed.DeleteRichCall>(RichCallSealed.DeleteRichCall.Empty)
     var registerState = MutableStateFlow<LoginSealed.RegisterUserState>(LoginSealed.RegisterUserState.Empty)
+
     fun getContactDetail(phone:String): Flow<ContactList> =repositoryImpl.getContact(phone)
     fun insertContact(contact:ContactList)= viewModelScope.launch(Dispatchers.IO) { repositoryImpl.updateContact(contact) }
     fun updateRichCallData(contact:ContactList)= viewModelScope.launch(Dispatchers.IO) { repositoryImpl.setRichCallData(contact) }

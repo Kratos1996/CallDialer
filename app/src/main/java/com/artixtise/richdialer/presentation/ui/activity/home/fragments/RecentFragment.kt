@@ -55,12 +55,12 @@ class RecentFragment : BaseFragment(R.layout.fragment_recent),RecentAdapter.OnRe
             linearLayout2.setOnClickListener {}
         }
         lifecycleScope.launch {
-            viewModel!!.getRecentData().observe(requireActivity()){
+          /*  viewModel!!.getRecentData().observe(requireActivity()){
                 if(it!=null){
                     val list=removeDuplicates(it)
                     recentAdapter.UpdateList(list!!)
                 }
-            }
+            }*/
 
         }
     }

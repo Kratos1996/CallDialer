@@ -221,6 +221,7 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
 
     override fun onRichCallStart(list: ContactList) {
         richCallData.mobile = list.phoneNumber
+        list.profile=""
         val intent = Intent(requireContext(), SelectScreenActivity::class.java).apply {
             putExtra("FAVDATA", list)
         }

@@ -39,12 +39,13 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this, R.layout.activity_main)
-        getOnlineProfile()
+
     }
 
 
     override fun onResume() {
         super.onResume()
+        getOnlineProfile()
         Dexter.withContext(this)
             .withPermission(Manifest.permission.READ_CONTACTS)
             .withListener(object : PermissionListener {

@@ -112,8 +112,10 @@ class UserProfileActivity : BaseActivity() {
                     binding.richCallNow.setOnClickListener {view->
                         if(isNetworkAvailable(this@UserProfileActivity)){
                             if(it.isAvailableRichCall){
+                                var data =it
+                                data.profile=""
                                 val intent = Intent(this@UserProfileActivity, SelectScreenActivity::class.java).apply {
-                                    putExtra("FAVDATA", it)
+                                    putExtra("FAVDATA", data)
                                 }
                                 startActivity(intent)
                             }else{
