@@ -57,7 +57,7 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
 
     override fun WorkStation() {
 
-        try {
+      /*  try {
             // Initiate DevicePolicyManager.
            val mDPM =  requireActivity().getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
             val mAdminName = ComponentName(requireActivity(), DeviceAdminManger::class.java)
@@ -73,7 +73,7 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite), CallInterfa
             }
         } catch (e:Exception ) {
             e.printStackTrace();
-        }
+        }*/
 
         Dexter.withContext(requireActivity())
             .withPermission(Manifest.permission.CALL_PHONE)

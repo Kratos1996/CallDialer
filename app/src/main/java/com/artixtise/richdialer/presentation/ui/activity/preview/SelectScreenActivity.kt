@@ -118,7 +118,7 @@ class SelectScreenActivity : BaseActivity() {
                 }
                 binding.swTwitter.setOnClickListener {
                     if(binding.swTwitter.isChecked){
-                        richCallData.webUrl=senderProfile.twitterUrl
+                        richCallData.twitterID=senderProfile.twitterUrl
                     }else{
                         richCallData.twitterID=""
                     }
@@ -127,7 +127,7 @@ class SelectScreenActivity : BaseActivity() {
                     if(binding.swLinked.isChecked){
                         richCallData.linkedinID=senderProfile.linkedInUrl
                     }else{
-                        richCallData.twitterID=""
+                        richCallData.linkedinID=""
                     }
                 }
                 viewModel!!.getRichCallData(richCallId).observe(this@SelectScreenActivity) {

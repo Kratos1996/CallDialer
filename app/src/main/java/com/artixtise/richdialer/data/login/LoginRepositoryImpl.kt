@@ -143,11 +143,12 @@ class LoginRepositoryImpl @Inject constructor(
             }
 
         }.addOnFailureListener {
+            registerState.value = LoginSealed.RegisterUserState.Error(it.message.toString())
             DataStoreCoroutinesHandler.io() {
                 dataStore.setIsLoggedIn(true)
                 sharedPre.setIsregister(false)
             }
-            registerState.value = LoginSealed.RegisterUserState.Success(it.message.toString())
+
 
         }
     }
